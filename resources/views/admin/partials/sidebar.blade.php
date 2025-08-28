@@ -44,12 +44,17 @@
                 @endcan
 
                 @can(['menu-setup'])
-                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.states') || request()->routeIs('admin.states')">
+                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.states') || request()->routeIs('admin.townships')">
 
                         @can('state-access')
                             <x-sidebar.sub-sidebar label="States" route="admin.states"
                                 active="{{ request()->routeIs('admin.states') }}" />
                         @endcan
+                        @can('township-access')
+                            <x-sidebar.sub-sidebar label="Townships" route="admin.townships"
+                                active="{{ request()->routeIs('admin.townships') }}" />
+                        @endcan
+
                     </x-sidebar.sidebar-group>
                 @endcan
 

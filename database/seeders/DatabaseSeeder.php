@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             RolePermissionSeeder::class,
             UserRolePermissionSeeder::class,
             StateSeeder::class,
+            TwonshipSeeder::class,
         ]);
     }
 }

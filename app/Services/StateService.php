@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\RoleRepository;
 use App\Repositories\StateRepository;
-use Spatie\Permission\Models\Permission;
 
 class StateService
 {

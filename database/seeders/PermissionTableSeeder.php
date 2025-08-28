@@ -33,11 +33,19 @@ class PermissionTableSeeder extends Seeder
             'menu-setup',
             'menu-user-management',
 
+            // State Permissions
             'state-access',
             'state-create',
             'state-edit',
             'state-show',
             'state-delete',
+
+            // Township Permissions,
+            'township-access',
+            'township-create',
+            'township-edit',
+            'township-show',
+            'township-delete',
         ];
 
         foreach ($permissions as $permission) {

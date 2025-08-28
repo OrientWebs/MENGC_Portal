@@ -4,6 +4,7 @@ use App\Livewire\Admin\RoleComponent;
 use App\Livewire\Admin\UserComponent;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\StateComponent;
+use App\Livewire\Admin\TownshipComponent;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,4 +21,5 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
     Route::get('roles/{action?}/{id?}', RoleComponent::class)->name('roles');
 
     Route::get('states/{action?}/{id?}', StateComponent::class)->name('states');
+    Route::get('townships/{action?}/{id?}', TownshipComponent::class)->name('townships');
 });
