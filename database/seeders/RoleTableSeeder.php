@@ -28,6 +28,14 @@ class RoleTableSeeder extends Seeder
             [
                 'name' => 'User',
                 'guard_name' => 'web'
+            ],
+            [
+                'name' => 'Regestration Department',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'Finance Department',
+                'guard_name' => 'web'
             ]
         ];
         foreach ($roles as $role) {

@@ -19,25 +19,11 @@ class RolePermissionSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // For Admin Role
-        $admin_permissions = Permission::where('guard_name', 'web')
-            ->whereIn('name', [
-                'dashboard-access',
-                'dashboard-login',
-                'dashboard-settings',
-                'user-access',
-                'user-edit',
-                'user-delete',
-                'user-create',
-                'user-show',
-                'role-access',
-                'role-create',
-                'role-show',
-                'role-edit',
-                'role-delete',
-            ])->get();
+        $allPermissions = Permission::where('guard_name', 'web')->get();
+
 
         $admin_role = Role::where('name', 'admin')->where('guard_name', 'web')->first();
-        $admin_role?->givePermissionTo($admin_permissions);
+        $admin_role?->givePermissionTo($allPermissions);
 
 
         // For Super Admin Role
@@ -53,7 +39,8 @@ class RolePermissionSeeder extends Seeder
                 'role-edit',
                 'role-show',
                 'user-create',
-                'user-show'
+                'user-show',
+                'setup-access',
             ])->get();
 
         $super_admin_role = Role::where('name', 'Super Admin')->where('guard_name', 'web')->first();

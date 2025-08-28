@@ -43,6 +43,26 @@
                     </x-sidebar.sidebar-group>
                 @endcan
 
+                @can(['setup-access'])
+                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.user') ||
+                        request()->routeIs('admin.users') ||
+                        request()->routeIs('admin.roles') ||
+                        request()->routeIs('admin.permissions')">
+
+                        @can('user-access')
+                            <x-sidebar.sub-sidebar label="Users" route="admin.users"
+                                active="{{ request()->routeIs('admin.users') }}" />
+                        @endcan
+
+                        @can('role-access')
+                            <x-sidebar.sub-sidebar label="Roles" route="admin.roles"
+                                active="{{ request()->routeIs('admin.roles') }}" />
+                        @endcan
+                    </x-sidebar.sidebar-group>
+                @endcan
+
+
+
                 <!-- Example Item -->
                 <ul>
                     <li class="relative">
