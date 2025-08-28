@@ -25,7 +25,7 @@
                 <!-- Dashboard -->
                 <x-sidebar.item label='Dashboard' active="{{ request()->routeIs('admin.dashboard') }}" />
 
-                @can(['user-access'])
+                @can(['menu-user-management'])
                     <x-sidebar.sidebar-group groupLabel="UserManagement" icon="fa-solid fa-users" :active="request()->routeIs('admin.user') ||
                         request()->routeIs('admin.users') ||
                         request()->routeIs('admin.roles') ||
@@ -43,20 +43,12 @@
                     </x-sidebar.sidebar-group>
                 @endcan
 
-                @can(['setup-access'])
-                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.user') ||
-                        request()->routeIs('admin.users') ||
-                        request()->routeIs('admin.roles') ||
-                        request()->routeIs('admin.permissions')">
+                @can(['menu-setup'])
+                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.states') || request()->routeIs('admin.states')">
 
-                        @can('user-access')
-                            <x-sidebar.sub-sidebar label="Users" route="admin.users"
-                                active="{{ request()->routeIs('admin.users') }}" />
-                        @endcan
-
-                        @can('role-access')
-                            <x-sidebar.sub-sidebar label="Roles" route="admin.roles"
-                                active="{{ request()->routeIs('admin.roles') }}" />
+                        @can('state-access')
+                            <x-sidebar.sub-sidebar label="States" route="admin.states"
+                                active="{{ request()->routeIs('admin.states') }}" />
                         @endcan
                     </x-sidebar.sidebar-group>
                 @endcan

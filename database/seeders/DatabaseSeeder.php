@@ -27,12 +27,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Henry',
             'email' => 'henry@gmail.com',
         ]);
-         $this->call([
+        $this->call([
             PermissionTableSeeder::class,
             RoleTableSeeder::class,
             RolePermissionSeeder::class,
-            UserRolePermissionSeeder::class
+            UserRolePermissionSeeder::class,
+            StateSeeder::class,
         ]);
     }
-
 }

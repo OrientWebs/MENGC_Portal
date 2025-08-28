@@ -11,6 +11,10 @@
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Roles', 'route' => 'admin.roles'],
         ],
+        'admin/states' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'States', 'route' => 'admin.states'],
+        ],
     ];
 
     // Current page main breadcrumbs

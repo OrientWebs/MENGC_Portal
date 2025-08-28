@@ -3,6 +3,7 @@
 use App\Livewire\Admin\RoleComponent;
 use App\Livewire\Admin\UserComponent;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Admin\StateComponent;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,4 +18,6 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
 
     Route::get('users/{action?}/{id?}', UserComponent::class)->name('users');
     Route::get('roles/{action?}/{id?}', RoleComponent::class)->name('roles');
+
+    Route::get('states/{action?}/{id?}', StateComponent::class)->name('states');
 });
