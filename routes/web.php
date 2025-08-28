@@ -5,6 +5,7 @@ use App\Livewire\Admin\UserComponent;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\StateComponent;
 use App\Livewire\Admin\TownshipComponent;
+use App\Livewire\Admin\UniversityComponent;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +23,5 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
 
     Route::get('states/{action?}/{id?}', StateComponent::class)->name('states');
     Route::get('townships/{action?}/{id?}', TownshipComponent::class)->name('townships');
+    Route::get('universities/{action?}/{id?}', UniversityComponent::class)->name('universities');
 });

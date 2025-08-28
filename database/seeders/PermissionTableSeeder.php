@@ -20,18 +20,24 @@ class PermissionTableSeeder extends Seeder
             'dashboard-access',
             'dashboard-login',
             'dashboard-settings',
+
+            // Menu Permissions
+            'menu-setup',
+            'menu-user-management',
+
+            //User Permissions
             'user-access',
             'user-edit',
             'user-delete',
             'user-create',
             'user-show',
+
+            // Role Permissions
             'role-access',
             'role-create',
             'role-edit',
             'role-show',
             'role-delete',
-            'menu-setup',
-            'menu-user-management',
 
             // State Permissions
             'state-access',
@@ -46,6 +52,15 @@ class PermissionTableSeeder extends Seeder
             'township-edit',
             'township-show',
             'township-delete',
+
+            // University Permissions,
+            'university-access',
+            'university-create',
+            'university-edit',
+            'university-show',
+            'university-delete',
+
+
         ];
 
         foreach ($permissions as $permission) {

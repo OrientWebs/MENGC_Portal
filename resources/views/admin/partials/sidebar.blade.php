@@ -44,7 +44,9 @@
                 @endcan
 
                 @can(['menu-setup'])
-                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.states') || request()->routeIs('admin.townships')">
+                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.states') ||
+                        request()->routeIs('admin.townships') ||
+                        request()->routeIs('admin.universities')">
 
                         @can('state-access')
                             <x-sidebar.sub-sidebar label="States" route="admin.states"
@@ -53,6 +55,10 @@
                         @can('township-access')
                             <x-sidebar.sub-sidebar label="Townships" route="admin.townships"
                                 active="{{ request()->routeIs('admin.townships') }}" />
+                        @endcan
+                        @can('university-access')
+                            <x-sidebar.sub-sidebar label="Universities" route="admin.universities"
+                                active="{{ request()->routeIs('admin.universities') }}" />
                         @endcan
 
                     </x-sidebar.sidebar-group>

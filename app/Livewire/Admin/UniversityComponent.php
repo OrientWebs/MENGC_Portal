@@ -5,22 +5,22 @@ namespace App\Livewire\Admin;
 use App\Services\StateService;
 use Livewire\Attributes\Layout;
 use App\Livewire\Admin\Base\BaseComponent;
-use App\Services\TownshipService;
+use App\Services\UniversityService;
 
-class TownshipComponent extends BaseComponent
+class UniversityComponent extends BaseComponent
 {
     #[Layout('admin.layouts.app')]
-    public $name, $state_id, $search = '', $filterState = null;
+    public $name;
 
-    protected $indexRoute = "admin/townships";
+    protected $indexRoute = "admin/universities";
     protected $createRoute, $editRoute, $showRoute;
 
-    protected TownshipService $townshipService;
+    protected UniversityService $universityService;
 
-    public function boot(TownshipService $townshipService)
+    public function boot(UniversityService $universityService)
     {
-        $this->verifyAuthorization("township-access");
-        $this->townshipService = $townshipService;
+        $this->verifyAuthorization("state-access");
+        $this->universityService = $universityService;
     }
 
     public function mount()
@@ -40,14 +40,13 @@ class TownshipComponent extends BaseComponent
     {
         switch ($this->currentPage) {
             case 'create':
-                return view('admin.townships.create');
+                return view('admin.universities.create');
 
             case 'edit':
-                return view('admin.townships.edit');
+                return view('admin.universities.edit');
             default:
-                $states = $this->townshipService->getStates();
-                $townships = $this->townshipService->index($this->prePage, $this->search, $this->filterState);
-                return view('admin.townships.index', compact('townships', 'states'));
+                $universities = $this->universityService->index($this->prePage, $this->search);
+                return view('admin.universities.index', compact('universities'));
         }
     }
 }

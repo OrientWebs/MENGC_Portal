@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\State;
+use App\Models\University;
 use App\Utilities\BaseCrudRepository;
 
-class StateRepository extends BaseCrudRepository
+class UniversityRepository extends BaseCrudRepository
 {
-    public  function __construct(State $model)
+    public  function __construct(University $model)
     {
         parent::__construct($model);
     }
@@ -15,14 +15,13 @@ class StateRepository extends BaseCrudRepository
     {
         return $this->model->findOrFail($id);
     }
-    public function searchState($prePage = null, $search = null)
+    public function search($prePage = null, $search = null)
     {
 
         $query = $this->model->query();
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%");
-                $q->orWhere('abbreviation', 'like', "%{$search}%");
             });
         }
 

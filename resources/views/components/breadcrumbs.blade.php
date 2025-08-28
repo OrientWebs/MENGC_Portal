@@ -15,6 +15,10 @@
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'States', 'route' => 'admin.states'],
         ],
+        'admin/townships' => [
+            ['name' => 'Dashboard', 'route' => 'admin.townships'],
+            ['name' => 'Townships', 'route' => 'admin.townships'],
+        ],
     ];
 
     // Current page main breadcrumbs
