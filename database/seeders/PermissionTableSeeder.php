@@ -60,6 +60,13 @@ class PermissionTableSeeder extends Seeder
             'university-show',
             'university-delete',
 
+            // Academic Permissions,
+            'academic-access',
+            'academic-create',
+            'academic-edit',
+            'academic-show',
+            'academic-delete',
+
 
         ];
 

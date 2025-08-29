@@ -27,4 +27,5 @@ abstract class BaseComponent extends Component
     public $currentPage = 'index';
     public $search = '';
     public $prePage;
+    protected $createRoute, $editRoute, $showRoute;
 }

@@ -24,4 +24,5 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
     Route::get('states/{action?}/{id?}', StateComponent::class)->name('states');
     Route::get('townships/{action?}/{id?}', TownshipComponent::class)->name('townships');
     Route::get('universities/{action?}/{id?}', UniversityComponent::class)->name('universities');
+    Route::get('academics/{action?}/{id?}', \App\Livewire\Admin\AcademicComponent::class)->name('academics');
 });

@@ -19,6 +19,14 @@
             ['name' => 'Dashboard', 'route' => 'admin.townships'],
             ['name' => 'Townships', 'route' => 'admin.townships'],
         ],
+        'admin/universities' => [
+            ['name' => 'Dashboard', 'route' => 'admin.universities'],
+            ['name' => 'University', 'route' => 'admin.universities'],
+        ],
+        'admin/academics' => [
+            ['name' => 'Dashboard', 'route' => 'admin.academics'],
+            ['name' => 'Academic', 'route' => 'admin.academics'],
+        ],
     ];
 
     // Current page main breadcrumbs
