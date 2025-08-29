@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
             StateSeeder::class,
             TwonshipSeeder::class,
             UniversitySeeder::class,
-            AcademicSeeder::class
+            AcademicSeeder::class,
+            QualificationSeeder::class,
         ]);
     }
 }

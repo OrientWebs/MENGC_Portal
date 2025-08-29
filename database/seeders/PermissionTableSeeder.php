@@ -67,6 +67,13 @@ class PermissionTableSeeder extends Seeder
             'academic-show',
             'academic-delete',
 
+            // Qualification Permissions,
+            'qualification-access',
+            'qualification-create',
+            'qualification-edit',
+            'qualification-show',
+            'qualification-delete',
+
 
         ];
 

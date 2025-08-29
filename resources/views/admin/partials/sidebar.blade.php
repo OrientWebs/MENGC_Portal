@@ -46,6 +46,7 @@
                 @can(['menu-setup'])
                     <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.states') ||
                         request()->routeIs('admin.townships') ||
+                        request()->routeIs('admin.qualifications') ||
                         request()->routeIs('admin.academics') ||
                         request()->routeIs('admin.universities')">
 
@@ -64,6 +65,10 @@
                         @can('academic-access')
                             <x-sidebar.sub-sidebar label="Academics" route="admin.academics"
                                 active="{{ request()->routeIs('admin.academics') }}" />
+                        @endcan
+                        @can('qualification-access')
+                            <x-sidebar.sub-sidebar label="Qualifications" route="admin.qualifications"
+                                active="{{ request()->routeIs('admin.qualifications') }}" />
                         @endcan
 
                     </x-sidebar.sidebar-group>
