@@ -16,15 +16,15 @@
             ['name' => 'States', 'route' => 'admin.states'],
         ],
         'admin/townships' => [
-            ['name' => 'Dashboard', 'route' => 'admin.townships'],
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Townships', 'route' => 'admin.townships'],
         ],
         'admin/universities' => [
-            ['name' => 'Dashboard', 'route' => 'admin.universities'],
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'University', 'route' => 'admin.universities'],
         ],
         'admin/academics' => [
-            ['name' => 'Dashboard', 'route' => 'admin.academics'],
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Academic', 'route' => 'admin.academics'],
         ],
     ];

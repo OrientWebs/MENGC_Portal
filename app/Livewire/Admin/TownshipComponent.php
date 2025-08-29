@@ -13,7 +13,7 @@ class TownshipComponent extends BaseComponent
     public $name, $state_id, $search = '', $filterState = null;
 
     protected $indexRoute = "admin/townships";
-    protected $createRoute, $editRoute, $showRoute;
+    protected $editRoute, $showRoute;
 
     protected TownshipService $townshipService;
 
@@ -27,13 +27,11 @@ class TownshipComponent extends BaseComponent
     {
         $this->createRoute = "{$this->indexRoute}/create";
         $this->editRoute   = "{$this->indexRoute}/edit/*";
-        $this->showRoute   = "{$this->indexRoute}/show/*";
 
         $this->determineCurrentPage([
             $this->indexRoute => 'index',
             $this->createRoute => 'create',
             $this->editRoute   => 'edit',
-            $this->showRoute   => 'show'
         ]);
     }
     public function render()

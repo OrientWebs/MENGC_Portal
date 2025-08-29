@@ -1,5 +1,5 @@
 <div>
-    @can('role-create')
+    @can('state-create')
         <div class="flex justify-between items-center mb-6">
             <x-breadcrumbs currentUrl="admin/states" />
             <div class="flex justify-end mb-3">
@@ -36,14 +36,6 @@
                             <td class="px-6 py-4 relative">
 
                                 <x-select.action-dropdown>
-                                    @can('state-show')
-                                        <li class="hover:bg-gray-100 dark:hover:bg-gray-600">
-                                            <a href="{{ route('admin.states', ['action' => 'show', 'id' => $record->id]) }}"
-                                                wire:navigate class="flex items-center gap-2 px-4 py-2">
-                                                <i class="fa-solid fa-eye"></i> Detail
-                                            </a>
-                                        </li>
-                                    @endcan
                                     @can('state-edit')
                                         <li class="hover:bg-gray-100 dark:hover:bg-gray-600">
                                             <a href="{{ route('admin.states', ['action' => 'edit', 'id' => $record->id]) }}"

@@ -12,7 +12,7 @@ class StateComponent extends BaseComponent
     public $name, $code;
 
     protected $indexRoute = "admin/states";
-    protected $createRoute, $editRoute, $showRoute;
+    protected $createRoute, $editRoute;
 
     protected StateService $stateService;
 
@@ -26,13 +26,11 @@ class StateComponent extends BaseComponent
     {
         $this->createRoute = "{$this->indexRoute}/create";
         $this->editRoute   = "{$this->indexRoute}/edit/*";
-        $this->showRoute   = "{$this->indexRoute}/show/*";
 
         $this->determineCurrentPage([
             $this->indexRoute => 'index',
             $this->createRoute => 'create',
             $this->editRoute   => 'edit',
-            $this->showRoute   => 'show'
         ]);
     }
     public function render()
@@ -43,8 +41,6 @@ class StateComponent extends BaseComponent
 
             case 'edit':
                 return view('admin.states.edit');
-            case 'show':
-                return view('admin.states.show');
             default:
                 $states = $this->stateService->index($this->prePage, $this->search);
                 return view('admin.states.index', compact('states'));
