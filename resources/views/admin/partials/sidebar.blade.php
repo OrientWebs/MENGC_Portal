@@ -48,6 +48,7 @@
                         request()->routeIs('admin.townships') ||
                         request()->routeIs('admin.qualifications') ||
                         request()->routeIs('admin.academics') ||
+                        request()->routeIs('admin.disciplines') ||
                         request()->routeIs('admin.universities')">
 
                         @can('state-access')
@@ -69,6 +70,10 @@
                         @can('qualification-access')
                             <x-sidebar.sub-sidebar label="Qualifications" route="admin.qualifications"
                                 active="{{ request()->routeIs('admin.qualifications') }}" />
+                        @endcan
+                        @can('discipline-access')
+                            <x-sidebar.sub-sidebar label="Discipline" route="admin.disciplines"
+                                active="{{ request()->routeIs('admin.disciplines') }}" />
                         @endcan
 
                     </x-sidebar.sidebar-group>

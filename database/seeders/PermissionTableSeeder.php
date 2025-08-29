@@ -74,6 +74,12 @@ class PermissionTableSeeder extends Seeder
             'qualification-show',
             'qualification-delete',
 
+            // Discipline Permissions,
+            'discipline-access',
+            'discipline-create',
+            'discipline-edit',
+            'discipline-show',
+            'discipline-delete',
 
         ];
 

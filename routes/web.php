@@ -27,4 +27,5 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
     Route::get('academics/{action?}/{id?}', \App\Livewire\Admin\AcademicComponent::class)->name('academics');
 
     Route::get('qualifications/{action?}/{id?}', \App\Livewire\Admin\QualificationComponent::class)->name('qualifications');
+    Route::get('disciplines/{action?}/{id?}', \App\Livewire\Admin\DisciplineComponent::class)->name('disciplines');
 });

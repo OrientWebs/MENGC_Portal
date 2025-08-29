@@ -27,6 +27,10 @@
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Academic', 'route' => 'admin.academics'],
         ],
+        'admin/disciplines' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Discipline', 'route' => 'admin.disciplines'],
+        ],
     ];
 
     // Current page main breadcrumbs
