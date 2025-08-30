@@ -6,7 +6,7 @@ use App\Models\EngineeringDiscipline;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DisciplineSeeder extends Seeder
+class EngineeringDisciplineSeeder extends Seeder
 {
     public function run(): void
     {

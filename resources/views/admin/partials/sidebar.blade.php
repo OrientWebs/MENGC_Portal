@@ -64,7 +64,7 @@
                                 active="{{ request()->routeIs('admin.universities') }}" />
                         @endcan
                         @can('academic-access')
-                            <x-sidebar.sub-sidebar label="Academics" route="admin.academics"
+                            <x-sidebar.sub-sidebar label="Academic Discipline" route="admin.academics"
                                 active="{{ request()->routeIs('admin.academics') }}" />
                         @endcan
                         @can('qualification-access')
@@ -72,7 +72,7 @@
                                 active="{{ request()->routeIs('admin.qualifications') }}" />
                         @endcan
                         @can('discipline-access')
-                            <x-sidebar.sub-sidebar label="Discipline" route="admin.disciplines"
+                            <x-sidebar.sub-sidebar label="Engineering Discipline" route="admin.disciplines"
                                 active="{{ request()->routeIs('admin.disciplines') }}" />
                         @endcan
 

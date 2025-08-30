@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Repositories\DisciplineRepository;
+use App\Repositories\EngineeringDisciplineRepository;
 
-class DisciplineService
+class EngineeringDisciplineService
 {
-    protected DisciplineRepository $disciplinaRepository;
-    public function __construct(DisciplineRepository $disciplineRepository)
+    protected EngineeringDisciplineRepository $disciplinaRepository;
+    public function __construct(EngineeringDisciplineRepository $disciplineRepository)
     {
         $this->disciplinaRepository = $disciplineRepository;
     }

@@ -29,7 +29,7 @@
         ],
         'admin/disciplines' => [
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
-            ['name' => 'Discipline', 'route' => 'admin.disciplines'],
+            ['name' => 'Engineering Discipline', 'route' => 'admin.disciplines'],
         ],
     ];
 

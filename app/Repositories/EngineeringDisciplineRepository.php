@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\EngineeringDiscipline;
 use App\Utilities\BaseCrudRepository;
 
-class DisciplineRepository extends BaseCrudRepository
+class EngineeringDisciplineRepository extends BaseCrudRepository
 {
     public function __construct(EngineeringDiscipline $model)
     {

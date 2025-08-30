@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             UniversitySeeder::class,
             AcademicSeeder::class,
             QualificationSeeder::class,
-            DisciplineSeeder::class,
+            EngineeringDisciplineSeeder::class,
         ]);
     }
 }

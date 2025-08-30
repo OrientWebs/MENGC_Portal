@@ -3,21 +3,18 @@
 namespace App\Livewire\Admin;
 
 use App\Livewire\Admin\Base\BaseComponent;
-use App\Services\DisciplineService;
-use Livewire\Component;
+use App\Services\EngineeringDisciplineService;
 
-class DisciplineComponent extends BaseComponent
+class EngineeringDisciplineComponent extends BaseComponent
 {
     public $name;
     protected $indexRoute = 'admin/disciplines';
-    protected DisciplineService $disciplineService;
-
-    public function boot(DisciplineService $disciplineService)
+    protected EngineeringDisciplineService $disciplineService;
+    public function boot(EngineeringDisciplineService $disciplineService)
     {
         $this->verifyAuthorization("discipline-access");
         $this->disciplineService = $disciplineService;
     }
-
     public function mount()
     {
         $this->createRoute = "{$this->indexRoute}/create";
