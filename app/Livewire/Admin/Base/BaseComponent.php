@@ -28,4 +28,16 @@ abstract class BaseComponent extends Component
     public $search = '';
     public $prePage;
     protected $createRoute, $editRoute, $showRoute;
+
+    public function mount()
+    {
+        $this->createRoute = "{$this->indexRoute}/create";
+        $this->editRoute   = "{$this->indexRoute}/edit/*";
+
+        $this->determineCurrentPage([
+            $this->indexRoute => 'index',
+            $this->createRoute => 'create',
+            $this->editRoute   => 'edit',
+        ]);
+    }
 }

@@ -81,6 +81,13 @@ class PermissionTableSeeder extends Seeder
             'discipline-show',
             'discipline-delete',
 
+            // Ministry Permissions,
+            'ministry-access',
+            'ministry-create',
+            'ministry-edit',
+            'ministry-show',
+            'ministry-delete',
+
         ];
 
         foreach ($permissions as $permission) {

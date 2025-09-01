@@ -4,6 +4,7 @@ use App\Livewire\Admin\RoleComponent;
 use App\Livewire\Admin\UserComponent;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\StateComponent;
+use App\Livewire\Admin\MinistryComponent;
 use App\Livewire\Admin\TownshipComponent;
 use App\Livewire\Admin\UniversityComponent;
 
@@ -28,4 +29,5 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
 
     Route::get('qualifications/{action?}/{id?}', \App\Livewire\Admin\QualificationComponent::class)->name('qualifications');
     Route::get('disciplines/{action?}/{id?}', \App\Livewire\Admin\EngineeringDisciplineComponent::class)->name('disciplines');
+    Route::get('ministries/{action?}/{id?}', MinistryComponent::class)->name('ministries');
 });

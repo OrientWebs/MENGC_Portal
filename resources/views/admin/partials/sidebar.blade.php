@@ -49,6 +49,7 @@
                         request()->routeIs('admin.qualifications') ||
                         request()->routeIs('admin.academics') ||
                         request()->routeIs('admin.disciplines') ||
+                        request()->routeIs('admin.ministries') ||
                         request()->routeIs('admin.universities')">
 
                         @can('state-access')
@@ -74,6 +75,10 @@
                         @can('discipline-access')
                             <x-sidebar.sub-sidebar label="Engineering Discipline" route="admin.disciplines"
                                 active="{{ request()->routeIs('admin.disciplines') }}" />
+                        @endcan
+                        @can('ministry-access')
+                            <x-sidebar.sub-sidebar label="Ministries" route="admin.ministries"
+                                active="{{ request()->routeIs('admin.ministries') }}" />
                         @endcan
 
                     </x-sidebar.sidebar-group>
