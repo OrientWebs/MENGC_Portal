@@ -27,6 +27,10 @@
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Academic', 'route' => 'admin.academics'],
         ],
+        'admin/qualifications' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Qualificatons', 'route' => 'admin.qualifications'],
+        ],
         'admin/disciplines' => [
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Engineering Discipline', 'route' => 'admin.disciplines'],
