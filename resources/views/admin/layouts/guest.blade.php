@@ -19,10 +19,27 @@
     @livewireStyles
 </head>
 
-<body>
-    <div class="font-sans text-gray-900 antialiased">
-        {{ $slot }}
+<body class="h-screen w-screen">
+    <div class="flex h-screen">
+        <!-- Left side (Image / Video) -->
+        <div class="hidden lg:flex w-1/2 items-center justify-center bg-gray-100">
+            {{-- If you want an image --}}
+            <x-auth.authentication-card-logo />
 
+            {{-- If you want a video instead --}}
+            {{--
+            <video autoplay muted loop class="w-full h-full object-cover">
+                <source src="{{ asset('videos/company-demo.mp4') }}" type="video/mp4">
+            </video>
+            --}}
+        </div>
+
+        <!-- Right side (Auth Forms) -->
+        <div class="flex w-full lg:w-1/2 items-center justify-center p-6 bg-white">
+            <div class="w-full max-w-md">
+                {{ $slot }}
+            </div>
+        </div>
     </div>
 
     @livewireScripts
