@@ -41,7 +41,7 @@
         ],
         'admin/prerequistics' => [
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
-            ['name' => 'Prerequistic', 'route' => 'admin.ministries'],
+            ['name' => 'Prerequistic', 'route' => 'admin.prerequistics'],
         ],
     ];
 
