@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             QualificationSeeder::class,
             EngineeringDisciplineSeeder::class,
             MinistrySeeder::class,
+            PrerequisticSeeder::class
         ]);
     }
 }

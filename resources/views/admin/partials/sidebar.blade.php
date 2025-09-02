@@ -50,6 +50,7 @@
                         request()->routeIs('admin.academics') ||
                         request()->routeIs('admin.disciplines') ||
                         request()->routeIs('admin.ministries') ||
+                        request()->routeIs('admin.prerequistics') ||
                         request()->routeIs('admin.universities')">
 
                         @can('state-access')
@@ -79,6 +80,10 @@
                         @can('ministry-access')
                             <x-sidebar.sub-sidebar label="Ministries" route="admin.ministries"
                                 active="{{ request()->routeIs('admin.ministries') }}" />
+                        @endcan
+                        @can('prerequistic-access')
+                            <x-sidebar.sub-sidebar label="Prerequistic" route="admin.prerequistics"
+                                active="{{ request()->routeIs('admin.prerequistics') }}" />
                         @endcan
 
                     </x-sidebar.sidebar-group>

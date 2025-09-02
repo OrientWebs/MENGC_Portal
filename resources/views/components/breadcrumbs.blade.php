@@ -39,6 +39,10 @@
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Ministries', 'route' => 'admin.ministries'],
         ],
+        'admin/prerequistics' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Prerequistic', 'route' => 'admin.ministries'],
+        ],
     ];
 
     // Current page main breadcrumbs

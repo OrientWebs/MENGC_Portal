@@ -88,6 +88,13 @@ class PermissionTableSeeder extends Seeder
             'ministry-show',
             'ministry-delete',
 
+            // Prerequisitc Permissions,
+            'prerequistic-access',
+            'prerequistic-create',
+            'prerequistic-edit',
+            'prerequistic-show',
+            'prerequistic-delete',
+
         ];
 
         foreach ($permissions as $permission) {
