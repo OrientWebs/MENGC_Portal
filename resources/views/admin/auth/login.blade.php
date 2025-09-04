@@ -28,10 +28,12 @@
             </div>
 
             <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-input.checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
+                <span class="text-sm text-gray-600">
+                    Don't have an account?
+                    <a href="{{ route('register') }}" class="font-medium text-primary-600 hover:underline">
+                        Sign up
+                    </a>
+                </span>
             </div>
 
             <div class="flex items-center justify-end mt-4">

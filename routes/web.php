@@ -10,8 +10,9 @@ use App\Livewire\Admin\UniversityComponent;
 use App\Livewire\Admin\PrerequisticComponent;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.auth.login');
 });
+
 Route::get('/500', function () {
     abort(500);
 });
