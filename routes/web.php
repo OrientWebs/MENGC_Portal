@@ -16,7 +16,7 @@ Route::get('/', function () {
 Route::get('/500', function () {
     abort(500);
 });
-Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_session'), 'verified',])->prefix(env('ROUTE_PREFIX', 'admin'))->as('admin.')->group(function () {
+Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_session'), 'verified',])->prefix(config('fortify.prefix'))->as('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
