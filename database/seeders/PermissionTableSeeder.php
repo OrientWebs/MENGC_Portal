@@ -95,6 +95,15 @@ class PermissionTableSeeder extends Seeder
             'prerequistic-show',
             'prerequistic-delete',
 
+            //PE registration Form
+            'PEregistration-access',
+            'PEregistration-create',
+            'PEregistration-delete',
+            'PEregistration-edit',
+            'PEregistration-show',
+            'PEregistration-admin',
+            'PEregistration-access',
+
         ];
 
         foreach ($permissions as $permission) {
