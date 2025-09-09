@@ -40,5 +40,6 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
 
     //PE form
     Route::get('pe-registration', StoreComponent::class)->name('pe-registration');
-    Route::get('create-pe-form', PECreateComponent::class)->name('create-pe');
+    Route::get('pe/terms', \App\Livewire\Admin\PE\PETermsComponent::class)->name('admin.pe.terms');
+    Route::get('pe/create-form', PECreateComponent::class)->name('pe-form-create');
 });
