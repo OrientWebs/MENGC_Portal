@@ -6,88 +6,212 @@
     </div>
 
     <x-create.body>
-
         <form wire:submit.prevent="store">
+            <div>
+                <h1 class="font-bold">1. Personal Detail</h1>
+            </div>
+
             <div class="py-3">
-                <div class="flex flex-wrap -mx-2">
+                {{-- Personal Details --}}
+                <div class="flex flex-wrap -mx-2" x-data="{ nationality: '' }">
+                    <!-- Register No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Register No" required="true" />
-                        <x-input.primary-input id="name" label="Name" type="text" wire:model="name"
-                            disabled="true" class="additional-classes" error="{{ $errors->has('name') }}"
-                            value="PE App:000001" />
-                        @error('name')
+                        <x-input.label for="register_no" label="Register No" required="true" />
+                        <x-input.primary-input id="register_no" type="text" wire:model="register_no" disabled="true"
+                            value="PE App:000001" class="additional-classes"
+                            error="{{ $errors->has('register_no') }}" />
+                        @error('register_no')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
+                    <!-- Title -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Title:(Prof:/Dr./Engr.)" required="true" />
-                        <x-input.primary-input id="name" label="Name" type="text" wire:model="name"
-                            class="additional-classes" error="{{ $errors->has('name') }}" />
-                        @error('name')
+                        <x-input.label for="title" label="Title:(Prof:/Dr./Engr.)" required="true" />
+                        <x-input.primary-input id="title" type="text" wire:model="title"
+                            class="additional-classes" error="{{ $errors->has('title') }}" />
+                        @error('title')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
+                    <!-- Name English -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Name(English)" required="true" />
-                        <x-input.primary-input id="name" label="Name" type="text" wire:model="name_en"
-                            oninput="this.value = this.value.replace(/[^\\x00-\\x7F]+/ig, '');"
-                            class="additional-classes" error="{{ $errors->has('name') }}" />
-                        @error('name')
+                        <x-input.label for="name_en" label="Name (English)" required="true" />
+                        <x-input.primary-input id="name_en" type="text" wire:model="name_en"
+                            oninput="this.value = this.value.replace(/[^\x00-\x7F]+/ig, '');" class="additional-classes"
+                            error="{{ $errors->has('name_en') }}" />
+                        @error('name_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
+                    <!-- Name Myanmar -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Name (Myanmar)" required="true" />
+                        <x-input.label for="name_mm" label="Name (Myanmar)" required="true" />
                         <x-input.primary-input id="name_mm" type="text" wire:model="name_mm"
                             oninput="this.value = this.value.replace(/[^\u1000-\u109F\s]/g, '');"
                             class="additional-classes" error="{{ $errors->has('name_mm') }}" />
-
-                        @error('name')
+                        @error('name_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
+                    <!-- Father English -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Father Name (english)" required="true" />
+                        <x-input.label for="father_name_en" label="Father Name (English)" />
                         <x-input.primary-input id="father_name_en" type="text" wire:model="father_name_en"
-                            oninput="this.value = this.value.replace(/[^\\x00-\\x7F]+/ig, '');"
-                            class="additional-classes" error="{{ $errors->has('father_name_en') }}" />
-
-                        @error('name')
+                            oninput="this.value = this.value.replace(/[^\x00-\x7F]+/ig, '');" class="additional-classes"
+                            error="{{ $errors->has('father_name_en') }}" />
+                        @error('father_name_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
+
+                    <!-- Father Myanmar -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Father Name(Myanamar)" required="true" />
+                        <x-input.label for="father_name_mm" label="Father Name (Myanmar)" />
                         <x-input.primary-input id="father_name_mm" type="text" wire:model="father_name_mm"
                             oninput="this.value = this.value.replace(/[^\u1000-\u109F\s]/g, '');"
                             class="additional-classes" error="{{ $errors->has('father_name_mm') }}" />
-
-                        @error('name')
+                        @error('father_name_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
+                    <!-- DOB -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Date of Birth" required="true" />
+                        <x-input.label for="dob" label="Date of Birth" required="true" />
                         <x-input.primary-input id="dob" type="date" wire:model="dob" class="additional-classes"
                             error="{{ $errors->has('dob') }}" />
-                        @error('name')
+                        @error('dob')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
+
+                    <!-- Gender -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="name" label="Nationality Type" required="true" />
-                        <x-input.primary-input id="dob" type="select" wire:model="dob" class="additional-classes"
-                            error="{{ $errors->has('dob') }}" />
-                        @error('name')
+                        <x-input.label for="gender" label="Gender" required="true" />
+                        <x-select.dropdown class="additional-classes w-full" wire:model="gender"
+                            error="{{ $errors->has('gender') }}">
+                            <option value="">Option</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </x-select.dropdown>
+                        @error('gender')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Nationality Type -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="nationality_type" label="Nationality Type" required="true" />
+                        <x-select.dropdown class="additional-classes w-full" wire:model="nationality_type"
+                            id="nationality_type" error="{{ $errors->has('nationality_type') }}"
+                            x-model="nationality">
+                            <option value="">Choose PR or NRC</option>
+                            <option value="PR">PR</option>
+                            <option value="NRC">NRC</option>
+                        </x-select.dropdown>
+                        @error('nationality_type')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- PR Number -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'PR'" x-cloak
+                        x-transition>
+                        <x-input.label for="permanent_resident_no" label="PR Number" />
+                        <x-input.primary-input id="permanent_resident_no" type="text"
+                            wire:model="permanent_resident_no" class="additional-classes"
+                            error="{{ $errors->has('permanent_resident_no') }}" />
+                        @error('permanent_resident_no')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- NRC English -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
+                        x-transition>
+                        <x-input.label for="nrc_en" label="NRC Number (English)" />
+                        <div class="flex w-50">
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
+                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
+                                <option value="PR">1</option>
+                                <option value="NRC">20</option>
+                            </x-select.dropdown>
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
+                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
+                                <option value="PR">BALAKHA</option>
+                                <option value="NRC">20</option>
+                            </x-select.dropdown>
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
+                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
+                                <option value="PR">N</option>
+                                <option value="NRC">E</option>
+                                <option value="NRC">P</option>
+                            </x-select.dropdown>
+                            <x-input.primary-input id="permanent_resident_no" type="text"
+                                wire:model="permanent_resident_no" class="additional-classes w-full"
+                                error="{{ $errors->has('permanent_resident_no') }}" />
+                        </div>
+                        @error('nrc_en')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- NRC Myanmar -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
+                        x-transition>
+                        <x-input.label for="nrc_mm" label="NRC Number (Myanmar)" />
+                        <div class="flex w-50">
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
+                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
+                                <option value="PR">1</option>
+                                <option value="NRC">20</option>
+                            </x-select.dropdown>
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
+                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
+                                <option value="PR">BALAKHA</option>
+                                <option value="NRC">20</option>
+                            </x-select.dropdown>
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
+                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
+                                <option value="PR">N</option>
+                                <option value="NRC">E</option>
+                                <option value="NRC">P</option>
+                            </x-select.dropdown>
+                            <x-input.primary-input id="permanent_resident_no" type="text"
+                                wire:model="permanent_resident_no" class="additional-classes w-full"
+                                error="{{ $errors->has('permanent_resident_no') }}" />
+                        </div>
+                        @error('nrc_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
+                        x-transition>
+                        <x-input.label for="nrc_mm" label="NRC Card Photo (Front)" />
+                        <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
+                            class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
+                        @error('nrc_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
+                        x-transition>
+                        <x-input.label for="nrc_mm" label="NRC Card Photo (back)" />
+                        <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
+                            class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
+                        @error('nrc_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+
             </div>
 
             <div class="pt-4">

@@ -20,9 +20,12 @@ return new class extends Migration
 
             $table->string('name_en');
             $table->string('name_mm');
-            $table->string('father_name_en');
-            $table->string('father_name_mm');
+            $table->string('title', 256)->nullable();
+            $table->string('father_name_en')->nullable();
+            $table->string('father_name_mm')->nullable();
             $table->date('dob');
+            $table->string('nationality_type')->nullable();
+            $table->string('permanent_resident_no')->nullable();
             $table->string('nrc_no_en')->nullable();
             $table->string('nrc_no_mm')->nullable();
 
@@ -39,8 +42,7 @@ return new class extends Migration
 
             $table->string('fax_no')->nullable();
 
-            $table->string('nationality_type')->nullable();
-            $table->string('permanent_resident_no')->nullable();
+
 
             $table->enum('status', ['draft', 'submitted', 'approved', 'rejected'])->default('draft');
 

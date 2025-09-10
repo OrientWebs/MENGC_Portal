@@ -11,6 +11,7 @@ class RegistrationForm extends Model
 
     protected $fillable = [
         'register_no',
+        'title',
         'form_type',
         'name_en',
         'name_mm',
