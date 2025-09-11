@@ -7,12 +7,12 @@
 
     <x-create.body>
         <form wire:submit.prevent="store">
-            <div>
-                <h1 class="font-bold">1. Personal Detail</h1>
-            </div>
 
+            {{-- Personal Details --}}
             <div class="py-3">
-                {{-- Personal Details --}}
+                <div>
+                    <h1 class="font-bold dark:text-white">1. Personal Detail</h1>
+                </div>
                 <div class="flex flex-wrap -mx-2" x-data="{ nationality: '' }">
                     <!-- Register No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
@@ -205,6 +205,60 @@
                         <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
                             class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
                         @error('nrc_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+
+            </div>
+            {{-- Contact Details --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">2. Contact Detail</h1>
+                </div>
+                <div class="flex flex-wrap -mx-2" x-data="{ nationality: '' }">
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_en" label="Permanent Contact Address(English)"
+                            required="true" />
+                        <x-input.primary-input id="perm_address_en" type="text" wire:model="perm_address_en"
+                            class="additional-classes" error="{{ $errors->has('perm_address_en') }}" />
+                        @error('perm_address_en')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(English)"
+                            required="true" />
+                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
+                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        @error('perm_address_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(English)"
+                            required="true" />
+                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
+                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        @error('perm_address_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(English)"
+                            required="true" />
+                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
+                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
