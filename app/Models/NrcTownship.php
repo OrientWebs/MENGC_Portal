@@ -14,6 +14,8 @@ class NrcTownship extends Model
         'state_id'
     ];
 
+
+
     public function state()
     {
         return $this->belongsTo(NrcState::class, 'state_id', 'id');
