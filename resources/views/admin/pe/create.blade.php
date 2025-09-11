@@ -218,7 +218,8 @@
                 <div>
                     <h1 class="font-bold dark:text-white">2. Contact Detail</h1>
                 </div>
-                <div class="flex flex-wrap -mx-2" x-data="{ nationality: '' }">
+
+                <div class="flex flex-wrap -mx-2">
                     <!-- Permanent Contact  -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_en" label="Permanent Contact Address(English)"
@@ -232,8 +233,7 @@
 
                     <!-- Permanent Contact  -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(English)"
-                            required="true" />
+                        <x-input.label for="perm_address_mm" label="State" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
                             class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
@@ -243,8 +243,7 @@
 
                     <!-- Permanent Contact  -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(English)"
-                            required="true" />
+                        <x-input.label for="perm_address_mm" label="Township" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
                             class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
@@ -254,7 +253,47 @@
 
                     <!-- Permanent Contact  -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(English)"
+                        <x-input.label for="perm_address_mm" label="Post Code" required="true" />
+                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
+                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        @error('perm_address_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_mm" label="Tele No" required="true" />
+                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
+                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        @error('perm_address_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_mm" label="Fax No" required="true" />
+                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
+                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        @error('perm_address_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_mm" label="Email" required="true" />
+                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
+                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        @error('perm_address_mm')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Permanent Contact  -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(Myanmar)"
                             required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
                             class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
@@ -263,6 +302,20 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="">
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="perm_address_en" label="Permanent Contact Address(English)"
+                            required="true" />
+                        <x-input.primary-input id="perm_address_en" type="text" wire:model="perm_address_en"
+                            class="additional-classes" error="{{ $errors->has('perm_address_en') }}" />
+                        @error('perm_address_en')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                </div>
+
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
 
 
