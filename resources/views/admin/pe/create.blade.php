@@ -4,7 +4,6 @@
             Application For Professional Engineer
         </h1>
     </div>
-
     <x-create.body>
         <form wire:submit.prevent="store">
 
@@ -135,25 +134,26 @@
                         x-transition>
                         <x-input.label for="nrc_en" label="NRC Number (English)" />
                         <div class="flex w-50">
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
-                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
-                                <option value="PR">1</option>
-                                <option value="NRC">20</option>
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_state_en"
+                                id="nrc_state_en" error="{{ $errors->has('nrc_state_en') }}">
+                                @foreach ($nrcStates as $nrc)
+                                    <option value="{{ $nrc->id }}">{{ $nrc->code_en }}</option>
+                                @endforeach
                             </x-select.dropdown>
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
-                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
-                                <option value="PR">BALAKHA</option>
-                                <option value="NRC">20</option>
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_township_en"
+                                id="nrc_township_en" error="{{ $errors->has('nrc_township_en') }}">
+                                @foreach ($nrcTownship as $townsip)
+                                    <option value="{{ $townsip->id }}">{{ $townsip->name_en }}</option>
+                                @endforeach
                             </x-select.dropdown>
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
-                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_en"
+                                id="nrc_type_en" error="{{ $errors->has('nationality_type') }}">
                                 <option value="PR">N</option>
                                 <option value="NRC">E</option>
                                 <option value="NRC">P</option>
                             </x-select.dropdown>
-                            <x-input.primary-input id="permanent_resident_no" type="text"
-                                wire:model="permanent_resident_no" class="additional-classes w-full"
-                                error="{{ $errors->has('permanent_resident_no') }}" />
+                            <x-input.primary-input id="nrc_no_en" type="text" wire:model="nrc_no_en"
+                                class="additional-classes w-full" error="{{ $errors->has('nrc_no_en') }}" />
                         </div>
                         @error('nrc_en')
                             <span class="text-red-500">{{ $message }}</span>
