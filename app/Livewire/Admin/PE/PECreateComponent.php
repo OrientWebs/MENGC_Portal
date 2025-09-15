@@ -19,7 +19,6 @@ class PECreateComponent extends PERegistrationBseComponent
         $this->nrcTypes  = $this->PEservice->getNrcType();
     }
 
-    // Reset NRC fields when nationality changes
     public function updatedNationalityType($value)
     {
         if ($value === 'PR') {
@@ -56,14 +55,12 @@ class PECreateComponent extends PERegistrationBseComponent
     public function store()
     {
         $validated = StoreBaseRegistrationFormRequest::validate($this);
-
-        // Format NRC using global helper
         if ($this->nationality_type === 'NRC') {
-            $validated['nrc_no_en'] = format_nrc($validated, 'en');
-            $validated['nrc_no_mm'] = format_nrc($validated, 'mm');
+            $validated += [
+                'nrc_no_en' => format_nrc($validated, 'en'),
+                'nrc_no_mm' => format_nrc($validated, 'mm'),
+            ];
         }
-
-        // Store in database
         $this->PEservice->create($validated);
 
         $this->flashMessage('success', 'PE registration saved successfully!');
@@ -72,6 +69,8 @@ class PECreateComponent extends PERegistrationBseComponent
 
     public function render()
     {
+        $registerNo = $this->PEservice->generateRegisterNo();
+        $this->register_no = $registerNo;
         return view('admin.pe.create');
     }
 }

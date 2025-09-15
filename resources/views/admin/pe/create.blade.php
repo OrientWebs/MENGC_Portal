@@ -148,13 +148,15 @@
 
                             <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_en"
                                 id="nrc_type_en" error="{{ $errors->has('nrc_type_en') }}">
+                                <option value="">Choose</option>
                                 @foreach ($nrcTypes as $type)
                                     <option value="{{ $type->name_en }}">{{ $type->name_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
-                            <x-input.primary-input id="nrc_no_en" type="number" wire:model="nrc_no_en"
+
+                            <x-input.primary-input id="nrc_number_en" type="number" wire:model="nrc_number_en"
                                 inputType="en" class="additional-classes w-full"
-                                error="{{ $errors->has('nrc_no_en') }}" />
+                                error="{{ $errors->has('nrc_number_en') }}" />
                         </div>
                         @error('nrc_en')
                             <span class="text-red-500">{{ $message }}</span>
@@ -186,13 +188,13 @@
                             <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_mm"
                                 id="nrc_type_mm" error="{{ $errors->has('nrc_type_mm') }}">
                                 @foreach ($nrcTypes as $type)
-                                    <option value="{{ $type->id }}">{{ $type->name_mm }}</option>
+                                    <option value="{{ $type->name_mm }}">{{ $type->name_mm }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
-                            <x-input.primary-input id="nrc_no_mm" type="text" wire:model="nrc_no_mm"
+                            <x-input.primary-input id="nrc_number_mm" type="text" wire:model="nrc_number_mm"
                                 inputType="mmnum" class="additional-classes w-full"
-                                error="{{ $errors->has('nrc_no_mm') }}" />
+                                error="{{ $errors->has('nrc_number_mm') }}" />
                         </div>
                         @error('nrc_mm')
                             <span class="text-red-500">{{ $message }}</span>

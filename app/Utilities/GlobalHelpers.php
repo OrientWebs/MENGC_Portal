@@ -269,11 +269,11 @@ if (!function_exists('format_nrc')) {
         $state     = $data["nrc_state_{$lang}"]     ?? null;
         $township  = $data["nrc_township_{$lang}"]  ?? null;
         $type      = $data["nrc_type_{$lang}"]      ?? null;
-        $number    = $data["nrc_no_{$lang}"]        ?? null;
+        $number    = $data["nrc_number_{$lang}"]        ?? null;
 
-        if (!$state || !$township || !$type || !$number) {
-            return null;
-        }
+        // if (!$state || !$township || !$type || !$number) {
+        //     return null;
+        // }
 
         return "{$state}/{$township}({$type}){$number}";
     }

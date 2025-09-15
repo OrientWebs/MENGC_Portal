@@ -34,7 +34,6 @@ class PeRegistrationService
     public function create($baseData, $peData = null)
     {
         $user = auth()->user()->id;
-        dd($baseData);
         $baseData += [
             'status' => 'approved',
         ];
