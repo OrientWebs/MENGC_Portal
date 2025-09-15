@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('nrc_no_en')->nullable();
             $table->string('nrc_no_mm')->nullable();
 
-            $table->string('email')->unique();
+            $table->string('email', 256)->nullable();
 
             $table->string('tele_no_en')->nullable();
             $table->string('tele_no_mm')->nullable();

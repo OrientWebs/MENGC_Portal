@@ -18,12 +18,25 @@ class PeRegistrationService
         return $this->PErepository->getNrcState()->get();
     }
 
-    public function getNrcTownship()
+    public function getNrcTownship($stateId)
     {
-        return $this->PErepository->getNrcTwonship()->get();
+        return $this->PErepository->getNrcTwonship()->where('state_id', $stateId)->get();
     }
     public function getNrcType()
     {
         return $this->PErepository->getNrcType()->get();
+    }
+    public function generateRegisterNo()
+    {
+        return $this->PErepository->generateRegisterNo();
+    }
+
+    public function create($baseData, $peData = null)
+    {
+        $user = auth()->user()->id;
+        $baseData += [
+            'status' => 'approved',
+        ];
+        $BaseData = $this->PErepository->createRegistratonForm($baseData);
     }
 }

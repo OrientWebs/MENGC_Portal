@@ -17,8 +17,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="register_no" label="Register No" required="true" />
                         <x-input.primary-input id="register_no" type="text" wire:model="register_no" disabled="true"
-                            value="PE App:000001" class="additional-classes"
-                            error="{{ $errors->has('register_no') }}" />
+                            class="additional-classes" error="{{ $errors->has('register_no') }}" />
                         @error('register_no')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -37,9 +36,8 @@
                     <!-- Name English -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="name_en" label="Name (English)" required="true" />
-                        <x-input.primary-input id="name_en" type="text" wire:model="name_en"
-                            oninput="this.value = this.value.replace(/[^\x00-\x7F]+/ig, '');" class="additional-classes"
-                            error="{{ $errors->has('name_en') }}" />
+                        <x-input.primary-input id="name_en" type="text" wire:model="name_en" inputType="en"
+                            class="additional-classes" error="{{ $errors->has('name_en') }}" />
                         @error('name_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -48,8 +46,7 @@
                     <!-- Name Myanmar -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="name_mm" label="Name (Myanmar)" required="true" />
-                        <x-input.primary-input id="name_mm" type="text" wire:model="name_mm"
-                            oninput="this.value = this.value.replace(/[^\u1000-\u109F\s]/g, '');"
+                        <x-input.primary-input id="name_mm" type="text" wire:model="name_mm" inputType="mm"
                             class="additional-classes" error="{{ $errors->has('name_mm') }}" />
                         @error('name_mm')
                             <span class="text-red-500">{{ $message }}</span>
@@ -60,8 +57,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="father_name_en" label="Father Name (English)" />
                         <x-input.primary-input id="father_name_en" type="text" wire:model="father_name_en"
-                            oninput="this.value = this.value.replace(/[^\x00-\x7F]+/ig, '');" class="additional-classes"
-                            error="{{ $errors->has('father_name_en') }}" />
+                            inputType="en" class="additional-classes" error="{{ $errors->has('father_name_en') }}" />
                         @error('father_name_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -71,8 +67,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="father_name_mm" label="Father Name (Myanmar)" />
                         <x-input.primary-input id="father_name_mm" type="text" wire:model="father_name_mm"
-                            oninput="this.value = this.value.replace(/[^\u1000-\u109F\s]/g, '');"
-                            class="additional-classes" error="{{ $errors->has('father_name_mm') }}" />
+                            inputType="mm" class="additional-classes" error="{{ $errors->has('father_name_mm') }}" />
                         @error('father_name_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -106,8 +101,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="nationality_type" label="Nationality Type" required="true" />
                         <x-select.dropdown class="additional-classes w-full" wire:model="nationality_type"
-                            id="nationality_type" error="{{ $errors->has('nationality_type') }}"
-                            x-model="nationality">
+                            id="nationality_type" error="{{ $errors->has('nationality_type') }}" x-model="nationality">
                             <option value="">Choose PR or NRC</option>
                             <option value="PR">PR</option>
                             <option value="NRC">NRC</option>
@@ -132,28 +126,35 @@
                     <!-- NRC English -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
+
                         <x-input.label for="nrc_en" label="NRC Number (English)" />
                         <div class="flex w-50">
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_state_en"
+
+                            <x-select.dropdown class="additional-classes w-18" wire:model.live="nrc_state_en"
                                 id="nrc_state_en" error="{{ $errors->has('nrc_state_en') }}">
+                                <option value="">Choose</option>
                                 @foreach ($nrcStates as $nrc)
                                     <option value="{{ $nrc->id }}">{{ $nrc->code_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
+
                             <x-select.dropdown class="additional-classes w-18" wire:model="nrc_township_en"
                                 id="nrc_township_en" error="{{ $errors->has('nrc_township_en') }}">
-                                @foreach ($nrcTownship as $townsip)
+                                <option value="">Choose</option>
+                                @foreach ($nrcTownshipsEn as $townsip)
                                     <option value="{{ $townsip->id }}">{{ $townsip->name_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
+
                             <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_en"
-                                id="nrc_type_en" error="{{ $errors->has('nationality_type') }}">
-                                <option value="PR">N</option>
-                                <option value="NRC">E</option>
-                                <option value="NRC">P</option>
+                                id="nrc_type_en" error="{{ $errors->has('nrc_type_en') }}">
+                                @foreach ($nrcTypes as $type)
+                                    <option value="{{ $type->id }}">{{ $type->name_en }}</option>
+                                @endforeach
                             </x-select.dropdown>
-                            <x-input.primary-input id="nrc_no_en" type="text" wire:model="nrc_no_en"
-                                class="additional-classes w-full" error="{{ $errors->has('nrc_no_en') }}" />
+                            <x-input.primary-input id="nrc_no_en" type="number" wire:model="nrc_no_en"
+                                inputType="en" class="additional-classes w-full"
+                                error="{{ $errors->has('nrc_no_en') }}" />
                         </div>
                         @error('nrc_en')
                             <span class="text-red-500">{{ $message }}</span>
@@ -164,26 +165,34 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
                         <x-input.label for="nrc_mm" label="NRC Number (Myanmar)" />
+
                         <div class="flex w-50">
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
-                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
-                                <option value="PR">1</option>
-                                <option value="NRC">20</option>
+                            <x-select.dropdown class="additional-classes w-18" wire:model.live="nrc_state_mm"
+                                id="nrc_state_mm" error="{{ $errors->has('nrc_state_mm') }}">
+                                <option value="">Choose</option>
+                                @foreach ($nrcStates as $nrc)
+                                    <option value="{{ $nrc->id }}">{{ $nrc->code_mm }}</option>
+                                @endforeach
                             </x-select.dropdown>
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
-                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
-                                <option value="PR">BALAKHA</option>
-                                <option value="NRC">20</option>
+
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_township_mm"
+                                id="nrc_township_mm" error="{{ $errors->has('nrc_township_mm') }}">
+                                <option value="">Choose</option>
+                                @foreach ($nrcTownshipsMm as $townsip)
+                                    <option value="{{ $townsip->id }}">{{ $townsip->name_mm }}</option>
+                                @endforeach
                             </x-select.dropdown>
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nationality_type"
-                                id="nationality_type" error="{{ $errors->has('nationality_type') }}">
-                                <option value="PR">N</option>
-                                <option value="NRC">E</option>
-                                <option value="NRC">P</option>
+
+                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_mm"
+                                id="nrc_type_mm" error="{{ $errors->has('nrc_type_mm') }}">
+                                @foreach ($nrcTypes as $type)
+                                    <option value="{{ $type->id }}">{{ $type->name_mm }}</option>
+                                @endforeach
                             </x-select.dropdown>
-                            <x-input.primary-input id="permanent_resident_no" type="text"
-                                wire:model="permanent_resident_no" class="additional-classes w-full"
-                                error="{{ $errors->has('permanent_resident_no') }}" />
+
+                            <x-input.primary-input id="nrc_no_mm" type="text" wire:model="nrc_no_mm"
+                                inputType="mmnum" class="additional-classes w-full"
+                                error="{{ $errors->has('nrc_no_mm') }}" />
                         </div>
                         @error('nrc_mm')
                             <span class="text-red-500">{{ $message }}</span>
@@ -192,7 +201,7 @@
 
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
-                        <x-input.label for="nrc_mm" label="NRC Card Photo (Front)" />
+                        <x-input.label label="NRC Card Photo (Front)" />
                         <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
                             class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
                         @error('nrc_mm')
@@ -201,7 +210,7 @@
                     </div>
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
-                        <x-input.label for="nrc_mm" label="NRC Card Photo (back)" />
+                        <x-input.label label="NRC Card Photo (back)" />
                         <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
                             class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
                         @error('nrc_mm')
@@ -212,8 +221,7 @@
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
             </div>
 
-
-            {{-- Contact Details --}}
+            {{-- Contact Details
             <div class="py-3">
                 <div>
                     <h1 class="font-bold dark:text-white">2. Contact Detail</h1>
@@ -391,7 +399,7 @@
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
 
 
-            </div>
+            </div> --}}
 
             <div class="pt-4">
                 <x-button.primary-button function="store">

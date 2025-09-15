@@ -8,10 +8,12 @@ use App\Models\NrcType;
 use App\Models\PERegistrationForm;
 use App\Models\RegistrationForm;
 use App\Utilities\BaseCrudRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PErepository extends BaseCrudRepository
 {
-    private $RegistrationForm;
+    public $RegistrationForm;
     private $NrcState;
     private $NrcTownship;
     private $NrcType;
@@ -39,5 +41,32 @@ class PErepository extends BaseCrudRepository
     public function getRegistrationForm()
     {
         return $this->RegistrationForm;
+    }
+
+    public function createRegistratonForm(array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $record = $this->getRegistrationForm()->create($data);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error creating record: ' . $e->getMessage());
+            throw $e;
+        }
+        DB::commit();
+        return $record;
+    }
+
+    public function generateRegisterNo()
+    {
+        $latest = $this->getRegistrationForm()->latest('id')->first();
+
+        if ($latest) {
+            $number = (int)substr($latest->register_no, -5);
+            $number++;
+            return 'PE:' . str_pad($number, 5, '0', STR_PAD_LEFT);
+        } else {
+            return 'PE:00001';
+        }
     }
 }
