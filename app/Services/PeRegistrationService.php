@@ -35,6 +35,8 @@ class PeRegistrationService
     {
         $user = auth()->user()->id;
         $baseData += [
+            // 'nrc_no_en' => format_nrc($baseData, 'en'),
+            // 'nrc_no_mm' => format_nrc($baseData, 'mm'),
             'status' => 'approved',
         ];
         $BaseData = $this->PErepository->createRegistratonForm($baseData);

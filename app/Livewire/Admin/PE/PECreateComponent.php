@@ -26,11 +26,11 @@ class PECreateComponent extends PERegistrationBseComponent
                 'nrc_state_en',
                 'nrc_township_en',
                 'nrc_type_en',
-                'nrc_no_en',
+                'nrc_number_en',
                 'nrc_state_mm',
                 'nrc_township_mm',
                 'nrc_type_mm',
-                'nrc_no_mm'
+                'nrc_number_mm'
             ]);
         }
 
