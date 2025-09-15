@@ -134,7 +134,7 @@
                                 id="nrc_state_en" error="{{ $errors->has('nrc_state_en') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcStates as $nrc)
-                                    <option value="{{ $nrc->id }}">{{ $nrc->code_en }}</option>
+                                    <option value="{{ $nrc->code_en }}">{{ $nrc->code_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
@@ -142,14 +142,14 @@
                                 id="nrc_township_en" error="{{ $errors->has('nrc_township_en') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcTownshipsEn as $townsip)
-                                    <option value="{{ $townsip->id }}">{{ $townsip->name_en }}</option>
+                                    <option value="{{ $townsip->name_en }}">{{ $townsip->name_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
                             <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_en"
                                 id="nrc_type_en" error="{{ $errors->has('nrc_type_en') }}">
                                 @foreach ($nrcTypes as $type)
-                                    <option value="{{ $type->id }}">{{ $type->name_en }}</option>
+                                    <option value="{{ $type->name_en }}">{{ $type->name_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
                             <x-input.primary-input id="nrc_no_en" type="number" wire:model="nrc_no_en"
@@ -171,7 +171,7 @@
                                 id="nrc_state_mm" error="{{ $errors->has('nrc_state_mm') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcStates as $nrc)
-                                    <option value="{{ $nrc->id }}">{{ $nrc->code_mm }}</option>
+                                    <option value="{{ $nrc->code_mm }}">{{ $nrc->code_mm }}</option>
                                 @endforeach
                             </x-select.dropdown>
 

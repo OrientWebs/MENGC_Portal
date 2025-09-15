@@ -2,28 +2,24 @@
 
 namespace App\Livewire\Admin\PE;
 
-use Illuminate\Support\Facades\Log;
-use App\Livewire\Admin\PE\PERegistrationBseComponent;
+use Livewire\Component;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 
 class PECreateComponent extends PERegistrationBseComponent
 {
-    public $register_no;
-    public $nrcStateEn = [];
+
+    public $nrcStates = [];
     public $nrcTownshipsEn = [];
     public $nrcTownshipsMm = [];
+    public $nrcTypes = [];
 
+    public function mount()
+    {
+        $this->nrcStates = $this->PEservice->getAllNrcState();
+        $this->nrcTypes  = $this->PEservice->getNrcType();
+    }
 
-    public function updatedNrcStateEn($stateId)
-    {
-        $this->nrcTownshipsEn = $this->PEservice->getNrcTownship($stateId);
-        $this->nrc_township_en = null;
-    }
-    public function updatedNrcStateMm($stateId)
-    {
-        $this->nrcTownshipsMm = $this->PEservice->getNrcTownship($stateId);
-        $this->nrc_township_mm = null;
-    }
+    // Reset NRC fields when nationality changes
     public function updatedNationalityType($value)
     {
         if ($value === 'PR') {
@@ -35,7 +31,7 @@ class PECreateComponent extends PERegistrationBseComponent
                 'nrc_state_mm',
                 'nrc_township_mm',
                 'nrc_type_mm',
-                'nrc_no_mm',
+                'nrc_no_mm'
             ]);
         }
 
@@ -43,21 +39,39 @@ class PECreateComponent extends PERegistrationBseComponent
             $this->reset(['permanent_resident_no']);
         }
     }
+
+    // Update township when state changes
+    public function updatedNrcStateEn($stateId)
+    {
+        $this->nrcTownshipsEn = $this->PEservice->getNrcTownship($stateId);
+        $this->nrc_township_en = null;
+    }
+
+    public function updatedNrcStateMm($stateId)
+    {
+        $this->nrcTownshipsMm = $this->PEservice->getNrcTownship($stateId);
+        $this->nrc_township_mm = null;
+    }
+
     public function store()
     {
-        $this->authorize('PEregistration-create');
         $validated = StoreBaseRegistrationFormRequest::validate($this);
-        Log::info('Validated data:', $validated);
+
+        // Format NRC using global helper
+        if ($this->nationality_type === 'NRC') {
+            $validated['nrc_no_en'] = format_nrc($validated, 'en');
+            $validated['nrc_no_mm'] = format_nrc($validated, 'mm');
+        }
+
+        // Store in database
         $this->PEservice->create($validated);
-        $this->flashMessage('success', 'User create successfully!');
-        return $this->redirectRoute('admin.dashboard', navigate: true);
+
+        $this->flashMessage('success', 'PE registration saved successfully!');
+        return redirect()->route('admin.dashboard');
     }
+
     public function render()
     {
-        $registerNo = $this->PEservice->generateRegisterNo();
-        $this->register_no = $registerNo;
-        $nrcStates = $this->PEservice->getAllNrcState();
-        $nrcTypes  = $this->PEservice->getNrcType();
-        return view("admin.pe.create", compact('nrcStates',  'nrcTypes'));
+        return view('admin.pe.create');
     }
 }

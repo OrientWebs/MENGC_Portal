@@ -28,7 +28,7 @@ use Illuminate\Support\Str;
 
 //         // Fill the rest of the string length with random choices from all character sets
 //         $allCharacters = $capitalLetters . $lowercaseLetters . $digits . $specialChars;
-//         for ($i = 4; $i < 10; $i++) 
+//         for ($i = 4; $i < 10; $i++)
 //             $result[] = $allCharacters[random_int(0, strlen($allCharacters) - 1)];
 //         }
 
@@ -254,3 +254,27 @@ use Illuminate\Support\Str;
 //         return $socialSettingRepository->getByName($name)?->value;
 //     }
 // }
+
+
+if (!function_exists('format_nrc')) {
+    /**
+     * Format NRC number into full string
+     *
+     * @param  array  $data
+     * @param  string $lang 'en' or 'mm'
+     * @return string|null
+     */
+    function format_nrc(array $data, string $lang = 'en'): ?string
+    {
+        $state     = $data["nrc_state_{$lang}"]     ?? null;
+        $township  = $data["nrc_township_{$lang}"]  ?? null;
+        $type      = $data["nrc_type_{$lang}"]      ?? null;
+        $number    = $data["nrc_no_{$lang}"]        ?? null;
+
+        if (!$state || !$township || !$type || !$number) {
+            return null;
+        }
+
+        return "{$state}/{$township}({$type}){$number}";
+    }
+}

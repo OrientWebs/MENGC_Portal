@@ -37,8 +37,8 @@ return new class extends Migration
             $table->text('address_en')->nullable();
             $table->text('address_mm')->nullable();
 
-            $table->foreignId('state_id')->constrained('states');
-            $table->foreignId('township_id')->constrained('townships');
+            $table->foreignId('state_id')->nullable()->constrained('states');
+            $table->foreignId('township_id')->nullable()->constrained('townships');
 
             $table->string('fax_no')->nullable();
 
