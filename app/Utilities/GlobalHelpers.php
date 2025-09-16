@@ -2,6 +2,7 @@
 
 use App\Repositories\ApiUserRepository;
 use Illuminate\Support\Str;
+use App\Models\NrcState;
 
 /**
  * Created by HHOW.
@@ -255,26 +256,33 @@ use Illuminate\Support\Str;
 //     }
 // }
 
-
 if (!function_exists('format_nrc')) {
     /**
-     * Format NRC number into full string
+     * Format NRC number into full string using DB state code.
      *
      * @param  array  $data
-     * @param  string $lang 'en' or 'mm'
+     * @param  string $lang  'en' or 'mm'
      * @return string|null
      */
     function format_nrc(array $data, string $lang = 'en'): ?string
     {
-        $state     = $data["nrc_state_{$lang}"]     ?? null;
-        $township  = $data["nrc_township_{$lang}"]  ?? null;
-        $type      = $data["nrc_type_{$lang}"]      ?? null;
-        $number    = $data["nrc_number_{$lang}"]        ?? null;
+        $stateId  = $data["nrc_state_{$lang}"] ?? null;
+        $township = $data["nrc_township_{$lang}"] ?? null;
+        $type     = $data["nrc_type_{$lang}"] ?? null;
+        $number   = $data["nrc_number_{$lang}"] ?? null;
 
-        // if (!$state || !$township || !$type || !$number) {
+        // if (!$stateId || !$township || !$type || !$number) {
         //     return null;
         // }
 
-        return "{$state}/{$township}({$type}){$number}";
+        $state = NrcState::find($stateId);
+        if (!$state) {
+            return null;
+        }
+
+        $stateCodeColumn = $lang === 'mm' ? 'code_mm' : 'code_en';
+        $stateCode = $state->{$stateCodeColumn};
+
+        return "{$stateCode}/{$township}({$type}){$number}";
     }
 }

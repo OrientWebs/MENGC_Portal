@@ -134,7 +134,7 @@
                                 id="nrc_state_en" error="{{ $errors->has('nrc_state_en') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcStates as $nrc)
-                                    <option value="{{ $nrc->code_en }}">{{ $nrc->code_en }}</option>
+                                    <option value="{{ $nrc->id }}">{{ $nrc->code_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
@@ -150,7 +150,7 @@
                                 id="nrc_type_en" error="{{ $errors->has('nrc_type_en') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcTypes as $type)
-                                    <option value="{{ $type->name_en }}">{{ $type->name_en }}</option>
+                                    <option value="{{ $type->name_en }}" sel>{{ $type->name_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
@@ -173,7 +173,7 @@
                                 id="nrc_state_mm" error="{{ $errors->has('nrc_state_mm') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcStates as $nrc)
-                                    <option value="{{ $nrc->code_mm }}">{{ $nrc->code_mm }}</option>
+                                    <option value="{{ $nrc->id }}">{{ $nrc->code_mm }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
@@ -181,7 +181,7 @@
                                 id="nrc_township_mm" error="{{ $errors->has('nrc_township_mm') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcTownshipsMm as $townsip)
-                                    <option value="{{ $townsip->id }}">{{ $townsip->name_mm }}</option>
+                                    <option value="{{ $townsip->name_mm }}">{{ $townsip->name_mm }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
@@ -223,8 +223,8 @@
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
             </div>
 
-            {{-- Contact Details
-            <div class="py-3">
+            {{-- Contact Details --}}
+            {{-- <div class="py-3">
                 <div>
                     <h1 class="font-bold dark:text-white">2. Contact Detail</h1>
                 </div>
