@@ -14,9 +14,9 @@ class NrcTypeSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            ['id' => 1, 'name_en' => 'N', 'name_mm' => 'နိုင်'],
-            ['id' => 2, 'name_en' => 'E', 'name_mm' => 'ဧည့်'],
-            ['id' => 3, 'name_en' => 'P', 'name_mm' => 'ပြု'],
+            ['id' => 1, 'name_en' => 'P', 'name_mm' => 'ပြု'],
+            ['id' => 2, 'name_en' => 'N', 'name_mm' => 'နိုင်'],
+            ['id' => 3, 'name_en' => 'E', 'name_mm' => 'ဧည့်'],
         ];
 
         NrcType::insert($types);

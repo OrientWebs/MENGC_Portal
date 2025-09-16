@@ -6,7 +6,6 @@
     </div>
     <x-create.body>
         <form wire:submit.prevent="store">
-
             {{-- Personal Details --}}
             <div class="py-3">
                 <div>
@@ -86,8 +85,7 @@
                     <!-- Gender -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="gender" label="Gender" required="true" />
-                        <x-select.dropdown class="additional-classes w-full" wire:model="gender"
-                            error="{{ $errors->has('gender') }}">
+                        <x-select.dropdown class="w-full" wire:model="gender" error="{{ $errors->has('gender') }}">
                             <option value="">Option</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -100,8 +98,8 @@
                     <!-- Nationality Type -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="nationality_type" label="Nationality Type" required="true" />
-                        <x-select.dropdown class="additional-classes w-full" wire:model="nationality_type"
-                            id="nationality_type" error="{{ $errors->has('nationality_type') }}" x-model="nationality">
+                        <x-select.dropdown class="w-full" wire:model="nationality_type" id="nationality_type"
+                            error="{{ $errors->has('nationality_type') }}" x-model="nationality">
                             <option value="">Choose PR or NRC</option>
                             <option value="PR">PR</option>
                             <option value="NRC">NRC</option>
@@ -130,35 +128,32 @@
                         <x-input.label for="nrc_en" label="NRC Number (English)" />
                         <div class="flex w-50">
 
-                            <x-select.dropdown class="additional-classes w-18" wire:model.live="nrc_state_en"
-                                id="nrc_state_en" error="{{ $errors->has('nrc_state_en') }}">
-                                <option value="">Choose</option>
+                            <x-select.dropdown class="w-18" wire:model.live="nrc_state_en" id="nrc_state_en"
+                                error="{{ $errors->has('nrc_state_en') }}">
                                 @foreach ($nrcStates as $nrc)
                                     <option value="{{ $nrc->id }}">{{ $nrc->code_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_township_en"
-                                id="nrc_township_en" error="{{ $errors->has('nrc_township_en') }}">
+                            <x-select.dropdown class="w-18" wire:model="nrc_township_en" id="nrc_township_en"
+                                error="{{ $errors->has('nrc_township_en') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcTownshipsEn as $townsip)
                                     <option value="{{ $townsip->name_en }}">{{ $townsip->name_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_en"
-                                id="nrc_type_en" error="{{ $errors->has('nrc_type_en') }}">
-                                <option value="">Choose</option>
+                            <x-select.dropdown class="w-18" wire:model="nrc_type_en" id="nrc_type_en"
+                                error="{{ $errors->has('nrc_type_en') }}">
                                 @foreach ($nrcTypes as $type)
-                                    <option value="{{ $type->name_en }}" sel>{{ $type->name_en }}</option>
+                                    <option value="{{ $type->name_en }}">{{ $type->name_en }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
                             <x-input.primary-input id="nrc_number_en" type="number" wire:model="nrc_number_en"
-                                inputType="en" class="additional-classes w-full"
-                                error="{{ $errors->has('nrc_number_en') }}" />
+                                inputType="en" class="w-full" error="{{ $errors->has('nrc_number_en') }}" />
                         </div>
-                        @error('nrc_en')
+                        @error('nrc_number_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
@@ -169,34 +164,33 @@
                         <x-input.label for="nrc_mm" label="NRC Number (Myanmar)" />
 
                         <div class="flex w-50">
-                            <x-select.dropdown class="additional-classes w-18" wire:model.live="nrc_state_mm"
-                                id="nrc_state_mm" error="{{ $errors->has('nrc_state_mm') }}">
+                            <x-select.dropdown class="w-18" wire:model.live="nrc_state_mm" id="nrc_state_mm"
+                                error="{{ $errors->has('nrc_state_mm') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcStates as $nrc)
                                     <option value="{{ $nrc->id }}">{{ $nrc->code_mm }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_township_mm"
-                                id="nrc_township_mm" error="{{ $errors->has('nrc_township_mm') }}">
+                            <x-select.dropdown class="w-18" wire:model="nrc_township_mm" id="nrc_township_mm"
+                                error="{{ $errors->has('nrc_township_mm') }}">
                                 <option value="">Choose</option>
                                 @foreach ($nrcTownshipsMm as $townsip)
                                     <option value="{{ $townsip->name_mm }}">{{ $townsip->name_mm }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
-                            <x-select.dropdown class="additional-classes w-18" wire:model="nrc_type_mm"
-                                id="nrc_type_mm" error="{{ $errors->has('nrc_type_mm') }}">
+                            <x-select.dropdown class="w-18" wire:model="nrc_type_mm" id="nrc_type_mm"
+                                error="{{ $errors->has('nrc_type_mm') }}">
                                 @foreach ($nrcTypes as $type)
                                     <option value="{{ $type->name_mm }}">{{ $type->name_mm }}</option>
                                 @endforeach
                             </x-select.dropdown>
 
                             <x-input.primary-input id="nrc_number_mm" type="text" wire:model="nrc_number_mm"
-                                inputType="mmnum" class="additional-classes w-full"
-                                error="{{ $errors->has('nrc_number_mm') }}" />
+                                inputType="mmnum" class="w-full" error="{{ $errors->has('nrc_number_mm') }}" />
                         </div>
-                        @error('nrc_mm')
+                        @error('nrc_number_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
@@ -210,6 +204,7 @@
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
                         <x-input.label label="NRC Card Photo (back)" />
@@ -245,7 +240,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="State" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -255,7 +250,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Township" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -265,7 +260,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Post Code" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -275,7 +270,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Tele No" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -285,7 +280,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Fax No" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -295,7 +290,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Email" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -306,7 +301,7 @@
                         <x-input.label for="perm_address_mm" label="Permanent Contact Address(Myanmar)"
                             required="true" />
                         <x-input.textarea id="perm_address_mm" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -327,7 +322,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="State" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -337,7 +332,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Township" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -347,7 +342,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Post Code" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -357,7 +352,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Tele No" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -367,7 +362,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Fax No" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -377,7 +372,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="perm_address_mm" label="Email" required="true" />
                         <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -388,7 +383,7 @@
                         <x-input.label for="perm_address_mm" label="Permanent Contact Address(Myanmar)"
                             required="true" />
                         <x-input.textarea id="perm_address_mm" wire:model="perm_address_mm"
-                            class="additional-classes h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror

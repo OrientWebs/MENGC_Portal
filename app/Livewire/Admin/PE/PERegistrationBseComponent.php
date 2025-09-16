@@ -27,26 +27,7 @@ class PERegistrationBseComponent extends Component
         $this->verifyAuthorization("PEregistration-access");
         $this->PEservice = $service;
     }
-    protected function rules()
-    {
-        // start with base rules from FormRequest
 
-        // adjust depending on nationality_type
-        if ($this->nationality_type === 'NRC') {
-            $rules['nrc_state_en']    = 'required|string|max:50';
-            $rules['nrc_township_en'] = 'required|string|max:50';
-            $rules['nrc_type_en']     = 'required|string|max:50';
-            $rules['nrc_number_en']   = 'required|string|max:50';
-        }
-
-        if ($this->nationality_type === 'PR') {
-            $rules['permanent_resident_no'] = 'required|string|max:100';
-            // you can unset NRC rules here if you want:
-            // unset($rules['nrc_state_en'], $rules['nrc_township_en'], …);
-        }
-
-        return $rules;
-    }
     public function updatedNationalityType($value)
     {
         if ($value === 'PR') {
