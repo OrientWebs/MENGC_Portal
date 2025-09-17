@@ -16,6 +16,7 @@ class PERegistrationBseComponent extends Component
     #[Layout('admin.layouts.app')]
     // this is base form
     public $prePage, $nrc_township_en, $nrc_township_mm, $nrc_type_en, $nrc_type_mm, $nrc_state_en, $nrc_state_mm, $title, $register_no, $form_type, $name_en, $name_mm, $dob, $nrc_number_en, $nrc_number_mm, $father_name_en, $father_name_mm, $email, $tele_no_en, $tele_no_mm, $address_en, $address_mm, $state_id, $township_id, $fax_no, $nationality_type, $permanent_resident_no, $status, $gender;
+    public $registration_id, $perm_address_en, $perm_address_mm, $perm_state_id, $perm_township_id, $perm_post_code, $perm_tele_no, $perm_fax_no, $perm_email, $des_address_en, $des_address_mm, $des_state_id, $des_township_id, $des_post_code, $des_tele_no, $des_fax_no, $des_email, $engineering_discipline_id, $exp_15_years, $meet_all_requirements, $no_disciplinary_action;
     public $search = '';
     public $nrcStates = [];
     public $nrcTownshipsEn = [];

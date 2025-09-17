@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\PE;
 
 use Livewire\Component;
+use App\Http\Requests\Pe\StorePeRegistrationFormRequest;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 
 class PECreateComponent extends PERegistrationBseComponent
@@ -22,8 +23,9 @@ class PECreateComponent extends PERegistrationBseComponent
 
     public function store()
     {
-        $validated = StoreBaseRegistrationFormRequest::validate($this);
-        $this->PEservice->create($validated);
+        // $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
+        $peValidated = StorePeRegistrationFormRequest::validate($this);
+        $this->PEservice->create($peValidated);
 
         $this->flashMessage('success', 'PE registration saved successfully!');
         return redirect()->route('admin.dashboard');

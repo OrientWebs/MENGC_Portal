@@ -219,184 +219,182 @@
             </div>
 
             {{-- Contact Details --}}
-            {{-- <div class="py-3">
+            <div class="py-3">
                 <div>
                     <h1 class="font-bold dark:text-white">2. Contact Detail</h1>
                 </div>
 
                 <div class="flex flex-wrap -mx-2">
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent Contact Address (English) -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_en" label="Permanent Contact Address(English)"
+                        <x-input.label for="perm_address_en" label="Permanent Contact Address (English)"
                             required="true" />
-                        <x-input.textarea id="perm_address_en" type="text" wire:model="perm_address_en"
+                        <x-input.textarea id="perm_address_en" wire:model="perm_address_en"
                             class="additional-classes" error="{{ $errors->has('perm_address_en') }}" />
                         @error('perm_address_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent State -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="State" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="perm_state_id" label="State" required="true" />
+                        <x-input.primary-input id="perm_state_id" type="text" wire:model="perm_state_id"
+                            class="h-15" error="{{ $errors->has('perm_state_id') }}" />
+                        @error('perm_state_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent Township -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Township" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="perm_township_id" label="Township" required="true" />
+                        <x-input.primary-input id="perm_township_id" type="text" wire:model="perm_township_id"
+                            class="h-15" error="{{ $errors->has('perm_township_id') }}" />
+                        @error('perm_township_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent Post Code -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Post Code" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="perm_post_code" label="Post Code" required="true" />
+                        <x-input.primary-input id="perm_post_code" type="text" wire:model="perm_post_code"
+                            class="h-15" error="{{ $errors->has('perm_post_code') }}" />
+                        @error('perm_post_code')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent Tele No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Tele No" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="perm_tele_no" label="Tele No" required="true" />
+                        <x-input.primary-input id="perm_tele_no" type="text" wire:model="perm_tele_no"
+                            class="h-15" error="{{ $errors->has('perm_tele_no') }}" />
+                        @error('perm_tele_no')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent Fax No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Fax No" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="perm_fax_no" label="Fax No" required="true" />
+                        <x-input.primary-input id="perm_fax_no" type="text" wire:model="perm_fax_no"
+                            class="h-15" error="{{ $errors->has('perm_fax_no') }}" />
+                        @error('perm_fax_no')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent Email -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Email" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="perm_email" label="Email" required="true" />
+                        <x-input.primary-input id="perm_email" type="email" wire:model="perm_email" class="h-15"
+                            error="{{ $errors->has('perm_email') }}" />
+                        @error('perm_email')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Permanent Contact Address (Myanmar) -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(Myanmar)"
+                        <x-input.label for="perm_address_mm" label="Permanent Contact Address (Myanmar)"
                             required="true" />
-                        <x-input.textarea id="perm_address_mm" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
+                        <x-input.textarea id="perm_address_mm" wire:model="perm_address_mm" class="h-15"
+                            error="{{ $errors->has('perm_address_mm') }}" />
                         @error('perm_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
 
-
                 <div class="flex flex-wrap -mx-2">
+                    <!-- Designation and Office Address (English) -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_en" label="Designation and Office Address(English)"
+                        <x-input.label for="des_address_en" label="Designation and Office Address (English)"
                             required="true" />
-                        <x-input.textarea id="perm_address_en" type="text" wire:model="perm_address_en"
-                            class="additional-classes" error="{{ $errors->has('perm_address_en') }}" />
-                        @error('perm_address_en')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="State" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.textarea id="des_address_en" wire:model="des_address_en" class="additional-classes"
+                            error="{{ $errors->has('des_address_en') }}" />
+                        @error('des_address_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Designation State -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Township" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="des_state_id" label="State" required="true" />
+                        <x-input.primary-input id="des_state_id" type="text" wire:model="des_state_id"
+                            class="h-15" error="{{ $errors->has('des_state_id') }}" />
+                        @error('des_state_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Designation Township -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Post Code" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="des_township_id" label="Township" required="true" />
+                        <x-input.primary-input id="des_township_id" type="text" wire:model="des_township_id"
+                            class="h-15" error="{{ $errors->has('des_township_id') }}" />
+                        @error('des_township_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Designation Post Code -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Tele No" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="des_post_code" label="Post Code" required="true" />
+                        <x-input.primary-input id="des_post_code" type="text" wire:model="des_post_code"
+                            class="h-15" error="{{ $errors->has('des_post_code') }}" />
+                        @error('des_post_code')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Designation Tele No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Fax No" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="des_tele_no" label="Tele No" required="true" />
+                        <x-input.primary-input id="des_tele_no" type="text" wire:model="des_tele_no"
+                            class="h-15" error="{{ $errors->has('des_tele_no') }}" />
+                        @error('des_tele_no')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Designation Fax No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Email" required="true" />
-                        <x-input.primary-input id="perm_address_mm" type="text" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.label for="des_fax_no" label="Fax No" required="true" />
+                        <x-input.primary-input id="des_fax_no" type="text" wire:model="des_fax_no" class="h-15"
+                            error="{{ $errors->has('des_fax_no') }}" />
+                        @error('des_fax_no')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
-                    <!-- Permanent Contact  -->
+                    <!-- Designation Email -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_address_mm" label="Permanent Contact Address(Myanmar)"
+                        <x-input.label for="des_email" label="Email" required="true" />
+                        <x-input.primary-input id="des_email" type="email" wire:model="des_email" class="h-15"
+                            error="{{ $errors->has('des_email') }}" />
+                        @error('des_email')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Designation and Office Address (Myanmar) -->
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="des_address_mm" label="Designation and Office Address (Myanmar)"
                             required="true" />
-                        <x-input.textarea id="perm_address_mm" wire:model="perm_address_mm"
-                            class="h-15" error="{{ $errors->has('perm_address_mm') }}" />
-                        @error('perm_address_mm')
+                        <x-input.textarea id="des_address_mm" wire:model="des_address_mm" class="h-15"
+                            error="{{ $errors->has('des_address_mm') }}" />
+                        @error('des_address_mm')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
-
-
-
                 </div>
 
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+            </div>
 
-
-            </div> --}}
 
             <div class="pt-4">
                 <x-button.primary-button function="store">

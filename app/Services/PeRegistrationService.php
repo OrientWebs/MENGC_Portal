@@ -30,8 +30,9 @@ class PeRegistrationService
     {
         return $this->PErepository->generateRegisterNo();
     }
-    public function create($baseData, $peData = null)
+    public function create($baseData = null, $peData)
     {
+        dd($peData);
         $user = auth()->user()->id;
         $baseData += [
             'status' => 'approved',
