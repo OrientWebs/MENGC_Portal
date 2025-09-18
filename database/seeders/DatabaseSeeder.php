@@ -13,8 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
@@ -27,12 +25,22 @@ class DatabaseSeeder extends Seeder
             'name' => 'Henry',
             'email' => 'henry@gmail.com',
         ]);
-         $this->call([
+        $this->call([
             PermissionTableSeeder::class,
             RoleTableSeeder::class,
             RolePermissionSeeder::class,
-            UserRolePermissionSeeder::class
+            UserRolePermissionSeeder::class,
+            StateSeeder::class,
+            TwonshipSeeder::class,
+            UniversitySeeder::class,
+            AcademicSeeder::class,
+            QualificationSeeder::class,
+            EngineeringDisciplineSeeder::class,
+            MinistrySeeder::class,
+            PrerequisticSeeder::class,
+            NrcStateSeeder::class,
+            NrcTownshipSeeder::class,
+            NrcTypeSeeder::class
         ]);
     }
-
 }

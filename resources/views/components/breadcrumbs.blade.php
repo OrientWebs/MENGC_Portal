@@ -11,6 +11,38 @@
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Roles', 'route' => 'admin.roles'],
         ],
+        'admin/states' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'States', 'route' => 'admin.states'],
+        ],
+        'admin/townships' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Townships', 'route' => 'admin.townships'],
+        ],
+        'admin/universities' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'University', 'route' => 'admin.universities'],
+        ],
+        'admin/academics' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Academic', 'route' => 'admin.academics'],
+        ],
+        'admin/qualifications' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Qualificatons', 'route' => 'admin.qualifications'],
+        ],
+        'admin/disciplines' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Engineering Discipline', 'route' => 'admin.disciplines'],
+        ],
+        'admin/ministries' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Ministries', 'route' => 'admin.ministries'],
+        ],
+        'admin/prerequistics' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'Prerequistic', 'route' => 'admin.prerequistics'],
+        ],
     ];
 
     // Current page main breadcrumbs

@@ -25,7 +25,7 @@
                 <!-- Dashboard -->
                 <x-sidebar.item label='Dashboard' active="{{ request()->routeIs('admin.dashboard') }}" />
 
-                @can(['user-access'])
+                @can(['menu-user-management'])
                     <x-sidebar.sidebar-group groupLabel="UserManagement" icon="fa-solid fa-users" :active="request()->routeIs('admin.user') ||
                         request()->routeIs('admin.users') ||
                         request()->routeIs('admin.roles') ||
@@ -43,21 +43,62 @@
                     </x-sidebar.sidebar-group>
                 @endcan
 
-                @can(['setup-access'])
-                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.user') ||
-                        request()->routeIs('admin.users') ||
-                        request()->routeIs('admin.roles') ||
-                        request()->routeIs('admin.permissions')">
+                @can(['menu-setup'])
+                    <x-sidebar.sidebar-group groupLabel="SetUp" icon="fa-solid fa-bars" :active="request()->routeIs('admin.states') ||
+                        request()->routeIs('admin.townships') ||
+                        request()->routeIs('admin.qualifications') ||
+                        request()->routeIs('admin.academics') ||
+                        request()->routeIs('admin.disciplines') ||
+                        request()->routeIs('admin.ministries') ||
+                        request()->routeIs('admin.prerequistics') ||
+                        request()->routeIs('admin.universities')">
 
-                        @can('user-access')
-                            <x-sidebar.sub-sidebar label="Users" route="admin.users"
-                                active="{{ request()->routeIs('admin.users') }}" />
+                        @can('state-access')
+                            <x-sidebar.sub-sidebar label="States" route="admin.states"
+                                active="{{ request()->routeIs('admin.states') }}" />
+                        @endcan
+                        @can('township-access')
+                            <x-sidebar.sub-sidebar label="Townships" route="admin.townships"
+                                active="{{ request()->routeIs('admin.townships') }}" />
+                        @endcan
+                        @can('university-access')
+                            <x-sidebar.sub-sidebar label="Universities" route="admin.universities"
+                                active="{{ request()->routeIs('admin.universities') }}" />
+                        @endcan
+                        @can('academic-access')
+                            <x-sidebar.sub-sidebar label="Academic Discipline" route="admin.academics"
+                                active="{{ request()->routeIs('admin.academics') }}" />
+                        @endcan
+                        @can('qualification-access')
+                            <x-sidebar.sub-sidebar label="Qualifications" route="admin.qualifications"
+                                active="{{ request()->routeIs('admin.qualifications') }}" />
+                        @endcan
+                        @can('discipline-access')
+                            <x-sidebar.sub-sidebar label="Engineering Discipline" route="admin.disciplines"
+                                active="{{ request()->routeIs('admin.disciplines') }}" />
+                        @endcan
+                        @can('ministry-access')
+                            <x-sidebar.sub-sidebar label="Ministries" route="admin.ministries"
+                                active="{{ request()->routeIs('admin.ministries') }}" />
+                        @endcan
+                        @can('prerequistic-access')
+                            <x-sidebar.sub-sidebar label="Prerequistic" route="admin.prerequistics"
+                                active="{{ request()->routeIs('admin.prerequistics') }}" />
                         @endcan
 
-                        @can('role-access')
-                            <x-sidebar.sub-sidebar label="Roles" route="admin.roles"
-                                active="{{ request()->routeIs('admin.roles') }}" />
+                    </x-sidebar.sidebar-group>
+                @endcan
+
+                @can(['menu-setup'])
+                    <x-sidebar.sidebar-group groupLabel="Registration Form" icon="fa-solid fa-file" :active="request()->routeIs('admin.states') ||
+                        request()->routeIs('admin.townships') ||
+                        request()->routeIs('admin.qualifications')">
+
+                        @can('state-access')
+                            <x-sidebar.sub-sidebar label="PE" route="admin.states"
+                                active="{{ request()->routeIs('admin.states') }}" />
                         @endcan
+
                     </x-sidebar.sidebar-group>
                 @endcan
 
