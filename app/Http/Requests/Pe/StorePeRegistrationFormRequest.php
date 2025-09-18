@@ -28,22 +28,22 @@ class StorePeRegistrationFormRequest extends LivewireFormRequest
             // Permanent Contact Address
             'perm_address_en'          => 'required|string|max:255',
             'perm_address_mm'          => 'required|string|max:255',
-            'perm_state_id'            => 'required|integer|exists:states,id',
-            'perm_township_id'         => 'required|integer|exists:townships,id',
-            'perm_post_code'           => 'required|string|max:20',
-            'perm_tele_no'             => 'required|string|max:50',
-            'perm_fax_no'              => 'required|string|max:50',
-            'perm_email'               => 'required|email|max:100',
+            'perm_state_id'            => 'nullable|integer|exists:states,id',
+            'perm_township_id'         => 'nullable|integer|exists:townships,id',
+            'perm_post_code'           => 'nullable|string|max:20',
+            'perm_tele_no'             => 'nullable|string|max:50',
+            'perm_fax_no'              => 'nullable|string|max:50',
+            'perm_email'               => 'nullable|email|max:100',
 
             // Designation and Office Address
             'des_address_en'           => 'required|string|max:255',
             'des_address_mm'           => 'required|string|max:255',
-            'des_state_id'             => 'required|integer|exists:states,id',
-            'des_township_id'          => 'required|integer|exists:townships,id',
-            'des_post_code'            => 'required|string|max:20',
-            'des_tele_no'              => 'required|string|max:50',
-            'des_fax_no'               => 'required|string|max:50',
-            'des_email'                => 'required|email|max:100',
+            'des_state_id'             => 'nullable|integer|exists:states,id',
+            'des_township_id'          => 'nullable|integer|exists:townships,id',
+            'des_post_code'            => 'nullable|string|max:20',
+            'des_tele_no'              => 'nullable|string|max:50',
+            'des_fax_no'               => 'nullable|string|max:50',
+            'des_email'                => 'nullable|email|max:100',
 
             // Engineering Discipline
             'engineering_discipline_id' => 'nullable|integer|exists:engineering_disciplines,id',
@@ -61,15 +61,17 @@ class StorePeRegistrationFormRequest extends LivewireFormRequest
     public static function messages(): array
     {
         return [
-            'perm_address_en.max'        => 'Permanent address (English) must not exceed 255 characters.',
-            'perm_address_mm.max'        => 'Permanent address (Myanmar) must not exceed 255 characters.',
-            'perm_email.email'           => 'Permanent email must be a valid email address.',
-            'des_email.email'            => 'Designation email must be a valid email address.',
-            'perm_state_id.exists'       => 'Selected permanent state is invalid.',
-            'perm_township_id.exists'    => 'Selected permanent township is invalid.',
-            'des_state_id.exists'        => 'Selected designation state is invalid.',
-            'des_township_id.exists'     => 'Selected designation township is invalid.',
-            'engineering_discipline_id.exists' => 'Selected engineering discipline is invalid.',
+            'perm_address_en'        => 'Permanent address (English) must not exceed 255 characters.',
+            'des_address_en'        => 'Designation address (English) must not exceed 255 characters.',
+            'des_address_mm'        => 'Designation address (Myanmar) must not exceed 255 characters.',
+            'perm_address_mm'        => 'Permanent address (Myanmar) must not exceed 255 characters.',
+            'perm_email'           => 'Permanent email must be a valid email address.',
+            'des_email'            => 'Designation email must be a valid email address.',
+            'perm_state_id'       => 'Selected permanent state is invalid.',
+            'perm_township_id'    => 'Selected permanent township is invalid.',
+            'des_state_id'        => 'Selected designation state is invalid.',
+            'des_township_id'     => 'Selected designation township is invalid.',
+            'engineering_discipline_id' => 'Selected engineering discipline is invalid.',
         ];
     }
 }

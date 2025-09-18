@@ -20,7 +20,10 @@ class PECreateComponent extends PERegistrationBseComponent
             $this->nrc_type_mm = $this->nrcTypes[0]->name_mm;
         }
     }
-
+    // public function testChange()
+    // {
+    //     dd("Hello WOrld");
+    // }
     public function store()
     {
         // $baseValidated = StoreBaseRegistrationFormRequest::validate($this);

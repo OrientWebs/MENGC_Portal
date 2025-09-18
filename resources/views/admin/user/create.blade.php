@@ -37,9 +37,11 @@
 
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="member_id" label="Member" required="true" />
-                        <x-select.search :data="$roles" selectedValue="role_id" placeholder="Choose a Role"
+                        {{-- <x-select.search :data="$roles" selectedValue="role_id" placeholder="Choose a Role"
                             error="{{ $errors->has('role_id') }}">
-                        </x-select.search>
+                        </x-select.search> --}}
+                        <x-select.search :data="$roles" wire:model="role_id" :error="$errors->has('role_id')" placeholder="Choose a Role" />
+
                         @error('role_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror

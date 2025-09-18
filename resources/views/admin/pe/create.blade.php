@@ -234,13 +234,14 @@
                         @error('perm_address_en')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
+
                     </div>
 
                     <!-- Permanent State -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_state_id" label="State" required="true" />
-                        <x-input.primary-input id="perm_state_id" type="text" wire:model="perm_state_id"
-                            class="h-15" error="{{ $errors->has('perm_state_id') }}" />
+                        <x-input.label for="perm_state_id" label="State" />
+                        <x-select.search :data="$states" wire:model.live="perm_state_id" :error="$errors->has('perm_state_id')"
+                            placeholder="Choose a state" />
                         @error('perm_state_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -248,17 +249,23 @@
 
                     <!-- Permanent Township -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_township_id" label="Township" required="true" />
-                        <x-input.primary-input id="perm_township_id" type="text" wire:model="perm_township_id"
-                            class="h-15" error="{{ $errors->has('perm_township_id') }}" />
+                        <x-input.label for="perm_township_id" label="Township" />
+                        <x-select.dropdown class="w-full" wire:model.live="perm_township_id" id="perm_township_id"
+                            error="{{ $errors->has('perm_township_id') }}">
+                            <option value="">Choose a Township</option>
+                            @foreach ($permTownships as $nrc)
+                                <option value="{{ $nrc->id }}">{{ $nrc->name }}</option>
+                            @endforeach
+                        </x-select.dropdown>
                         @error('perm_township_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
+
                     <!-- Permanent Post Code -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_post_code" label="Post Code" required="true" />
+                        <x-input.label for="perm_post_code" label="Post Code" />
                         <x-input.primary-input id="perm_post_code" type="text" wire:model="perm_post_code"
                             class="h-15" error="{{ $errors->has('perm_post_code') }}" />
                         @error('perm_post_code')
@@ -268,7 +275,7 @@
 
                     <!-- Permanent Tele No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_tele_no" label="Tele No" required="true" />
+                        <x-input.label for="perm_tele_no" label="Tele No" />
                         <x-input.primary-input id="perm_tele_no" type="text" wire:model="perm_tele_no"
                             class="h-15" error="{{ $errors->has('perm_tele_no') }}" />
                         @error('perm_tele_no')
@@ -278,7 +285,7 @@
 
                     <!-- Permanent Fax No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_fax_no" label="Fax No" required="true" />
+                        <x-input.label for="perm_fax_no" label="Fax No" />
                         <x-input.primary-input id="perm_fax_no" type="text" wire:model="perm_fax_no"
                             class="h-15" error="{{ $errors->has('perm_fax_no') }}" />
                         @error('perm_fax_no')
@@ -288,7 +295,7 @@
 
                     <!-- Permanent Email -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="perm_email" label="Email" required="true" />
+                        <x-input.label for="perm_email" label="Email" />
                         <x-input.primary-input id="perm_email" type="email" wire:model="perm_email" class="h-15"
                             error="{{ $errors->has('perm_email') }}" />
                         @error('perm_email')
@@ -322,7 +329,7 @@
 
                     <!-- Designation State -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="des_state_id" label="State" required="true" />
+                        <x-input.label for="des_state_id" label="State" />
                         <x-input.primary-input id="des_state_id" type="text" wire:model="des_state_id"
                             class="h-15" error="{{ $errors->has('des_state_id') }}" />
                         @error('des_state_id')
@@ -332,7 +339,7 @@
 
                     <!-- Designation Township -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="des_township_id" label="Township" required="true" />
+                        <x-input.label for="des_township_id" label="Township" />
                         <x-input.primary-input id="des_township_id" type="text" wire:model="des_township_id"
                             class="h-15" error="{{ $errors->has('des_township_id') }}" />
                         @error('des_township_id')
@@ -342,7 +349,7 @@
 
                     <!-- Designation Post Code -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="des_post_code" label="Post Code" required="true" />
+                        <x-input.label for="des_post_code" label="Post Code" />
                         <x-input.primary-input id="des_post_code" type="text" wire:model="des_post_code"
                             class="h-15" error="{{ $errors->has('des_post_code') }}" />
                         @error('des_post_code')
@@ -352,7 +359,7 @@
 
                     <!-- Designation Tele No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="des_tele_no" label="Tele No" required="true" />
+                        <x-input.label for="des_tele_no" label="Tele No" />
                         <x-input.primary-input id="des_tele_no" type="text" wire:model="des_tele_no"
                             class="h-15" error="{{ $errors->has('des_tele_no') }}" />
                         @error('des_tele_no')
@@ -362,7 +369,7 @@
 
                     <!-- Designation Fax No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="des_fax_no" label="Fax No" required="true" />
+                        <x-input.label for="des_fax_no" label="Fax No" />
                         <x-input.primary-input id="des_fax_no" type="text" wire:model="des_fax_no" class="h-15"
                             error="{{ $errors->has('des_fax_no') }}" />
                         @error('des_fax_no')
@@ -372,7 +379,7 @@
 
                     <!-- Designation Email -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="des_email" label="Email" required="true" />
+                        <x-input.label for="des_email" label="Email" />
                         <x-input.primary-input id="des_email" type="email" wire:model="des_email" class="h-15"
                             error="{{ $errors->has('des_email') }}" />
                         @error('des_email')

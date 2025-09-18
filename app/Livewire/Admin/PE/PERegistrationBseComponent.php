@@ -22,13 +22,22 @@ class PERegistrationBseComponent extends Component
     public $nrcTownshipsEn = [];
     public $nrcTownshipsMm = [];
     public $nrcTypes = [];
+    public $states = [];
+    public $permTownships = [];
     protected $PEservice;
     public function boot(PeRegistrationService $service)
     {
         $this->verifyAuthorization("PEregistration-access");
         $this->PEservice = $service;
+        $this->states = $this->PEservice->states()->pluck('name', 'id');
+        // dd($this->states);
     }
+    public function updatedPermStateId()
+    {
+        $this->permTownships = $this->PEservice->getTownships($this->perm_state_id);
+        $this->perm_township_id = null; // reset selected township
 
+    }
     public function updatedNationalityType($value)
     {
         if ($value === 'PR') {
