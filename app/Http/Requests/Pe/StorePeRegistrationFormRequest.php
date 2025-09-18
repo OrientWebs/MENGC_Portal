@@ -52,6 +52,7 @@ class StorePeRegistrationFormRequest extends LivewireFormRequest
             'exp_15_years'             => 'boolean',
             'meet_all_requirements'    => 'boolean',
             'no_disciplinary_action'   => 'boolean',
+
         ];
     }
 
