@@ -20,14 +20,11 @@ class PECreateComponent extends PERegistrationBseComponent
             $this->nrc_type_mm = $this->nrcTypes[0]->name_mm;
         }
     }
-    // public function testChange()
-    // {
-    //     dd("Hello WOrld");
-    // }
     public function store()
     {
         // $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
         $peValidated = StorePeRegistrationFormRequest::validate($this);
+        dd($peValidated);
         $this->PEservice->create($peValidated);
 
         $this->flashMessage('success', 'PE registration saved successfully!');

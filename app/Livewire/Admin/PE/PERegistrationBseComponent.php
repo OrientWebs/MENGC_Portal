@@ -24,6 +24,7 @@ class PERegistrationBseComponent extends Component
     public $nrcTypes = [];
     public $states = [];
     public $permTownships = [];
+    public $desTownships = [];
     protected $PEservice;
     public function boot(PeRegistrationService $service)
     {
@@ -36,6 +37,12 @@ class PERegistrationBseComponent extends Component
     {
         $this->permTownships = $this->PEservice->getTownships($this->perm_state_id);
         $this->perm_township_id = null; // reset selected township
+
+    }
+    public function updatedDesStateId()
+    {
+        $this->desTownships = $this->PEservice->getTownships($this->des_state_id);
+        $this->des_township_id = null; // reset selected township
 
     }
     public function updatedNationalityType($value)

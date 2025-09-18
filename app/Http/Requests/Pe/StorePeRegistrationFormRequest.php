@@ -49,9 +49,9 @@ class StorePeRegistrationFormRequest extends LivewireFormRequest
             'engineering_discipline_id' => 'nullable|integer|exists:engineering_disciplines,id',
 
             // Boolean requirements
-            'exp_15_years'             => 'boolean',
-            'meet_all_requirements'    => 'boolean',
-            'no_disciplinary_action'   => 'boolean',
+            'exp_15_years'             => 'nullable|boolean',
+            'meet_all_requirements'    => 'nullable|boolean',
+            'no_disciplinary_action'   => 'nullable|boolean',
 
         ];
     }

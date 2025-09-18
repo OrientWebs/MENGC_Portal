@@ -330,8 +330,8 @@
                     <!-- Designation State -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="des_state_id" label="State" />
-                        <x-input.primary-input id="des_state_id" type="text" wire:model="des_state_id"
-                            class="h-15" error="{{ $errors->has('des_state_id') }}" />
+                        <x-select.search :data="$states" wire:model.live="des_state_id" :error="$errors->has('des_state_id')"
+                            placeholder="Choose a state" />
                         @error('des_state_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -340,8 +340,13 @@
                     <!-- Designation Township -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="des_township_id" label="Township" />
-                        <x-input.primary-input id="des_township_id" type="text" wire:model="des_township_id"
-                            class="h-15" error="{{ $errors->has('des_township_id') }}" />
+                        <x-select.dropdown class="w-full" wire:model.live="des_township_id" id="des_township_id"
+                            error="{{ $errors->has('des_township_id') }}">
+                            <option value="">Choose a Township</option>
+                            @foreach ($desTownships as $nrc)
+                                <option value="{{ $nrc->id }}">{{ $nrc->name }}</option>
+                            @endforeach
+                        </x-select.dropdown>
                         @error('des_township_id')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
@@ -400,6 +405,97 @@
                 </div>
 
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+            </div>
+
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">9. DECLARATION</h1>
+                </div>
+
+                {{-- Exp 15 Years --}}
+                <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                    <x-input.label for="exp_15_years"
+                        label="I have been working as a responsible person in Engineering works for 15 years"
+                        required="false" />
+
+                    <div class="flex items-center space-x-6 mt-2">
+                        <!-- Yes option -->
+                        <label for="exp_15_years_yes" class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" id="exp_15_years_yes" value="1" wire:model="exp_15_years"
+                                class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                            <span class="text-gray-700 dark:text-gray-300">Yes</span>
+                        </label>
+
+                        <!-- No option -->
+                        <label for="exp_15_years_no" class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" id="exp_15_years_no" value="0" wire:model="exp_15_years"
+                                class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                            <span class="text-gray-700 dark:text-gray-300">No</span>
+                        </label>
+                    </div>
+
+                    @error('exp_15_years')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                {{-- Meet Requirement --}}
+                <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                    <x-input.label for="exp_15_years"
+                        label="I will meet all the requirements of the Myanmar Engineering Council."
+                        required="false" />
+
+                    <div class="flex items-center space-x-6 mt-2">
+                        <!-- Yes option -->
+                        <label for="meet_all_requirements_yes" class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" id="meet_all_requirements_yes" value="1"
+                                wire:model="meet_all_requirements"
+                                class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                            <span class="text-gray-700 dark:text-gray-300">Yes</span>
+                        </label>
+
+                        <!-- No option -->
+                        <label for="meet_all_requirements_no" class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" id="meet_all_requirements_no" value="0"
+                                wire:model="meet_all_requirements"
+                                class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                            <span class="text-gray-700 dark:text-gray-300">No</span>
+                        </label>
+                    </div>
+
+                    @error('meet_all_requirements')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                {{-- disciplinary action --}}
+                <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                    <x-input.label for="exp_15_years" label="No disciplinary action has been taken against me"
+                        required="false" />
+
+                    <div class="flex items-center space-x-6 mt-2">
+                        <!-- Yes option -->
+                        <label for="no_disciplinary_action_yes" class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" id="no_disciplinary_action_yes" value="1"
+                                wire:model="no_disciplinary_action"
+                                class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                            <span class="text-gray-700 dark:text-gray-300">Yes</span>
+                        </label>
+
+                        <!-- No option -->
+                        <label for="no_disciplinary_action_no" class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" id="no_disciplinary_action_no" value="0"
+                                wire:model="no_disciplinary_action"
+                                class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                            <span class="text-gray-700 dark:text-gray-300">No</span>
+                        </label>
+                    </div>
+
+                    @error('no_disciplinary_action')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
             </div>
 
 
