@@ -26,12 +26,13 @@ class PERegistrationBseComponent extends Component
     public $permTownships = [];
     public $desTownships = [];
     protected $PEservice;
+    public $engineeringDisciplines = [];
     public function boot(PeRegistrationService $service)
     {
         $this->verifyAuthorization("PEregistration-access");
         $this->PEservice = $service;
         $this->states = $this->PEservice->states()->pluck('name', 'id');
-        // dd($this->states);
+        $this->engineeringDisciplines = $this->PEservice->engineeringDisciplines()->pluck('name', 'id');
     }
     public function updatedPermStateId()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\EngineeringDiscipline;
 use App\Models\NrcState;
 use App\Models\NrcTownship;
 use App\Models\NrcType;
@@ -21,7 +22,8 @@ class PErepository extends BaseCrudRepository
     private $NrcType;
     private $State;
     private $Township;
-    public function __construct(PERegistrationForm $model, RegistrationForm $registrationForm, NrcState $NrcState, NrcTownship $NrcTownship, NrcType $NrcType, Township $Township, State $State)
+    private $EngineeringDiscipline;
+    public function __construct(PERegistrationForm $model, RegistrationForm $registrationForm, NrcState $NrcState, NrcTownship $NrcTownship, NrcType $NrcType, Township $Township, State $State, EngineeringDiscipline $engineeringDiscipline)
     {
         parent::__construct($model);
         $this->RegistrationForm = $registrationForm;
@@ -30,10 +32,15 @@ class PErepository extends BaseCrudRepository
         $this->NrcType  = $NrcType;
         $this->Township = $Township;
         $this->State = $State;
+        $this->EngineeringDiscipline = $engineeringDiscipline;
     }
     public function getNrcState()
     {
         return $this->NrcState;
+    }
+    public function getEngineeringDiscipline()
+    {
+        return $this->EngineeringDiscipline;
     }
 
     public function getNrcTwonship()

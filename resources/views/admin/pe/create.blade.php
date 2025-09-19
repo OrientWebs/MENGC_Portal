@@ -407,6 +407,27 @@
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
             </div>
 
+            {{-- DECLARATION --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">4.DISCIPLINES FOR REGISTRATION(select 1 preferred
+                        discipline for registration purpose)
+                    </h1>
+                </div>
+
+                <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                    <x-input.label for="engineering_discipline_id" label="Engineering Discipline " required="true" />
+                    <x-select.search :data="$engineeringDisciplines" wire:model.live="engineering_discipline_id" :error="$errors->has('engineering_discipline_id')"
+                        placeholder="Choose a DISCIPLINES" />
+                    @error('engineering_discipline_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- DECLARATION --}}
             <div class="py-3">
                 <div>
                     <h1 class="font-bold dark:text-white">9. DECLARATION</h1>

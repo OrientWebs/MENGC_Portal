@@ -38,6 +38,10 @@ class PeRegistrationService
     {
         return $this->PErepository->township()->where('state_id', $state_id)->get();
     }
+    public function engineeringDisciplines()
+    {
+        return $this->PErepository->getEngineeringDiscipline()->get();
+    }
     public function create($baseData = null, $peData)
     {
         dd($peData);
