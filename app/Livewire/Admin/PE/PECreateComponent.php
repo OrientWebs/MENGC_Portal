@@ -22,10 +22,9 @@ class PECreateComponent extends PERegistrationBseComponent
     }
     public function store()
     {
-        // $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
+        $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
         $peValidated = StorePeRegistrationFormRequest::validate($this);
-        dd($peValidated);
-        $this->PEservice->create($peValidated);
+        $this->PEservice->create($baseValidated, $peValidated);
 
         $this->flashMessage('success', 'PE registration saved successfully!');
         return redirect()->route('admin.dashboard');

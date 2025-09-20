@@ -64,30 +64,30 @@ class PErepository extends BaseCrudRepository
         return $this->Township;
     }
 
-    public function createRegistratonForm(array $data)
+    public function createRegistratonForm(array $baseRegistrationData, array $peData)
     {
         DB::beginTransaction();
         try {
-            $record = $this->getRegistrationForm()->create($data);
+            $registrationForm = $this->getRegistrationForm()->create($baseRegistrationData);
+            $registrationFormId = $registrationForm->id;
+            $peData["registration_id"] = $registrationFormId;
+            $PeRegistrationForm = $this->model->create($peData);
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Error creating record: ' . $e->getMessage());
             throw $e;
         }
         DB::commit();
-        return $record;
     }
 
     public function generateRegisterNo()
     {
-        $latest = $this->getRegistrationForm()->latest('id')->first();
+        $id = $this->id ?? 0;
+        $micro = (int)(microtime(true) * 1000000);
+        $rand = random_int(100, 999);
 
-        if ($latest) {
-            $number = (int)substr($latest->register_no, -5);
-            $number++;
-            return 'PE:' . str_pad($number, 5, '0', STR_PAD_LEFT);
-        } else {
-            return 'PE:00001';
-        }
+        $number = substr($id . $micro . $rand, -6);
+
+        return 'PE:' . str_pad($number, 6, '0', STR_PAD_LEFT);
     }
 }

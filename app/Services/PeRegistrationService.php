@@ -42,9 +42,8 @@ class PeRegistrationService
     {
         return $this->PErepository->getEngineeringDiscipline()->get();
     }
-    public function create($baseData = null, $peData)
+    public function create($baseData, $peData)
     {
-        dd($peData);
         $user = auth()->user()->id;
         $baseData += [
             'status' => 'approved',
@@ -55,6 +54,6 @@ class PeRegistrationService
                 'nrc_no_mm' => format_nrc($baseData, 'mm'),
             ];
         }
-        $BaseData = $this->PErepository->createRegistratonForm($baseData);
+        $BaseData = $this->PErepository->createRegistratonForm($baseData, $peData);
     }
 }
