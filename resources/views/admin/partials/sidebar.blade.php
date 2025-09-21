@@ -89,14 +89,12 @@
                     </x-sidebar.sidebar-group>
                 @endcan
 
-                @can(['menu-setup'])
-                    <x-sidebar.sidebar-group groupLabel="Registration Form" icon="fa-solid fa-file" :active="request()->routeIs('admin.states') ||
-                        request()->routeIs('admin.townships') ||
-                        request()->routeIs('admin.qualifications')">
+                @can(['PEregistration-access'])
+                    <x-sidebar.sidebar-group groupLabel="Registration Form" icon="fa-solid fa-file" :active="request()->routeIs('admin.pe-form-index')">
 
-                        @can('state-access')
-                            <x-sidebar.sub-sidebar label="PE" route="admin.states"
-                                active="{{ request()->routeIs('admin.states') }}" />
+                        @can('PEregistration-access')
+                            <x-sidebar.sub-sidebar label="PE" route="admin.pe-form-index"
+                                active="{{ request()->routeIs('admin.pe-form-index') }}" />
                         @endcan
 
                     </x-sidebar.sidebar-group>

@@ -37,14 +37,12 @@ class PERegistrationBseComponent extends Component
     public function updatedPermStateId()
     {
         $this->permTownships = $this->PEservice->getTownships($this->perm_state_id);
-        $this->perm_township_id = null; // reset selected township
-
+        $this->perm_township_id = null;
     }
     public function updatedDesStateId()
     {
         $this->desTownships = $this->PEservice->getTownships($this->des_state_id);
-        $this->des_township_id = null; // reset selected township
-
+        $this->des_township_id = null;
     }
     public function updatedNationalityType($value)
     {
@@ -63,8 +61,6 @@ class PERegistrationBseComponent extends Component
         }
         if ($value === 'NRC') {
             $this->reset(['permanent_resident_no']);
-            //require NRC fields
-
         }
     }
 

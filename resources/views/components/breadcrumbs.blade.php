@@ -43,6 +43,10 @@
             ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
             ['name' => 'Prerequistic', 'route' => 'admin.prerequistics'],
         ],
+        'admin/pe-form-index' => [
+            ['name' => 'Dashboard', 'route' => 'admin.dashboard'],
+            ['name' => 'PE-Form', 'route' => 'admin.pe-form-index'],
+        ],
     ];
 
     // Current page main breadcrumbs

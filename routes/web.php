@@ -10,6 +10,7 @@ use App\Livewire\Admin\TownshipComponent;
 use App\Livewire\Admin\DashboardComponent;
 use App\Livewire\Admin\UniversityComponent;
 use App\Livewire\Admin\PE\PECreateComponent;
+use App\Livewire\Admin\PE\PEIndexCoponent;
 use App\Livewire\Admin\PrerequisticComponent;
 
 Route::get('/', function () {
@@ -42,4 +43,5 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
     Route::get('pe-registration', StoreComponent::class)->name('pe-registration');
     Route::get('pe/terms', \App\Livewire\Admin\PE\PETermsComponent::class)->name('admin.pe.terms');
     Route::get('pe/create-form', PECreateComponent::class)->name('pe-form-create');
+    Route::get('pe/index', PEIndexCoponent::class)->name('pe-form-index');
 });

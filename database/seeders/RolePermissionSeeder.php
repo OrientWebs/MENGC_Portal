@@ -52,7 +52,17 @@ class RolePermissionSeeder extends Seeder
             ->whereIn('name', [
                 'dashboard-access',
                 'user-access',
-                'user-show'
+                'user-show',
+                'dashboard-access',
+                'dashboard-login',
+                //PE registration Form
+                'PEregistration-access',
+                'PEregistration-create',
+                'PEregistration-delete',
+                'PEregistration-edit',
+                'PEregistration-show',
+                'PEregistration-admin',
+                'PEregistration-access',
             ])->get();
 
         $user_role = Role::where('name', 'user')->where('guard_name', 'web')->first();
