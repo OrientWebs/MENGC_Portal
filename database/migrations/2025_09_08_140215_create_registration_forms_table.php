@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('register_no')->unique(); // PE-0001 etc.
+            $table->foreignId('user_id')->nullable()->constrained('users');
 
             $table->enum('form_type', ['PE', 'RCPE', 'BE', 'SE']); // form apply type
 

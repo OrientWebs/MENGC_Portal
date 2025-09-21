@@ -47,6 +47,7 @@ class PeRegistrationService
         $user = auth()->user()->id;
         $baseData += [
             'status' => 'approved',
+            'user_id' => $user
         ];
         if ($baseData['nationality_type'] === 'NRC') {
             $baseData += [
@@ -55,5 +56,16 @@ class PeRegistrationService
             ];
         }
         $BaseData = $this->PErepository->createRegistratonForm($baseData, $peData);
+    }
+    public function index($prePage = null, $search = null)
+    {
+        $query = $this->PErepository->getPeRegistrationForm()->query();
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%");
+            });
+        }
+
+        return $query->with("registrationForm.user")->paginate($prePage);
     }
 }

@@ -23,9 +23,11 @@ class PErepository extends BaseCrudRepository
     private $State;
     private $Township;
     private $EngineeringDiscipline;
+    private $PeRegistrationForm;
     public function __construct(PERegistrationForm $model, RegistrationForm $registrationForm, NrcState $NrcState, NrcTownship $NrcTownship, NrcType $NrcType, Township $Township, State $State, EngineeringDiscipline $engineeringDiscipline)
     {
         parent::__construct($model);
+        $this->PeRegistrationForm = $model;
         $this->RegistrationForm = $registrationForm;
         $this->NrcState = $NrcState;
         $this->NrcTownship = $NrcTownship;
@@ -33,6 +35,10 @@ class PErepository extends BaseCrudRepository
         $this->Township = $Township;
         $this->State = $State;
         $this->EngineeringDiscipline = $engineeringDiscipline;
+    }
+    public function getPeRegistrationForm()
+    {
+        return $this->PeRegistrationForm;
     }
     public function getNrcState()
     {

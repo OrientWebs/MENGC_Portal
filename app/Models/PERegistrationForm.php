@@ -41,4 +41,9 @@ class PERegistrationForm extends Model
         'meet_all_requirements',
         'no_disciplinary_action',
     ];
+
+    public function registrationForm()
+    {
+        return $this->belongsTo(RegistrationForm::class, 'registration_id', 'id');
+    }
 }

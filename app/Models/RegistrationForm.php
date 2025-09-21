@@ -11,6 +11,7 @@ class RegistrationForm extends Model
 
     protected $fillable = [
         'register_no',
+        'user_id',
         'title',
         'form_type',
         'name_en',
@@ -36,4 +37,9 @@ class RegistrationForm extends Model
         'pdf_path',
         'excel_path'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

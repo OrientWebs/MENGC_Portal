@@ -9,7 +9,7 @@
             </div> --}}
         </div>
     @endcan
-
+    {{-- @dd($PeDatas->first()->registrationForm) --}}
     <x-datatable.table>
         {{-- Table Body --}}
         <x-slot name="tableBody">

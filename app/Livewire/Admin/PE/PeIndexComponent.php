@@ -6,15 +6,14 @@ use Livewire\Component;
 use App\Http\Requests\Pe\StorePeRegistrationFormRequest;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 
-class PEIndexCoponent extends PERegistrationBseComponent
+class PeIndexComponent extends PERegistrationBseComponent
 {
 
     public function mount() {}
 
     public function render()
     {
-        $registerNo = $this->PEservice->generateRegisterNo();
-        $this->register_no = $registerNo;
-        return view('admin.pe.index');
+        $PeDatas = $this->PEservice->index($this->prePage, $this->search);
+        return view('admin.pe.index', compact('PeDatas'));
     }
 }
