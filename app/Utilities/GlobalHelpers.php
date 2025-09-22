@@ -285,4 +285,27 @@ if (!function_exists('format_nrc')) {
 
         return "{$stateCode}/{$township}({$type}){$number}";
     }
+
+    function parse_nrc(string $nrcFormatted, string $lang = 'en'): array
+    {
+        if (!$nrcFormatted) return [];
+
+        // Matches pattern: state/township(type)number
+        if (preg_match('/^(.*?)\/(.*?)\((.*?)\)(.*)$/', $nrcFormatted, $matches)) {
+
+            // Look up the state id by its code
+            $stateCodeColumn = $lang === 'mm' ? 'code_mm' : 'code_en';
+            $state = NrcState::where($stateCodeColumn, $matches[1])->first();
+
+            return [
+                'state_id'  => $state?->id,
+                'state_code' => $matches[1] ?? null,
+                'township'  => $matches[2] ?? null,
+                'type'      => $matches[3] ?? null,
+                'number'    => $matches[4] ?? null,
+            ];
+        }
+
+        return [];
+    }
 }

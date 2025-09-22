@@ -167,7 +167,6 @@
                         <div class="flex w-50">
                             <x-select.dropdown class="w-18" wire:model.live="nrc_state_mm" id="nrc_state_mm"
                                 error="{{ $errors->has('nrc_state_mm') }}">
-                                <option value="">Choose</option>
                                 @foreach ($nrcStates as $nrc)
                                     <option value="{{ $nrc->id }}">{{ $nrc->code_mm }}</option>
                                 @endforeach

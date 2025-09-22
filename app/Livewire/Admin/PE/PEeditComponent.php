@@ -64,6 +64,26 @@ class PEeditComponent extends PERegistrationBseComponent
             if ($this->des_state_id) {
                 $this->desTownships = $this->PEservice->getTownships($this->des_state_id);
             }
+
+            if ($peData->registrationForm->nationality_type === 'NRC') {
+                $nrcEn = parse_nrc($peData->registrationForm->nrc_no_en, 'en');
+                $this->nrc_state_en = $nrcEn['state_id'] ?? null;
+                $this->nrc_township_en = $nrcEn['township'] ?? null;
+                $this->nrc_type_en     = $nrcEn['type'] ?? null;
+                $this->nrc_number_en   = $nrcEn['number'] ?? null;
+
+                $nrcMm = parse_nrc($peData->registrationForm->nrc_no_mm, 'mm');
+                $this->nrc_state_mm = $nrcMm['state_id'] ?? null;
+                $this->nrc_township_mm = $nrcMm['township'] ?? null;
+                $this->nrc_type_mm     = $nrcMm['type'] ?? null;
+                $this->nrc_number_mm   = $nrcMm['number'] ?? null;
+                if ($this->nrc_state_en) {
+                    $this->nrcTownshipsEn = $this->PEservice->getNrcTownship($this->nrc_state_en);
+                }
+                if ($this->nrc_state_mm) {
+                    $this->nrcTownshipsMm = $this->PEservice->getNrcTownship($this->nrc_state_mm);
+                }
+            }
         }
     }
     public function update()
