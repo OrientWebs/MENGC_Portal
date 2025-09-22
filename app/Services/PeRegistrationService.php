@@ -42,6 +42,10 @@ class PeRegistrationService
     {
         return $this->PErepository->getEngineeringDiscipline()->get();
     }
+    public function findPeForm($id)
+    {
+        return $this->PErepository->getPeRegistrationForm()->with('registrationForm')->find($id);
+    }
     public function create($baseData, $peData)
     {
         $user = auth()->user()->id;

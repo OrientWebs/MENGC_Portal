@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('form_type', ['PE', 'RCPE', 'BE', 'SE']); // form apply type
 
             $table->string('name_en');
+            $table->string('gender', '20');
             $table->string('name_mm');
             $table->string('title', 256)->nullable();
             $table->string('father_name_en')->nullable();

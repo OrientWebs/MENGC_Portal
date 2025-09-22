@@ -8,9 +8,11 @@ use App\Livewire\Admin\MinistryComponent;
 use App\Livewire\Admin\PE\StoreComponent;
 use App\Livewire\Admin\TownshipComponent;
 use App\Livewire\Admin\DashboardComponent;
+use App\Livewire\Admin\PE\PeIndexComponent;
+use App\Livewire\Admin\PE\PETermsComponent;
 use App\Livewire\Admin\UniversityComponent;
 use App\Livewire\Admin\PE\PECreateComponent;
-use App\Livewire\Admin\PE\PeIndexComponent;
+use App\Livewire\Admin\PE\PEeditComponent;
 use App\Livewire\Admin\PrerequisticComponent;
 
 Route::get('/', function () {
@@ -41,7 +43,8 @@ Route::middleware(['auth:sanctum', 'checkRoleActive', config('jetstream.auth_ses
 
     //PE form
     Route::get('pe-registration', StoreComponent::class)->name('pe-registration');
-    Route::get('pe/terms', \App\Livewire\Admin\PE\PETermsComponent::class)->name('admin.pe.terms');
-    Route::get('pe/create-form', PECreateComponent::class)->name('pe-form-create');
+    Route::get('pe/terms', PETermsComponent::class)->name('admin.pe.terms');
     Route::get('pe/index', PeIndexComponent::class)->name('pe-form-index');
+    Route::get('pe/create-form', PECreateComponent::class)->name('pe-form-create');
+    Route::get('pe/edit-form/{id?}', PEeditComponent::class)->name('pe-form-edit');
 });
