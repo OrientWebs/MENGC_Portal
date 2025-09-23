@@ -41,9 +41,9 @@ return new class extends Migration
             $table->foreignId('engineering_discipline_id')->nullable()->constrained('engineering_disciplines');
 
             // Boolean requirements
-            $table->boolean('exp_15_years')->default(false);
-            $table->boolean('meet_all_requirements')->default(false);
-            $table->boolean('no_disciplinary_action')->default(false);
+            $table->boolean('exp_15_years')->default(false)->nullable();
+            $table->boolean('meet_all_requirements')->default(false)->nullable();
+            $table->boolean('no_disciplinary_action')->default(false)->nullable();
 
             $table->timestamps();
             $table->softDeletes();

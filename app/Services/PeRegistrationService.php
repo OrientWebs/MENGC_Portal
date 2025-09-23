@@ -103,13 +103,45 @@ class PeRegistrationService
     }
     public function index($prePage = null, $search = null)
     {
+        $roles = auth()->user()->getRoleNames()->first();
+        $user_id = auth()->user()->id;
         $query = $this->PErepository->peRegistrationForm()->query();
         if ($search) {
             $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%");
+                $q->where('perm_address_en', 'like', "%{$search}%");
+
+                $q->orWhereHas('registrationForm', function ($qr) use ($search) {
+                    $qr->where('register_no', 'like', "%{$search}%");
+                    $qr->orWhere('name_en', 'like', "%{$search}%");
+                    $qr->orWhere('name_mm', 'like', "%{$search}%");
+                    $qr->orWhere('nrc_no_en', 'like', "%{$search}%");
+                    $qr->orWhere('permanent_resident_no', 'like', "%{$search}%");
+                });
             });
         }
 
+        if ($roles === "User") {
+            $query->whereHas('registrationForm', function ($q) use ($user_id) {
+                $q->where('user_id', $user_id);
+            });
+        }
         return $query->with("registrationForm.user")->paginate($prePage);
+    }
+
+    public function deleteRegistrationForm($id)
+    {
+        DB::beginTransaction();
+        try {
+            $peRegistrationForm = $this->findPeRegistrationForm($id);
+            $registration_id = $peRegistrationForm->registration_id;
+            $registrationForm = $this->findRegistrationForm($registration_id);
+            $peRegistrationForm->delete();
+            $registrationForm->delete();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error creating record: ' . $e->getMessage());
+            throw $e;
+        }
+        DB::commit();
     }
 }

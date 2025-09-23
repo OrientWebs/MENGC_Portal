@@ -11,6 +11,14 @@ class PeIndexComponent extends PERegistrationBseComponent
 
     public function mount() {}
 
+    public function delete($id)
+    {
+        $this->verifyAuthorization("PEregistration-delete");
+        $this->PEservice->deleteRegistrationForm($id);
+
+        $this->flashMessage('success', 'PEregistration delete successfully!');
+        return $this->redirectRoute('admin.users', navigate: true);
+    }
     public function render()
     {
         $PeDatas = $this->PEservice->index($this->prePage, $this->search);
