@@ -36,7 +36,7 @@ class PErepository extends BaseCrudRepository
         $this->State = $State;
         $this->EngineeringDiscipline = $engineeringDiscipline;
     }
-    public function getPeRegistrationForm()
+    public function peRegistrationForm()
     {
         return $this->PeRegistrationForm;
     }
@@ -57,7 +57,7 @@ class PErepository extends BaseCrudRepository
     {
         return $this->NrcType;
     }
-    public function getRegistrationForm()
+    public function registrationForm()
     {
         return $this->RegistrationForm;
     }
@@ -68,22 +68,6 @@ class PErepository extends BaseCrudRepository
     public function Township()
     {
         return $this->Township;
-    }
-
-    public function createRegistratonForm(array $baseRegistrationData, array $peData)
-    {
-        DB::beginTransaction();
-        try {
-            $registrationForm = $this->getRegistrationForm()->create($baseRegistrationData);
-            $registrationFormId = $registrationForm->id;
-            $peData["registration_id"] = $registrationFormId;
-            $PeRegistrationForm = $this->model->create($peData);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('Error creating record: ' . $e->getMessage());
-            throw $e;
-        }
-        DB::commit();
     }
 
     public function generateRegisterNo()

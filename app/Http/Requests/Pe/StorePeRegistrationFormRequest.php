@@ -23,7 +23,7 @@ class StorePeRegistrationFormRequest extends LivewireFormRequest
     {
         return [
             // Foreign key to main registration form
-            'registration_id'          => 'nullable|integer|exists:registration_forms,id',
+            // 'registration_id'          => 'nullable|integer|exists:registration_forms,id',
 
             // Permanent Contact Address
             'perm_address_en'          => 'required|string|max:255',

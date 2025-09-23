@@ -66,8 +66,8 @@ class StoreBaseRegistrationFormRequest extends LivewireFormRequest
 
         // If NRC, require NRC-related fields
         $nrcFields = [
-            'nrc_state_en',
-            'nrc_state_mm',
+            // 'nrc_state_en',
+            // 'nrc_state_mm',
             'nrc_township_en',
             'nrc_township_mm',
             'nrc_type_en',

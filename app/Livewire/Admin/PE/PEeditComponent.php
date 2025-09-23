@@ -9,9 +9,11 @@ use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 class PEeditComponent extends PERegistrationBseComponent
 {
 
+    public $pe_registration_id;
     public function mount($id = null)
     {
         $this->verifyAuthorization("PEregistration-edit");
+        $this->pe_registration_id = $id;
         $this->nrcStates = $this->PEservice->getAllNrcState();
         $this->nrcTypes  = $this->PEservice->getNrcType();;
         if (!empty($this->nrcTypes)) {
@@ -22,7 +24,7 @@ class PEeditComponent extends PERegistrationBseComponent
     }
     public function edit($id)
     {
-        $peData = $this->PEservice->findPeForm($id);
+        $peData = $this->PEservice->findPeRegistrationForm($id);
         if ($peData) {
             $this->title                    = $peData->registrationForm->title;
             $this->father_name_en           = $peData->registrationForm->father_name_en;
@@ -90,10 +92,10 @@ class PEeditComponent extends PERegistrationBseComponent
     {
         $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
         $peValidated = StorePeRegistrationFormRequest::validate($this);
-        $this->PEservice->create($baseValidated, $peValidated);
+        $this->PEservice->update($this->pe_registration_id, $baseValidated, $peValidated);
 
-        $this->flashMessage('success', 'PE registration saved successfully!');
-        return redirect()->route('admin.dashboard');
+        $this->flashMessage('success', 'PE registration update successfully!');
+        return redirect()->route('admin.pe-form-index');
     }
 
     public function render()

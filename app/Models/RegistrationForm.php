@@ -35,6 +35,7 @@ class RegistrationForm extends Model
         // Add file columns here if you store paths in DB
         'photo_path',
         'pdf_path',
+        'gender',
         'excel_path'
     ];
 
