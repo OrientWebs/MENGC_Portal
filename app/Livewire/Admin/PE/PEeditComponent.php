@@ -74,6 +74,11 @@ class PEeditComponent extends PERegistrationBseComponent
                 $this->nrc_type_en     = $nrcEn['type'] ?? null;
                 $this->nrc_number_en   = $nrcEn['number'] ?? null;
 
+                $front = $peData->registrationForm->getMedia('nrc_photo_front')->first();
+                $back  = $peData->registrationForm->getMedia('nrc_photo_back')->first();
+
+                $this->nrc_card_front_url = $front?->getUrl();
+                $this->nrc_card_back_url  = $back?->getUrl();
                 $nrcMm = parse_nrc($peData->registrationForm->nrc_no_mm, 'mm');
                 $this->nrc_state_mm = $nrcMm['state_id'] ?? null;
                 $this->nrc_township_mm = $nrcMm['township'] ?? null;

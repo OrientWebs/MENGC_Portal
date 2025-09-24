@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class RegistrationForm extends Model
+class RegistrationForm extends Model implements HasMedia
 {
-    use SoftDeletes;
+    use SoftDeletes, InteractsWithMedia;
 
     protected $fillable = [
         'register_no',
@@ -39,8 +42,22 @@ class RegistrationForm extends Model
         'excel_path'
     ];
 
+    // nrc_front_photo , nrc_back_photo and register_photo
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function registerMediaCollections(): void
+    {
+        // profile photo: single file only
+        $this->addMediaCollection('profile_photo')->singleFile()->useDisk(config('filesystems.default'));
+
+        // nrc images (front/back)
+        $this->addMediaCollection('nrc_photo_front')->useDisk(config('filesystems.default'));
+        $this->addMediaCollection('nrc_photo_back')->useDisk(config('filesystems.default'));
+        // $this->addMediaCollection('nrc_photo_back')->useDisk('local');
+
+        // other documents (pdf, excel)
+        $this->addMediaCollection('documents')->useDisk(config('filesystems.default'));
     }
 }

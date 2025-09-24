@@ -20,15 +20,50 @@ class PECreateComponent extends PERegistrationBseComponent
             $this->nrc_type_mm = $this->nrcTypes[0]->name_mm;
         }
     }
-    public function store()
+    public function __store()
     {
         $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
         $peValidated = StorePeRegistrationFormRequest::validate($this);
-        $this->PEservice->create($baseValidated, $peValidated);
+        $registration = $this->PEservice->create($baseValidated, $peValidated);
+
+        if ($this->nrc_card_front) {
+            $registration
+                ->addMedia($this->nrc_card_front->getRealPath())
+                ->usingFileName($this->nrc_card_front->getClientOriginalName())
+                ->toMediaCollection('nrc_photos');
+        }
+
+        if ($this->nrc_card_back) {
+            $registration
+                ->addMedia($this->nrc_card_back->getRealPath())
+                ->usingFileName($this->nrc_card_back->getClientOriginalName())
+                ->toMediaCollection('nrc_photos');
+        }
 
         $this->flashMessage('success', 'PE registration saved successfully!');
         return redirect()->route('admin.dashboard');
     }
+
+    public function store()
+    {
+        $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
+        $peValidated   = StorePeRegistrationFormRequest::validate($this);
+
+        // $registrationForm is now an actual Eloquent model
+        $registrationForm = $this->PEservice->create($baseValidated, $peValidated);
+
+        if ($this->nrc_card_front) {
+            $registrationForm->addMedia($this->nrc_card_front->getRealPath())->usingFileName($this->nrc_card_front->getClientOriginalName())->toMediaCollection('nrc_photo_front');
+        }
+
+        if ($this->nrc_card_back) {
+            $registrationForm->addMedia($this->nrc_card_back->getRealPath())->usingFileName($this->nrc_card_back->getClientOriginalName())->toMediaCollection('nrc_photo_back');
+        }
+
+        $this->flashMessage('success', 'PE registration saved successfully!');
+        return redirect()->route('admin.dashboard');
+    }
+
 
     public function render()
     {

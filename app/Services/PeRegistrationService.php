@@ -52,7 +52,7 @@ class PeRegistrationService
     {
         return $this->PErepository->getEngineeringDiscipline()->get();
     }
-    public function create($baseData, $peData)
+    public function __create($baseData, $peData)
     {
         $user = auth()->user()->id;
         $baseData += [
@@ -78,6 +78,36 @@ class PeRegistrationService
         }
         DB::commit();
     }
+
+    // App\Services\PeRegistrationService.php
+    public function create($baseData, $peData)
+    {
+        $user = auth()->user()->id;
+        $baseData += [
+            'status' => 'approved',
+            'user_id' => $user
+        ];
+        if ($baseData['nationality_type'] === 'NRC') {
+            $baseData += [
+                'nrc_no_en' => format_nrc($baseData, 'en'),
+                'nrc_no_mm' => format_nrc($baseData, 'mm'),
+            ];
+        }
+
+        DB::beginTransaction();
+        try {
+            $registrationForm = $this->PErepository->registrationForm()->create($baseData);
+            $peData["registration_id"] = $registrationForm->id;
+            $this->PErepository->peRegistrationForm()->create($peData);
+            DB::commit();
+            return $registrationForm;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error creating record: ' . $e->getMessage());
+            throw $e;
+        }
+    }
+
 
     public function update($id, $baseData, $peData)
     {

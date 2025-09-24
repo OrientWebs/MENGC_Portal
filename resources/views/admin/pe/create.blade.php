@@ -197,10 +197,9 @@
 
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
-                        <x-input.label label="NRC Card Photo (Front)" />
-                        <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
-                            class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
-                        @error('nrc_mm')
+                        <x-input.label label="NRC Card Photo (back)" />
+                        <x-input.file-upload id="nrc_card_front" model="nrc_card_front" />
+                        @error('nrc_card_front')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
@@ -208,9 +207,8 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
                         <x-input.label label="NRC Card Photo (back)" />
-                        <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
-                            class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
-                        @error('nrc_mm')
+                        <x-input.file-upload id="nrc_card_back" model="nrc_card_back" />
+                        @error('nrc_card_back')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>

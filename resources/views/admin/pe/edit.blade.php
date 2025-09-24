@@ -198,22 +198,44 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
                         <x-input.label label="NRC Card Photo (Front)" />
-                        <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
-                            class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
-                        @error('nrc_mm')
+
+                        {{-- ✅ existing photo preview --}}
+                        @if ($nrc_card_front_url)
+                            <div class="mb-2">
+                                <img src="{{ $nrc_card_front_url }}" alt="Front photo" class="h-32 rounded shadow">
+                            </div>
+                        @endif
+
+                        {{-- new upload input --}}
+                        <x-input.primary-input id="nrc_card_front" type="file" wire:model="nrc_card_front"
+                            class="additional-classes" error="{{ $errors->has('nrc_card_front') }}" />
+
+                        @error('nrc_card_front')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
+
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                         x-transition>
-                        <x-input.label label="NRC Card Photo (back)" />
-                        <x-input.primary-input id="nrc_mm" type="file" wire:model="nrc_mm"
-                            class="additional-classes" error="{{ $errors->has('nrc_mm') }}" />
-                        @error('nrc_mm')
+                        <x-input.label label="NRC Card Photo (Back)" />
+
+                        {{-- ✅ existing photo preview --}}
+                        @if ($nrc_card_back_url)
+                            <div class="mb-2">
+                                <img src="{{ $nrc_card_back_url }}" alt="Back photo" class="h-32 rounded shadow">
+                            </div>
+                        @endif
+
+                        {{-- new upload input --}}
+                        <x-input.primary-input id="nrc_card_back" type="file" wire:model="nrc_card_back"
+                            class="additional-classes" error="{{ $errors->has('nrc_card_back') }}" />
+
+                        @error('nrc_card_back')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
+
                 </div>
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
             </div>
