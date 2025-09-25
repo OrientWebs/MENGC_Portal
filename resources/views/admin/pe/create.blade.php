@@ -195,22 +195,24 @@
                         @enderror
                     </div>
 
-                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
-                        x-transition>
-                        <x-input.label label="NRC Card Photo (back)" />
-                        <x-input.file-upload id="nrc_card_front" model="nrc_card_front" />
-                        @error('nrc_card_front')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <div class="flex w-full">
+                        <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4 " x-show="nationality === 'NRC'" x-cloak
+                            x-transition>
+                            <x-input.label label="NRC Card Photo (Front)" />
+                            <x-input.file-upload id="nrc_card_front" model="nrc_card_front" />
+                            @error('nrc_card_front')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
 
-                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
-                        x-transition>
-                        <x-input.label label="NRC Card Photo (back)" />
-                        <x-input.file-upload id="nrc_card_back" model="nrc_card_back" />
-                        @error('nrc_card_back')
-                            <span class="text-red-500">{{ $message }}</span>
-                        @enderror
+                        <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
+                            x-transition>
+                            <x-input.label label="NRC Card Photo (back)" />
+                            <x-input.file-upload id="nrc_card_back" model="nrc_card_back" />
+                            @error('nrc_card_back')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">

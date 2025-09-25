@@ -109,7 +109,7 @@ class PeRegistrationService
     }
 
 
-    public function update($id, $baseData, $peData)
+    public function __update($id, $baseData, $peData)
     {
         $peRegistrationData = $this->findPeRegistrationForm($id);
         $registraationForm = $this->findRegistrationForm($peRegistrationData->registration_id);
@@ -131,6 +131,49 @@ class PeRegistrationService
         }
         DB::commit();
     }
+
+    // PEservice.php
+    public function update($id, $baseData, $peData, $frontFile = null, $backFile = null)
+    {
+        $peRegistrationData = $this->findPeRegistrationForm($id);
+        $registrationForm   = $this->findRegistrationForm($peRegistrationData->registration_id);
+
+        if ($baseData['nationality_type'] === 'NRC') {
+            $baseData += [
+                'nrc_no_en' => format_nrc($baseData, 'en'),
+                'nrc_no_mm' => format_nrc($baseData, 'mm'),
+            ];
+        }
+
+        DB::beginTransaction();
+        try {
+            $registrationForm->update($baseData);
+            $peRegistrationData->update($peData);
+
+            // ✅ handle media here
+            if ($frontFile) {
+                $registrationForm->clearMediaCollection('nrc_photo_front');
+                $registrationForm->addMedia($frontFile->getRealPath())
+                    ->usingFileName($frontFile->getClientOriginalName())
+                    ->toMediaCollection('nrc_photo_front');
+            }
+
+            if ($backFile) {
+                $registrationForm->clearMediaCollection('nrc_photo_back');
+                $registrationForm->addMedia($backFile->getRealPath())
+                    ->usingFileName($backFile->getClientOriginalName())
+                    ->toMediaCollection('nrc_photo_back');
+            }
+
+            DB::commit();
+            return $registrationForm; // return model to component
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error updating record: ' . $e->getMessage());
+            throw $e;
+        }
+    }
+
     public function index($prePage = null, $search = null)
     {
         $roles = auth()->user()->getRoleNames()->first();

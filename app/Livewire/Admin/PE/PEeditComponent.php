@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\PE;
 use Livewire\Component;
 use App\Http\Requests\Pe\StorePeRegistrationFormRequest;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
+use App\Http\Requests\Registration\UpdateBaseRegistrationFormRequest;
 
 class PEeditComponent extends PERegistrationBseComponent
 {
@@ -59,20 +60,20 @@ class PEeditComponent extends PERegistrationBseComponent
             $this->des_tele_no          = $peData->des_tele_no;
             $this->des_fax_no           = $peData->des_fax_no;
             $this->des_email            = $peData->des_email;
-            $this->engineering_discipline_id = $peData->engineering_discipline_id;
-            $this->exp_15_years         = $peData->exp_15_years;
-            $this->meet_all_requirements = $peData->meet_all_requirements;
-            $this->no_disciplinary_action = $peData->no_disciplinary_action;
+            $this->engineering_discipline_id    = $peData->engineering_discipline_id;
+            $this->exp_15_years                 = $peData->exp_15_years;
+            $this->meet_all_requirements        = $peData->meet_all_requirements;
+            $this->no_disciplinary_action       = $peData->no_disciplinary_action;
             if ($this->des_state_id) {
                 $this->desTownships = $this->PEservice->getTownships($this->des_state_id);
             }
 
             if ($peData->registrationForm->nationality_type === 'NRC') {
                 $nrcEn = parse_nrc($peData->registrationForm->nrc_no_en, 'en');
-                $this->nrc_state_en = $nrcEn['state_id'] ?? null;
-                $this->nrc_township_en = $nrcEn['township'] ?? null;
-                $this->nrc_type_en     = $nrcEn['type'] ?? null;
-                $this->nrc_number_en   = $nrcEn['number'] ?? null;
+                $this->nrc_state_en     = $nrcEn['state_id'] ?? null;
+                $this->nrc_township_en  = $nrcEn['township'] ?? null;
+                $this->nrc_type_en      = $nrcEn['type'] ?? null;
+                $this->nrc_number_en    = $nrcEn['number'] ?? null;
 
                 $front = $peData->registrationForm->getMedia('nrc_photo_front')->first();
                 $back  = $peData->registrationForm->getMedia('nrc_photo_back')->first();
@@ -93,15 +94,33 @@ class PEeditComponent extends PERegistrationBseComponent
             }
         }
     }
-    public function update()
+    public function __update()
     {
-        $baseValidated = StoreBaseRegistrationFormRequest::validate($this);
-        $peValidated = StorePeRegistrationFormRequest::validate($this);
+        $baseValidated  = StoreBaseRegistrationFormRequest::validate($this);
+        $peValidated    = StorePeRegistrationFormRequest::validate($this);
         $this->PEservice->update($this->pe_registration_id, $baseValidated, $peValidated);
 
         $this->flashMessage('success', 'PE registration update successfully!');
         return redirect()->route('admin.pe-form-index');
     }
+
+    public function update()
+    {
+        $baseValidated  = UpdateBaseRegistrationFormRequest::validate($this);
+        $peValidated    = StorePeRegistrationFormRequest::validate($this);
+
+        $this->PEservice->update(
+            $this->pe_registration_id,
+            $baseValidated,
+            $peValidated,
+            $this->nrc_card_front,
+            $this->nrc_card_back
+        );
+
+        $this->flashMessage('success', 'PE registration updated successfully!');
+        return redirect()->route('admin.pe-form-index');
+    }
+
 
     public function render()
     {

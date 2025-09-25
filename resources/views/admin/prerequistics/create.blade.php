@@ -10,7 +10,7 @@
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="type" label="Engineer Type" required="true" />
                         <x-select.search :data="$engType" selectedValue="type" placeholder="Choose a Type"
-                            error="{{ $errors->has('type') }}">
+                            wire:model="type" error="{{ $errors->has('type') }}">
                         </x-select.search>
                         @error('type')
                             <span class="text-red-500">{{ $message }}</span>
