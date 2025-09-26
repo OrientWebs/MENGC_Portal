@@ -199,8 +199,9 @@
                         <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                             x-transition>
                             <x-input.label label="NRC Card Photo (Front)" />
-                            <x-input.file-upload id="nrc_card_front" model="nrc_card_front" :preview="$nrc_card_front_url"
-                                {{-- old image --}} />
+                            <x-input.file-upload id="nrc_card_front" model="nrc_card_front" :preview="$nrc_card_front_url" />
+                            {{-- old path hidden field --}}
+                            <input type="hidden" wire:model="existing_nrc_card_front">
                             @error('nrc_card_front')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
@@ -209,13 +210,18 @@
                         <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                             x-transition>
                             <x-input.label label="NRC Card Photo (Back)" />
-                            <x-input.file-upload id="nrc_card_back" model="nrc_card_back" :preview="$nrc_card_back_url"
-                                {{-- old image --}} />
+                            <x-input.file-upload id="nrc_card_back" model="nrc_card_back" :preview="$nrc_card_back_url" />
+                            {{-- old path hidden field --}}
+                            <input type="hidden" wire:model="existing_nrc_card_back">
                             @error('nrc_card_back')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
+                            {{-- @error('existing_nrc_card_back')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror --}}
                         </div>
                     </div>
+
 
 
                 </div>

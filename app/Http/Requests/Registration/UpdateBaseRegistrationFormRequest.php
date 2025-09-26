@@ -30,14 +30,15 @@ class UpdateBaseRegistrationFormRequest extends LivewireFormRequest
             'nrc_type_mm' => 'nullable|string|max:50',
             'nrc_number_en' => 'nullable|string|max:50',
             'nrc_number_mm' => 'nullable|string|max:50',
-
+            'nrc_state_en'           => 'nullable|integer',
+            'nrc_state_mm'           => 'nullable|integer',
             // image fields
             'nrc_card_front' => 'nullable|image|max:2048',
             'nrc_card_back'  => 'nullable|image|max:2048',
 
             // hidden inputs telling us if photos already exist
-            'existing_nrc_card_front' => 'nullable|string',
-            'existing_nrc_card_back'  => 'nullable|string',
+            'existing_nrc_card_front' => 'nullable',
+            'existing_nrc_card_back'  => 'nullable',
         ];
     }
 

@@ -52,32 +52,6 @@ class PeRegistrationService
     {
         return $this->PErepository->getEngineeringDiscipline()->get();
     }
-    public function __create($baseData, $peData)
-    {
-        $user = auth()->user()->id;
-        $baseData += [
-            'status' => 'approved',
-            'user_id' => $user
-        ];
-        if ($baseData['nationality_type'] === 'NRC') {
-            $baseData += [
-                'nrc_no_en' => format_nrc($baseData, 'en'),
-                'nrc_no_mm' => format_nrc($baseData, 'mm'),
-            ];
-        }
-        DB::beginTransaction();
-        try {
-            $registrationForm = $this->PErepository->registrationForm()->create($baseData);
-            $registrationFormId = $registrationForm->id;
-            $peData["registration_id"] = $registrationFormId;
-            $PeRegistrationForm = $this->PErepository->peRegistrationForm()->create($peData);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('Error creating record: ' . $e->getMessage());
-            throw $e;
-        }
-        DB::commit();
-    }
 
     // App\Services\PeRegistrationService.php
     public function create($baseData, $peData)
@@ -93,7 +67,6 @@ class PeRegistrationService
                 'nrc_no_mm' => format_nrc($baseData, 'mm'),
             ];
         }
-
         DB::beginTransaction();
         try {
             $registrationForm = $this->PErepository->registrationForm()->create($baseData);
@@ -109,10 +82,13 @@ class PeRegistrationService
     }
 
 
-    public function __update($id, $baseData, $peData)
+    // PEservice.php
+    public function __update($id, $baseData, $peData, $frontFile = null, $backFile = null)
     {
+
         $peRegistrationData = $this->findPeRegistrationForm($id);
-        $registraationForm = $this->findRegistrationForm($peRegistrationData->registration_id);
+        $registrationForm   = $this->findRegistrationForm($peRegistrationData->registration_id);
+
         if ($baseData['nationality_type'] === 'NRC') {
             $baseData += [
                 'nrc_no_en' => format_nrc($baseData, 'en'),
@@ -120,19 +96,36 @@ class PeRegistrationService
             ];
         }
 
+        dd($baseData);
         DB::beginTransaction();
         try {
-            $registraationForm = $registraationForm->update($baseData);
-            $peRegistrationForm = $peRegistrationData->update($peData);
+            $registrationForm->update($baseData);
+            $peRegistrationData->update($peData);
+
+            // ✅ handle media here
+            // if ($frontFile) {
+            //     $registrationForm->clearMediaCollection('nrc_photo_front');
+            //     $registrationForm->addMedia($frontFile->getRealPath())
+            //         ->usingFileName($frontFile->getClientOriginalName())
+            //         ->toMediaCollection('nrc_photo_front');
+            // }
+
+            // if ($backFile) {
+            //     $registrationForm->clearMediaCollection('nrc_photo_back');
+            //     $registrationForm->addMedia($backFile->getRealPath())
+            //         ->usingFileName($backFile->getClientOriginalName())
+            //         ->toMediaCollection('nrc_photo_back');
+            // }
+
+            DB::commit();
+            return $registrationForm; // return model to component
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('Error creating record: ' . $e->getMessage());
+            Log::error('Error updating record: ' . $e->getMessage());
             throw $e;
         }
-        DB::commit();
     }
 
-    // PEservice.php
     public function update($id, $baseData, $peData, $frontFile = null, $backFile = null)
     {
         $peRegistrationData = $this->findPeRegistrationForm($id);
@@ -144,35 +137,38 @@ class PeRegistrationService
                 'nrc_no_mm' => format_nrc($baseData, 'mm'),
             ];
         }
-
         DB::beginTransaction();
         try {
             $registrationForm->update($baseData);
             $peRegistrationData->update($peData);
 
-            // ✅ handle media here
             if ($frontFile) {
                 $registrationForm->clearMediaCollection('nrc_photo_front');
-                $registrationForm->addMedia($frontFile->getRealPath())
-                    ->usingFileName($frontFile->getClientOriginalName())
-                    ->toMediaCollection('nrc_photo_front');
+                $registrationForm->addMedia($frontFile->getRealPath())->usingFileName($frontFile->getClientOriginalName())->toMediaCollection('nrc_photo_front');
+            } elseif (!empty($baseData['existing_nrc_card_front'])) {
+                // Keep old photo if no new upload
+            } else {
+                $registrationForm->clearMediaCollection('nrc_photo_front');
             }
 
+            // Handle NRC back photo
             if ($backFile) {
                 $registrationForm->clearMediaCollection('nrc_photo_back');
-                $registrationForm->addMedia($backFile->getRealPath())
-                    ->usingFileName($backFile->getClientOriginalName())
-                    ->toMediaCollection('nrc_photo_back');
+                $registrationForm->addMedia($backFile->getRealPath())->usingFileName($backFile->getClientOriginalName())->toMediaCollection('nrc_photo_back');
+            } elseif (!empty($baseData['existing_nrc_card_back'])) {
+            } else {
+                $registrationForm->clearMediaCollection('nrc_photo_back');
             }
 
             DB::commit();
-            return $registrationForm; // return model to component
+            return $registrationForm;
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Error updating record: ' . $e->getMessage());
             throw $e;
         }
     }
+
 
     public function index($prePage = null, $search = null)
     {

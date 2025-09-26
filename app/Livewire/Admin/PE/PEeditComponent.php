@@ -80,6 +80,8 @@ class PEeditComponent extends PERegistrationBseComponent
 
                 $this->nrc_card_front_url = $front?->getUrl();
                 $this->nrc_card_back_url  = $back?->getUrl();
+                $this->existing_nrc_card_front = $front?->id; // media id or path
+                $this->existing_nrc_card_back  = $back?->id;
                 $nrcMm = parse_nrc($peData->registrationForm->nrc_no_mm, 'mm');
                 $this->nrc_state_mm = $nrcMm['state_id'] ?? null;
                 $this->nrc_township_mm = $nrcMm['township'] ?? null;
@@ -106,9 +108,9 @@ class PEeditComponent extends PERegistrationBseComponent
 
     public function update()
     {
+
         $baseValidated  = UpdateBaseRegistrationFormRequest::validate($this);
         $peValidated    = StorePeRegistrationFormRequest::validate($this);
-
         $this->PEservice->update(
             $this->pe_registration_id,
             $baseValidated,
