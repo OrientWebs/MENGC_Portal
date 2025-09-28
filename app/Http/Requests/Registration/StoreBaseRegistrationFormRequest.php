@@ -35,10 +35,11 @@ class StoreBaseRegistrationFormRequest extends LivewireFormRequest
             'nrc_number_mm'          => 'nullable|string|max:50',
 
             // file fields (make sure you use distinct property names in the Blade)
-            'nrc_card_front'         => 'nullable|file|image|max:2048',
-            'nrc_card_back'          => 'nullable|file|image|max:2048',
-            'father_name_en' => 'nullable|string|max:255',
-            'father_name_mm' => 'nullable|string|max:255',
+            'nrc_card_front'            => 'nullable|file|image|max:2048',
+            'nrc_card_back'             => 'nullable|file|image|max:2048',
+            'profile_photo'             => 'required|file|image|max:2048',
+            'father_name_en'            => 'nullable|string|max:255',
+            'father_name_mm'            => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255|unique:registration_forms,email',
             'tele_no_en' => 'nullable|string|max:50',
             'tele_no_mm' => 'nullable|string|max:50',

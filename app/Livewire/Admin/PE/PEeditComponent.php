@@ -27,6 +27,10 @@ class PEeditComponent extends PERegistrationBseComponent
     {
         $peData = $this->PEservice->findPeRegistrationForm($id);
         if ($peData) {
+            $profile_photo                  = $peData->registrationForm->getMedia('profile_photo')->first();
+            $this->profile_photo_url        =  $profile_photo?->getUrl();
+            $this->existing_profile_photo   =  $profile_photo?->id; // media id or path
+
             $this->title                    = $peData->registrationForm->title;
             $this->father_name_en           = $peData->registrationForm->father_name_en;
             $this->father_name_mm           = $peData->registrationForm->father_name_mm;
@@ -116,7 +120,8 @@ class PEeditComponent extends PERegistrationBseComponent
             $baseValidated,
             $peValidated,
             $this->nrc_card_front,
-            $this->nrc_card_back
+            $this->nrc_card_back,
+            $this->profile_photo
         );
 
         $this->flashMessage('success', 'PE registration updated successfully!');

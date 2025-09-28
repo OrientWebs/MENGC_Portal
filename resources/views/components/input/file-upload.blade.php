@@ -83,11 +83,11 @@
 
     <!-- Client-side error -->
     <template x-if="errorMessage">
-        <p class="text-red-500 text-sm mt-1" x-text="errorMessage"></p>
+        {{-- <p class="text-red-500 text-sm mt-1" x-text="errorMessage"></p> --}}
     </template>
 
     <!-- Server-side error -->
     @error($model)
-        <span class="text-red-500 text-sm">{{ $message }}</span>
+        {{-- <span class="text-red-500 text-sm">{{ $message }}</span> --}}
     @enderror
 </div>

@@ -3,15 +3,31 @@
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
             Application For Professional Engineer
         </h1>
+
     </div>
     <x-create.body>
         <form wire:submit.prevent="update">
+
             {{-- Personal Details --}}
             <div class="py-3">
                 <div>
                     <h1 class="font-bold dark:text-white">1. Personal Detail</h1>
                 </div>
                 <div class="flex flex-wrap -mx-2" x-data="{ nationality: @entangle('nationality_type') }">
+
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-9 mb-4">
+                        <x-input.label label="*Please aﬃx recent photo(Passport size)" required="true" />
+
+                        <div class="lg:w-1/2 ">
+                            <x-input.file-upload id="profile_photo" model="profile_photo" :preview="$profile_photo_url" />
+                        </div>
+                        {{-- old path hidden field --}}
+                        <input type="hidden" wire:model="existing_profile_photo">
+                        @error('profile_photo')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <!-- Register No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="register_no" label="Register No" required="true" />
@@ -31,6 +47,7 @@
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
+
 
                     <!-- Name English -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
@@ -198,7 +215,7 @@
                     <div class="flex w-full">
                         <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                             x-transition>
-                            <x-input.label label="NRC Card Photo (Front)" />
+                            <x-input.label label="NRC Card Photo (Front)" required="true" />
                             <x-input.file-upload id="nrc_card_front" model="nrc_card_front" :preview="$nrc_card_front_url" />
                             {{-- old path hidden field --}}
                             <input type="hidden" wire:model="existing_nrc_card_front">
@@ -209,16 +226,13 @@
 
                         <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                             x-transition>
-                            <x-input.label label="NRC Card Photo (Back)" />
+                            <x-input.label label="NRC Card Photo (Back)" required="true" />
                             <x-input.file-upload id="nrc_card_back" model="nrc_card_back" :preview="$nrc_card_back_url" />
                             {{-- old path hidden field --}}
                             <input type="hidden" wire:model="existing_nrc_card_back">
                             @error('nrc_card_back')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
-                            {{-- @error('existing_nrc_card_back')
-                                <span class="text-red-500">{{ $message }}</span>
-                            @enderror --}}
                         </div>
                     </div>
 
@@ -532,7 +546,7 @@
 
             <div class="pt-4">
                 <x-button.primary-button function="store">
-                    {{ __('Save') }}
+                    {{ __('Update') }}
                 </x-button.primary-button>
                 <x-button.secondary-button type="button" href="{{ route('admin.dashboard') }}" wire:navigate>
                     {{ __('Cancel') }}

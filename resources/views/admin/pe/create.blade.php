@@ -12,6 +12,21 @@
                     <h1 class="font-bold dark:text-white">1. Personal Detail</h1>
                 </div>
                 <div class="flex flex-wrap -mx-2" x-data="{ nationality: '' }">
+
+                    {{-- Profile Photo --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-9 mb-4">
+                        <x-input.label label="*Please aﬃx recent photo(Passport size)" required="true" />
+
+                        <div class="lg:w-1/2 ">
+                            <x-input.file-upload id="profile_photo" model="profile_photo" />
+                        </div>
+                        {{-- old path hidden field --}}
+                        <input type="hidden" wire:model="existing_profile_photo">
+                        @error('profile_photo')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <!-- Register No -->
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
                         <x-input.label for="register_no" label="Register No" required="true" />

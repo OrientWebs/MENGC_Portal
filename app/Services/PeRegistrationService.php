@@ -126,7 +126,7 @@ class PeRegistrationService
         }
     }
 
-    public function update($id, $baseData, $peData, $frontFile = null, $backFile = null)
+    public function update($id, $baseData, $peData, $frontFile = null, $backFile = null, $profilePhoto = null)
     {
         $peRegistrationData = $this->findPeRegistrationForm($id);
         $registrationForm   = $this->findRegistrationForm($peRegistrationData->registration_id);
@@ -158,6 +158,15 @@ class PeRegistrationService
             } elseif (!empty($baseData['existing_nrc_card_back'])) {
             } else {
                 $registrationForm->clearMediaCollection('nrc_photo_back');
+            }
+
+            // Handle NRC back photo
+            if ($profilePhoto) {
+                $registrationForm->clearMediaCollection('profile_photo');
+                $registrationForm->addMedia($profilePhoto->getRealPath())->usingFileName($profilePhoto->getClientOriginalName())->toMediaCollection('profile_photo');
+            } elseif (!empty($baseData['existing_profile_photo'])) {
+            } else {
+                $registrationForm->clearMediaCollection('profile_photo');
             }
 
             DB::commit();

@@ -59,6 +59,9 @@ class PECreateComponent extends PERegistrationBseComponent
         if ($this->nrc_card_back) {
             $registrationForm->addMedia($this->nrc_card_back->getRealPath())->usingFileName($this->nrc_card_back->getClientOriginalName())->toMediaCollection('nrc_photo_back');
         }
+        if ($this->profile_photo) {
+            $registrationForm->addMedia($this->profile_photo->getRealPath())->usingFileName($this->profile_photo->getClientOriginalName())->toMediaCollection('profile_photo');
+        }
 
         $this->flashMessage('success', 'PE registration saved successfully!');
         return redirect()->route('admin.dashboard');

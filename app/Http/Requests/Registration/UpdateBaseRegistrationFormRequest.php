@@ -23,6 +23,7 @@ class UpdateBaseRegistrationFormRequest extends LivewireFormRequest
             'gender' => 'required|string',
             'nationality_type' => 'required|string|in:PR,NRC',
             'permanent_resident_no' => 'nullable|string|max:100',
+            'profile_photo'          => 'nullable|file|image|max:2048',
 
             'nrc_township_en' => 'nullable|string|max:50',
             'nrc_township_mm' => 'nullable|string|max:50',
