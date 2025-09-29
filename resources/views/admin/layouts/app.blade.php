@@ -50,7 +50,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', value));"
 }"
     x-init="document.addEventListener('livewire:navigating', () => showLoading());
     document.addEventListener('livewire:navigated', () => hideLoading());
-    
+
     document.addEventListener('sidebar-hover', (e) => {
         sidebarHovered = e.detail.hovered;
     });">
@@ -65,7 +65,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', value));"
         @include('admin.partials.sidebar')
 
         <!-- Main Content with Loading Overlay -->
-        <main class="relative p-4 " :class="sidebarOpen ? 'md:ml-64' : (sidebarHovered ? 'md:ml-64' : 'md:ml-16')">
+        <main class="relative p-4 "
+            :class="sidebarOpen ? 'md:ml-64' : (sidebarHovered ? 'md:ml-64' : 'md:ml-0 lg:ml-14')">
 
             <!-- Loading Overlay - Only covers main content -->
             <div x-show="loading" x-transition:enter="transition ease-out duration-300"

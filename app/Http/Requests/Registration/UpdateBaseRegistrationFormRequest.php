@@ -40,6 +40,7 @@ class UpdateBaseRegistrationFormRequest extends LivewireFormRequest
             // hidden inputs telling us if photos already exist
             'existing_nrc_card_front' => 'nullable',
             'existing_nrc_card_back'  => 'nullable',
+            'existing_profile_photo'  => 'nullable',
         ];
     }
 

@@ -210,7 +210,9 @@
                         @enderror
                     </div>
 
+                    {{-- NRC Photo --}}
                     <div class="flex w-full">
+                        {{-- NRC Front Photo --}}
                         <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4 " x-show="nationality === 'NRC'" x-cloak
                             x-transition>
                             <x-input.label label="NRC Card Photo (Front)" />
@@ -220,6 +222,7 @@
                             @enderror
                         </div>
 
+                        {{-- NRC Back Photo --}}
                         <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4" x-show="nationality === 'NRC'" x-cloak
                             x-transition>
                             <x-input.label label="NRC Card Photo (back)" />
@@ -434,6 +437,115 @@
                     <x-input.label for="engineering_discipline_id" label="Engineering Discipline " required="true" />
                     <x-select.search :data="$engineeringDisciplines" wire:model.live="engineering_discipline_id" :error="$errors->has('engineering_discipline_id')"
                         placeholder="Choose a DISCIPLINES" />
+                    @error('engineering_discipline_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- PROFESSIONAL EXPERIENCE --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">5.PROFESSIONAL EXPERIENCE (in responsible charge of
+                        significant engineering work) *</h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="engineering_discipline_id"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
+                                inputType="en" class="additional-classes"
+                                error="{{ $errors->has('father_name_en') }}" />
+                        </div>
+                    </div>
+                    @error('engineering_discipline_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- discipline of engineering and summaries  --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">6.Describe your involvement in your selected discipline of
+                        engineering and summaries the positions you have held in the following table </h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="engineering_discipline_id"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
+                                inputType="en" class="additional-classes"
+                                error="{{ $errors->has('father_name_en') }}" />
+                        </div>
+                    </div>
+                    @error('engineering_discipline_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- discipline of engineering and summaries  --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">7.Summary of Significant Engineering Work-minimum 2 years in
+                        responsible charge Provide a brief summary of each project(typically using 50 words) for which
+                        you were personally accountable and state yur position,the number of months you were incharge of
+                        the work</h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="engineering_discipline_id"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
+                                inputType="en" class="additional-classes"
+                                error="{{ $errors->has('father_name_en') }}" />
+                        </div>
+                    </div>
+                    @error('engineering_discipline_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- discipline of engineering and summaries  --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">8.Vertification Engineers (At least two persons)</h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="engineering_discipline_id"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
+                                inputType="en" class="additional-classes"
+                                error="{{ $errors->has('father_name_en') }}" />
+                        </div>
+                    </div>
                     @error('engineering_discipline_id')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror

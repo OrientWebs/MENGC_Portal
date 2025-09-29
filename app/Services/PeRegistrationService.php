@@ -146,7 +146,6 @@ class PeRegistrationService
                 $registrationForm->clearMediaCollection('nrc_photo_front');
                 $registrationForm->addMedia($frontFile->getRealPath())->usingFileName($frontFile->getClientOriginalName())->toMediaCollection('nrc_photo_front');
             } elseif (!empty($baseData['existing_nrc_card_front'])) {
-                // Keep old photo if no new upload
             } else {
                 $registrationForm->clearMediaCollection('nrc_photo_front');
             }
