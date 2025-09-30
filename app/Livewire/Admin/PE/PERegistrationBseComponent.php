@@ -19,6 +19,7 @@ class PERegistrationBseComponent extends Component
     public $prePage, $nrc_township_en, $nrc_township_mm, $nrc_type_en, $nrc_type_mm, $nrc_state_en, $nrc_state_mm, $title, $register_no, $form_type, $name_en, $name_mm, $dob, $nrc_number_en, $nrc_number_mm, $father_name_en, $father_name_mm, $email, $tele_no_en, $tele_no_mm, $address_en, $address_mm, $state_id, $township_id, $fax_no, $nationality_type, $permanent_resident_no, $status, $gender;
     public $registration_id, $perm_address_en, $perm_address_mm, $perm_state_id, $perm_township_id, $perm_post_code, $perm_tele_no, $perm_fax_no, $perm_email, $des_address_en, $des_address_mm, $des_state_id, $des_township_id, $des_post_code, $des_tele_no, $des_fax_no, $des_email, $engineering_discipline_id, $exp_15_years, $meet_all_requirements, $no_disciplinary_action;
     public $nrc_card_front, $nrc_card_back, $registration_photo, $nrc_card_front_url, $nrc_card_back_url, $existing_nrc_card_front, $existing_nrc_card_back, $profile_photo, $profile_photo_url, $existing_profile_photo;
+    public $professional_experience_pdf, $discipline_involvement_pdf, $significant_engineering_work_pdf, $verification_engineers_pdf;
     public $search = '';
     public $nrcStates = [];
     public $nrcTownshipsEn = [];

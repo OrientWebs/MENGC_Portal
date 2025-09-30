@@ -425,7 +425,7 @@
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
             </div>
 
-            {{-- DECLARATION --}}
+            {{-- DISCIPLINES FOR REGISTRATION --}}
             <div class="py-3">
                 <div>
                     <h1 class="font-bold dark:text-white">4.DISCIPLINES FOR REGISTRATION(select 1 preferred
@@ -454,17 +454,17 @@
                 <div class="w-full px-2 mb-4">
                     <div class="flex w-full">
                         <div class="w-full">
-                            <x-input.label for="engineering_discipline_id"
+                            <x-input.label for="professional_experience_pdf"
                                 label="Please copy and fill PDF file and submit to browser " required="true" />
                             <a href="{{ asset('') }}"></a>
                         </div>
                         <div class="w-1/2">
-                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
-                                inputType="en" class="additional-classes"
-                                error="{{ $errors->has('father_name_en') }}" />
+                            <x-input.primary-input id="professional_experience_pdf" type="file"
+                                wire:model="professional_experience_pdf" inputType="en" class="additional-classes"
+                                error="{{ $errors->has('professional_experience_pdf') }}" />
                         </div>
                     </div>
-                    @error('engineering_discipline_id')
+                    @error('professional_experience_pdf')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
@@ -481,17 +481,17 @@
                 <div class="w-full px-2 mb-4">
                     <div class="flex w-full">
                         <div class="w-full">
-                            <x-input.label for="engineering_discipline_id"
+                            <x-input.label for="discipline_involvement_pdf"
                                 label="Please copy and fill PDF file and submit to browser " required="true" />
                             <a href="{{ asset('') }}"></a>
                         </div>
                         <div class="w-1/2">
-                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
-                                inputType="en" class="additional-classes"
-                                error="{{ $errors->has('father_name_en') }}" />
+                            <x-input.primary-input id="discipline_involvement_pdf" type="file"
+                                wire:model="discipline_involvement_pdf" inputType="en" class="additional-classes"
+                                error="{{ $errors->has('discipline_involvement_pdf') }}" />
                         </div>
                     </div>
-                    @error('engineering_discipline_id')
+                    @error('discipline_involvement_pdf')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
@@ -510,17 +510,18 @@
                 <div class="w-full px-2 mb-4">
                     <div class="flex w-full">
                         <div class="w-full">
-                            <x-input.label for="engineering_discipline_id"
+                            <x-input.label for="significant_engineering_work_pdf"
                                 label="Please copy and fill PDF file and submit to browser " required="true" />
                             <a href="{{ asset('') }}"></a>
                         </div>
                         <div class="w-1/2">
-                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
-                                inputType="en" class="additional-classes"
-                                error="{{ $errors->has('father_name_en') }}" />
+                            <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                                wire:model="significant_engineering_work_pdf" inputType="en"
+                                class="additional-classes"
+                                error="{{ $errors->has('significant_engineering_work_pdf') }}" />
                         </div>
                     </div>
-                    @error('engineering_discipline_id')
+                    @error('significant_engineering_work_pdf')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
@@ -536,17 +537,17 @@
                 <div class="w-full px-2 mb-4">
                     <div class="flex w-full">
                         <div class="w-full">
-                            <x-input.label for="engineering_discipline_id"
+                            <x-input.label for="verification_engineers_pdf"
                                 label="Please copy and fill PDF file and submit to browser " required="true" />
                             <a href="{{ asset('') }}"></a>
                         </div>
                         <div class="w-1/2">
-                            <x-input.primary-input id="father_name_en" type="file" wire:model="father_name_en"
-                                inputType="en" class="additional-classes"
-                                error="{{ $errors->has('father_name_en') }}" />
+                            <x-input.primary-input id="verification_engineers_pdf" type="file"
+                                wire:model="verification_engineers_pdf" inputType="en" class="additional-classes"
+                                error="{{ $errors->has('verification_engineers_pdf') }}" />
                         </div>
                     </div>
-                    @error('engineering_discipline_id')
+                    @error('verification_engineers_pdf')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>

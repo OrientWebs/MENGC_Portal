@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class PERegistrationForm extends Model
+class PERegistrationForm extends Model implements HasMedia
 {
+    use SoftDeletes, InteractsWithMedia;
     use SoftDeletes;
     protected $table = "pe_registration_forms";
 
@@ -46,4 +50,11 @@ class PERegistrationForm extends Model
     {
         return $this->belongsTo(RegistrationForm::class, 'registration_id', 'id');
     }
+
+    // public function registerMediaCollections(): void
+    // {
+    //     $this->addMediaCollection('professional_experience_pdf')->singleFile()->useDisk(config('filesystems.default'));
+    // }
+
+    public function getFullUrlProfessionalExperiencePdf() {}
 }

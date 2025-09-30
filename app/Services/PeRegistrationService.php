@@ -71,8 +71,30 @@ class PeRegistrationService
         try {
             $registrationForm = $this->PErepository->registrationForm()->create($baseData);
             $peData["registration_id"] = $registrationForm->id;
-            $this->PErepository->peRegistrationForm()->create($peData);
+            $PeRegistrationForm = $this->PErepository->peRegistrationForm()->create($peData);
             DB::commit();
+            if ($baseData['nrc_card_front']) {
+                $registrationForm->addMedia($baseData['nrc_card_front']->getRealPath())->usingFileName($baseData['nrc_card_front']->getClientOriginalName())->toMediaCollection('nrc_photo_front');
+            }
+
+            if ($baseData['nrc_card_back']) {
+                $registrationForm->addMedia($baseData['nrc_card_back']->getRealPath())->usingFileName($baseData['nrc_card_back']->getClientOriginalName())->toMediaCollection('nrc_photo_back');
+            }
+            if ($baseData['profile_photo']) {
+                $registrationForm->addMedia($baseData['profile_photo']->getRealPath())->usingFileName($baseData['profile_photo']->getClientOriginalName())->toMediaCollection('profile_photo');
+            }
+            if ($peData['professional_experience_pdf']) {
+                $PeRegistrationForm->addMedia($peData['professional_experience_pdf']->getRealPath())->usingFileName($peData['professional_experience_pdf']->getClientOriginalName())->toMediaCollection('professional_experience_pdf');
+            }
+            if ($peData['discipline_involvement_pdf']) {
+                $PeRegistrationForm->addMedia($peData['discipline_involvement_pdf']->getRealPath())->usingFileName($peData['discipline_involvement_pdf']->getClientOriginalName())->toMediaCollection('discipline_involvement_pdf');
+            }
+            if ($peData['significant_engineering_work_pdf']) {
+                $PeRegistrationForm->addMedia($peData['significant_engineering_work_pdf']->getRealPath())->usingFileName($peData['significant_engineering_work_pdf']->getClientOriginalName())->toMediaCollection('significant_engineering_work_pdf');
+            }
+            if ($peData['verification_engineers_pdf']) {
+                $PeRegistrationForm->addMedia($peData['verification_engineers_pdf']->getRealPath())->usingFileName($peData['verification_engineers_pdf']->getClientOriginalName())->toMediaCollection('verification_engineers_pdf');
+            }
             return $registrationForm;
         } catch (\Exception $e) {
             DB::rollBack();

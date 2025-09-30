@@ -431,7 +431,7 @@
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
             </div>
 
-            {{-- DECLARATION --}}
+            {{-- DISCIPLINES FOR REGISTRATION --}}
             <div class="py-3">
                 <div>
                     <h1 class="font-bold dark:text-white">4.DISCIPLINES FOR REGISTRATION(select 1 preferred
@@ -444,6 +444,141 @@
                     <x-select.search :data="$engineeringDisciplines" wire:model.live="engineering_discipline_id" :error="$errors->has('engineering_discipline_id')"
                         placeholder="Choose a DISCIPLINES" />
                     @error('engineering_discipline_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- PROFESSIONAL EXPERIENCE --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">5.PROFESSIONAL EXPERIENCE (in responsible charge of
+                        significant engineering work) *</h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="professional_experience_pdf"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="professional_experience_pdf" type="file"
+                                wire:model="professional_experience_pdf" inputType="en" class="additional-classes"
+                                error="{{ $errors->has('professional_experience_pdf') }}" />
+                            @if ($professional_experience_pdf)
+                                <a href="{{ $professional_experience_pdf }}" target="_blank"
+                                    class="text-blue-500 underline">
+                                    View Current File
+                                </a>
+                            @endif
+
+                        </div>
+                    </div>
+                    @error('professional_experience_pdf')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- discipline involvement PDF  --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">6.Describe your involvement in your selected discipline of
+                        engineering and summaries the positions you have held in the following table </h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="discipline_involvement_pdf"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="discipline_involvement_pdf" type="file"
+                                wire:model="discipline_involvement_pdf" inputType="en" class="additional-classes"
+                                error="{{ $errors->has('discipline_involvement_pdf') }}" />
+                            @if ($discipline_involvement_pdf)
+                                <a href="{{ $discipline_involvement_pdf }}" target="_blank"
+                                    class="text-blue-500 underline">
+                                    View Current File
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                    @error('discipline_involvement_pdf')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+            {{-- significant engineering work PDF  --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">7.Summary of Significant Engineering Work-minimum 2 years in
+                        responsible charge Provide a brief summary of each project(typically using 50 words) for which
+                        you were personally accountable and state yur position,the number of months you were incharge of
+                        the work</h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="significant_engineering_work_pdf"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                                wire:model="significant_engineering_work_pdf" inputType="en"
+                                class="additional-classes"
+                                error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+
+                            @if ($significant_engineering_work_pdf)
+                                <a href="{{ $significant_engineering_work_pdf }}" target="_blank"
+                                    class="text-blue-500 underline">
+                                    View Current File
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                    @error('significant_engineering_work_pdf')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+            </div>
+
+            {{-- verification engineers PDF  --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">8.Vertification Engineers (At least two persons)</h1>
+                </div>
+                <div class="w-full px-2 mb-4">
+                    <div class="flex w-full">
+                        <div class="w-full">
+                            <x-input.label for="verification_engineers_pdf"
+                                label="Please copy and fill PDF file and submit to browser " required="true" />
+                            <a href="{{ asset('') }}"></a>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input.primary-input id="verification_engineers_pdf" type="file"
+                                wire:model="verification_engineers_pdf" inputType="en" class="additional-classes"
+                                error="{{ $errors->has('verification_engineers_pdf') }}" />
+                            @if ($verification_engineers_pdf)
+                                <a href="{{ $verification_engineers_pdf }}" target="_blank"
+                                    class="text-blue-500 underline">
+                                    View Current File
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                    @error('verification_engineers_pdf')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>

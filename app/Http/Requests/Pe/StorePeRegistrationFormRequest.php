@@ -45,6 +45,10 @@ class StorePeRegistrationFormRequest extends LivewireFormRequest
             'des_fax_no'               => 'nullable|string|max:50',
             'des_email'                => 'nullable|email|max:100',
 
+            'professional_experience_pdf'       => 'required|file',
+            'discipline_involvement_pdf'        => 'required|file',
+            'significant_engineering_work_pdf'  => 'required|file',
+            'verification_engineers_pdf'        => 'required|file',
             // Engineering Discipline
             'engineering_discipline_id' => 'nullable|integer|exists:engineering_disciplines,id',
 
