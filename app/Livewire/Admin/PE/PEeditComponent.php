@@ -105,16 +105,6 @@ class PEeditComponent extends PERegistrationBseComponent
             }
         }
     }
-    public function __update()
-    {
-        $baseValidated  = StoreBaseRegistrationFormRequest::validate($this);
-        $peValidated    = StorePeRegistrationFormRequest::validate($this);
-        $this->PEservice->update($this->pe_registration_id, $baseValidated, $peValidated);
-
-        $this->flashMessage('success', 'PE registration update successfully!');
-        return redirect()->route('admin.pe-form-index');
-    }
-
     public function update()
     {
 
