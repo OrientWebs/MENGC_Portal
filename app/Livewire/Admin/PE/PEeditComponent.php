@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\PE;
 
 use Livewire\Component;
 use App\Http\Requests\Pe\StorePeRegistrationFormRequest;
+use App\Http\Requests\Pe\UpdatePeRegistrationFormRequest;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 use App\Http\Requests\Registration\UpdateBaseRegistrationFormRequest;
 
@@ -118,7 +119,7 @@ class PEeditComponent extends PERegistrationBseComponent
     {
 
         $baseValidated  = UpdateBaseRegistrationFormRequest::validate($this);
-        $peValidated    = StorePeRegistrationFormRequest::validate($this);
+        $peValidated    = UpdatePeRegistrationFormRequest::validate($this);
         $this->PEservice->update(
             $this->pe_registration_id,
             $baseValidated,
