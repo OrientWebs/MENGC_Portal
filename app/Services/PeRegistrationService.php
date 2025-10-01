@@ -52,6 +52,14 @@ class PeRegistrationService
     {
         return $this->PErepository->getEngineeringDiscipline()->get();
     }
+    public function getUniversity()
+    {
+        return $this->PErepository->university()->get();
+    }
+    public function getAcademicQualification()
+    {
+        return $this->PErepository->academicQualification()->get();
+    }
 
     // App\Services\PeRegistrationService.php
     public function create($baseData, $peData)

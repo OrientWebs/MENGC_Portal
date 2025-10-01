@@ -20,6 +20,8 @@ class PERegistrationBseComponent extends Component
     public $registration_id, $perm_address_en, $perm_address_mm, $perm_state_id, $perm_township_id, $perm_post_code, $perm_tele_no, $perm_fax_no, $perm_email, $des_address_en, $des_address_mm, $des_state_id, $des_township_id, $des_post_code, $des_tele_no, $des_fax_no, $des_email, $engineering_discipline_id, $exp_15_years, $meet_all_requirements, $no_disciplinary_action;
     public $nrc_card_front, $nrc_card_back, $registration_photo, $nrc_card_front_url, $nrc_card_back_url, $existing_nrc_card_front, $existing_nrc_card_back, $profile_photo, $profile_photo_url, $existing_profile_photo;
     public $professional_experience_pdf, $discipline_involvement_pdf, $significant_engineering_work_pdf, $verification_engineers_pdf;
+    // PE Academic
+    public $first_university_id, $first_graduation_year, $first_eng_disc_id, $first_acad_qual_id, $post_university_id, $post_graduation_year, $post_acad_qual_id, $other_qualification, $other_eng_disc_id;
     public $search = '';
     public $nrcStates = [];
     public $nrcTownshipsEn = [];
@@ -30,12 +32,16 @@ class PERegistrationBseComponent extends Component
     public $desTownships = [];
     protected $PEservice;
     public $engineeringDisciplines = [];
+    public $universities = [];
+    public $AcademicQualifications = [];
     public function boot(PeRegistrationService $service)
     {
         $this->verifyAuthorization("PEregistration-access");
         $this->PEservice = $service;
         $this->states = $this->PEservice->states()->pluck('name', 'id');
         $this->engineeringDisciplines = $this->PEservice->engineeringDisciplines()->pluck('name', 'id');
+        $this->universities = $this->PEservice->getUniversity()->pluck('name', 'id');
+        $this->AcademicQualifications = $this->PEservice->getAcademicQualification()->pluck('name', 'id');
     }
     public function updatedPermStateId()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\AcademicQualification;
 use App\Models\EngineeringDiscipline;
 use App\Models\NrcState;
 use App\Models\NrcTownship;
@@ -10,6 +11,7 @@ use App\Models\PERegistrationForm;
 use App\Models\RegistrationForm;
 use App\Models\State;
 use App\Models\Township;
+use App\Models\University;
 use App\Utilities\BaseCrudRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -24,8 +26,20 @@ class PErepository extends BaseCrudRepository
     private $Township;
     private $EngineeringDiscipline;
     private $PeRegistrationForm;
-    public function __construct(PERegistrationForm $model, RegistrationForm $registrationForm, NrcState $NrcState, NrcTownship $NrcTownship, NrcType $NrcType, Township $Township, State $State, EngineeringDiscipline $engineeringDiscipline)
-    {
+    private $University;
+    private $AcademicQualification;
+    public function __construct(
+        PERegistrationForm $model,
+        RegistrationForm $registrationForm,
+        NrcState $NrcState,
+        NrcTownship $NrcTownship,
+        NrcType $NrcType,
+        Township $Township,
+        State $State,
+        EngineeringDiscipline $engineeringDiscipline,
+        University $University,
+        AcademicQualification $academicQualification
+    ) {
         parent::__construct($model);
         $this->PeRegistrationForm = $model;
         $this->RegistrationForm = $registrationForm;
@@ -35,6 +49,8 @@ class PErepository extends BaseCrudRepository
         $this->Township = $Township;
         $this->State = $State;
         $this->EngineeringDiscipline = $engineeringDiscipline;
+        $this->University = $University;
+        $this->AcademicQualification = $academicQualification;
     }
     public function peRegistrationForm()
     {
@@ -69,7 +85,14 @@ class PErepository extends BaseCrudRepository
     {
         return $this->Township;
     }
-
+    public function AcademicQualification()
+    {
+        return $this->AcademicQualification;
+    }
+    public function University()
+    {
+        return $this->University;
+    }
     public function generateRegisterNo()
     {
         $id = $this->id ?? 0;

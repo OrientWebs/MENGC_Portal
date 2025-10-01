@@ -31,5 +31,6 @@ class PEAcademicQualifications extends Model implements HasMedia
         'other_document_name_2',
         'other_document_name_3',
         'other_document_name_4',
+        'other_qualification'
     ];
 }

@@ -20,27 +20,18 @@ return new class extends Migration
             $table->year('first_graduation_year')->nullable();
 
             $table->foreignId('first_eng_disc_id')->nullable()->constrained('engineering_disciplines');
-            $table->foreignId('first_acad_qual_id')
-                ->nullable()
-                ->constrained('academic_qualifications');
+            $table->foreignId('first_acad_qual_id')->nullable()->constrained('academic_qualifications');
 
-            $table->foreignId('post_university_id')
-                ->nullable()
-                ->constrained('universities');
+            $table->foreignId('post_university_id')->nullable()->constrained('universities');
 
             $table->year('post_graduation_year')->nullable();
+            $table->string('other_qualification', 250)->nullable();
 
-            $table->foreignId('post_eng_disc_id')
-                ->nullable()
-                ->constrained('engineering_disciplines');
+            $table->foreignId('post_eng_disc_id')->nullable()->constrained('engineering_disciplines');
 
-            $table->foreignId('post_acad_qual_id')
-                ->nullable()
-                ->constrained('academic_qualifications');
+            $table->foreignId('post_acad_qual_id')->nullable()->constrained('academic_qualifications');
 
-            $table->foreignId('other_eng_disc_id')
-                ->nullable()
-                ->constrained('engineering_disciplines');
+            $table->foreignId('other_eng_disc_id')->nullable()->constrained('engineering_disciplines');
 
             $table->year('other_graduation_year')->nullable();
 
