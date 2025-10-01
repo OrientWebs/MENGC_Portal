@@ -2,6 +2,6 @@
 
 namespace App\Livewire\Admin\PE;
 
-use App\Livewire\Admin\PE\PERegistrationBseComponent;
+use App\Livewire\Admin\PE\PERegistrationBaseComponent;
 
-class StoreComponent extends PERegistrationBseComponent {}
+class StoreComponent extends PERegistrationBaseComponent {}

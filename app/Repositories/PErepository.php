@@ -2,19 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Models\AcademicQualification;
-use App\Models\EngineeringDiscipline;
-use App\Models\NrcState;
-use App\Models\NrcTownship;
-use App\Models\NrcType;
-use App\Models\PERegistrationForm;
-use App\Models\RegistrationForm;
 use App\Models\State;
+use App\Models\NrcType;
+use App\Models\NrcState;
 use App\Models\Township;
 use App\Models\University;
-use App\Utilities\BaseCrudRepository;
+use App\Models\NrcTownship;
+use App\Models\RegistrationForm;
+use App\Models\PERegistrationForm;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\AcademicQualification;
+use App\Models\EngineeringDiscipline;
+use App\Utilities\BaseCrudRepository;
+use App\Models\PEAcademicQualifications;
 
 class PErepository extends BaseCrudRepository
 {
@@ -28,6 +29,7 @@ class PErepository extends BaseCrudRepository
     private $PeRegistrationForm;
     private $University;
     private $AcademicQualification;
+    private $PEAcademicQualifications;
     public function __construct(
         PERegistrationForm $model,
         RegistrationForm $registrationForm,
@@ -38,7 +40,8 @@ class PErepository extends BaseCrudRepository
         State $State,
         EngineeringDiscipline $engineeringDiscipline,
         University $University,
-        AcademicQualification $academicQualification
+        AcademicQualification $academicQualification,
+        PEAcademicQualifications $PEAcademicQualifications
     ) {
         parent::__construct($model);
         $this->PeRegistrationForm = $model;
@@ -51,6 +54,7 @@ class PErepository extends BaseCrudRepository
         $this->EngineeringDiscipline = $engineeringDiscipline;
         $this->University = $University;
         $this->AcademicQualification = $academicQualification;
+        $this->PEAcademicQualifications = $PEAcademicQualifications;
     }
     public function peRegistrationForm()
     {
@@ -65,6 +69,10 @@ class PErepository extends BaseCrudRepository
         return $this->EngineeringDiscipline;
     }
 
+    public function PEAcademicQualifications()
+    {
+        return $this->PEAcademicQualifications;
+    }
     public function getNrcTwonship()
     {
         return $this->NrcTownship;

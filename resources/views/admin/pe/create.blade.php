@@ -630,7 +630,7 @@
 
                     {{-- Others Qualification Attachment --}}
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="first_acad_qual_id" label="Others Qualification Attachment" />
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
                         <x-input.primary-input id="significant_engineering_work_pdf" type="file"
                             wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
                             error="{{ $errors->has('significant_engineering_work_pdf') }}" />
@@ -652,7 +652,7 @@
 
                     {{-- Others Qualification Attachment --}}
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="first_acad_qual_id" label="Others Qualification Attachment" />
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
                         <x-input.primary-input id="significant_engineering_work_pdf" type="file"
                             wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
                             error="{{ $errors->has('significant_engineering_work_pdf') }}" />
@@ -674,7 +674,7 @@
 
                     {{-- Others Qualification Attachment --}}
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="first_acad_qual_id" label="Others Qualification Attachment" />
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
                         <x-input.primary-input id="significant_engineering_work_pdf" type="file"
                             wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
                             error="{{ $errors->has('significant_engineering_work_pdf') }}" />
@@ -696,7 +696,7 @@
 
                     {{-- Others Qualification Attachment --}}
                     <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
-                        <x-input.label for="first_acad_qual_id" label="Others Qualification Attachment" />
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
                         <x-input.primary-input id="significant_engineering_work_pdf" type="file"
                             wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
                             error="{{ $errors->has('significant_engineering_work_pdf') }}" />

@@ -62,7 +62,7 @@ class PeRegistrationService
     }
 
     // App\Services\PeRegistrationService.php
-    public function create($baseData, $peData)
+    public function create($baseData, $peData, $peAcademicQualifications = null)
     {
         $user = auth()->user()->id;
         $baseData += [
@@ -80,7 +80,13 @@ class PeRegistrationService
             $registrationForm = $this->PErepository->registrationForm()->create($baseData);
             $peData["registration_id"] = $registrationForm->id;
             $PeRegistrationForm = $this->PErepository->peRegistrationForm()->create($peData);
-            DB::commit();
+            $pe_form_id  = $PeRegistrationForm->id;
+            if (!empty($pe_form_id) && !empty($peAcademicQualifications)) {
+                $peAcademicQualifications += [
+                    'pe_form_id' => $pe_form_id
+                ];
+                $PeRegistrationForm = $this->PErepository->PEAcademicQualifications()->create($peAcademicQualifications);
+            }
             if ($baseData['nrc_card_front']) {
                 $registrationForm->addMedia($baseData['nrc_card_front']->getRealPath())->usingFileName($baseData['nrc_card_front']->getClientOriginalName())->toMediaCollection('nrc_photo_front');
             }
@@ -103,6 +109,8 @@ class PeRegistrationService
             if ($peData['verification_engineers_pdf']) {
                 $PeRegistrationForm->addMedia($peData['verification_engineers_pdf']->getRealPath())->usingFileName($peData['verification_engineers_pdf']->getClientOriginalName())->toMediaCollection('verification_engineers_pdf');
             }
+
+            DB::commit();
             return $registrationForm;
         } catch (\Exception $e) {
             DB::rollBack();

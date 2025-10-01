@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Http\Requests\Pe\StorePeRegistrationFormRequest;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 
-class PeIndexComponent extends PERegistrationBseComponent
+class PeIndexComponent extends PERegistrationBaseComponent
 {
 
     public function mount() {}

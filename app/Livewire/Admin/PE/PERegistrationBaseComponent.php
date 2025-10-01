@@ -11,7 +11,7 @@ use App\Traits\AuthorizeRequests;
 use App\Traits\HandleFlashMessage;
 use Livewire\WithFileUploads;
 
-class PERegistrationBseComponent extends Component
+class PERegistrationBaseComponent extends Component
 {
     use WithPagination, AuthorizeRequests, HandlePageState, HandleFlashMessage, WithFileUploads;
     #[Layout('admin.layouts.app')]
@@ -21,7 +21,7 @@ class PERegistrationBseComponent extends Component
     public $nrc_card_front, $nrc_card_back, $registration_photo, $nrc_card_front_url, $nrc_card_back_url, $existing_nrc_card_front, $existing_nrc_card_back, $profile_photo, $profile_photo_url, $existing_profile_photo;
     public $professional_experience_pdf, $discipline_involvement_pdf, $significant_engineering_work_pdf, $verification_engineers_pdf;
     // PE Academic
-    public $first_university_id, $first_graduation_year, $first_eng_disc_id, $first_acad_qual_id, $post_university_id, $post_graduation_year, $post_acad_qual_id, $other_qualification, $other_eng_disc_id;
+    public $first_university_id, $first_graduation_year, $first_eng_disc_id, $first_acad_qual_id, $post_university_id, $post_graduation_year, $post_acad_qual_id, $other_qualification, $other_eng_disc_id, $other_document_name_1, $other_document_name_2, $other_document_name_3, $other_document_name_4;
     public $search = '';
     public $nrcStates = [];
     public $nrcTownshipsEn = [];

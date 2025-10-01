@@ -8,7 +8,7 @@ use App\Http\Requests\Pe\UpdatePeRegistrationFormRequest;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 use App\Http\Requests\Registration\UpdateBaseRegistrationFormRequest;
 
-class PEeditComponent extends PERegistrationBseComponent
+class PEeditComponent extends PERegistrationBaseComponent
 {
 
     public $pe_registration_id;
