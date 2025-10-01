@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\PE;
 
-use App\Services\PeRegistrationService;
+use App\Services\PeService;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Traits\HandlePageState;
@@ -34,7 +34,7 @@ class PERegistrationBaseComponent extends Component
     public $engineeringDisciplines = [];
     public $universities = [];
     public $AcademicQualifications = [];
-    public function boot(PeRegistrationService $service)
+    public function boot(PeService $service)
     {
         $this->verifyAuthorization("PEregistration-access");
         $this->PEservice = $service;

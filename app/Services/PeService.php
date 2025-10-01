@@ -3,65 +3,65 @@
 namespace App\Services;
 
 use App\Models\User;
-use App\Repositories\PErepository;
+use App\Repositories\PeRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class PeRegistrationService
+class PeService
 {
-    private PErepository $PErepository;
-    public function __construct(PErepository $PERepository)
+    private PeRepository $PeRepository;
+    public function __construct(PeRepository $PeRepository)
     {
-        $this->PErepository = $PERepository;
+        $this->PeRepository = $PeRepository;
     }
 
     public function getAllNrcState()
     {
-        return $this->PErepository->getNrcState()->get();
+        return $this->PeRepository->getNrcState()->get();
     }
 
     public function findRegistrationForm($id)
     {
-        return $this->PErepository->registrationForm()->find($id);
+        return $this->PeRepository->registrationForm()->find($id);
     }
     public function findPeRegistrationForm($id)
     {
-        return $this->PErepository->peRegistrationForm()->with('registrationForm')->find($id);
+        return $this->PeRepository->peRegistrationForm()->with('registrationForm')->find($id);
     }
     public function getNrcTownship($stateId)
     {
-        return $this->PErepository->getNrcTwonship()->where('state_id', $stateId)->get();
+        return $this->PeRepository->getNrcTwonship()->where('state_id', $stateId)->get();
     }
     public function getNrcType()
     {
-        return $this->PErepository->getNrcType()->get();
+        return $this->PeRepository->getNrcType()->get();
     }
     public function generateRegisterNo()
     {
-        return $this->PErepository->generateRegisterNo();
+        return $this->PeRepository->generateRegisterNo();
     }
     public function states()
     {
-        return $this->PErepository->getStates()->get();
+        return $this->PeRepository->getStates()->get();
     }
     public function getTownships($state_id)
     {
-        return $this->PErepository->township()->where('state_id', $state_id)->get();
+        return $this->PeRepository->township()->where('state_id', $state_id)->get();
     }
     public function engineeringDisciplines()
     {
-        return $this->PErepository->getEngineeringDiscipline()->get();
+        return $this->PeRepository->getEngineeringDiscipline()->get();
     }
     public function getUniversity()
     {
-        return $this->PErepository->university()->get();
+        return $this->PeRepository->university()->get();
     }
     public function getAcademicQualification()
     {
-        return $this->PErepository->academicQualification()->get();
+        return $this->PeRepository->academicQualification()->get();
     }
 
-    // App\Services\PeRegistrationService.php
+    // App\Services\PeService.php
     public function create($baseData, $peData, $peAcademicQualifications = null)
     {
         $user = auth()->user()->id;
@@ -77,15 +77,15 @@ class PeRegistrationService
         }
         DB::beginTransaction();
         try {
-            $registrationForm = $this->PErepository->registrationForm()->create($baseData);
+            $registrationForm = $this->PeRepository->registrationForm()->create($baseData);
             $peData["registration_id"] = $registrationForm->id;
-            $PeRegistrationForm = $this->PErepository->peRegistrationForm()->create($peData);
+            $PeRegistrationForm = $this->PeRepository->peRegistrationForm()->create($peData);
             $pe_form_id  = $PeRegistrationForm->id;
             if (!empty($pe_form_id) && !empty($peAcademicQualifications)) {
                 $peAcademicQualifications += [
                     'pe_form_id' => $pe_form_id
                 ];
-                $PeRegistrationForm = $this->PErepository->PEAcademicQualifications()->create($peAcademicQualifications);
+                $PeRegistrationForm = $this->PeRepository->PEAcademicQualifications()->create($peAcademicQualifications);
             }
             if ($baseData['nrc_card_front']) {
                 $registrationForm->addMedia($baseData['nrc_card_front']->getRealPath())->usingFileName($baseData['nrc_card_front']->getClientOriginalName())->toMediaCollection('nrc_photo_front');
@@ -194,7 +194,7 @@ class PeRegistrationService
     {
         $roles = auth()->user()->getRoleNames()->first();
         $user_id = auth()->user()->id;
-        $query = $this->PErepository->peRegistrationForm()->query();
+        $query = $this->PeRepository->peRegistrationForm()->query();
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('perm_address_en', 'like', "%{$search}%");

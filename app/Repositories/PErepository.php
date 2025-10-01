@@ -17,7 +17,7 @@ use App\Models\EngineeringDiscipline;
 use App\Utilities\BaseCrudRepository;
 use App\Models\PEAcademicQualifications;
 
-class PErepository extends BaseCrudRepository
+class PeRepository extends BaseCrudRepository
 {
     public $RegistrationForm;
     private $NrcState;

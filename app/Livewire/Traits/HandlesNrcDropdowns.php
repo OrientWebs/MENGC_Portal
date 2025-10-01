@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Traits;
 
-use App\Services\PeRegistrationService;
+use App\Services\PeService;
 
 trait HandlesNrcDropdowns
 {
@@ -17,20 +17,20 @@ trait HandlesNrcDropdowns
     /**
      * Load NRC states (call this in mount)
      */
-    public function loadNrcStates(PeRegistrationService $service): void
+    public function loadNrcStates(PeService $service): void
     {
         $this->nrcStates = $service->getAllNrcState();
     }
 
     public function updatedNrcStateEn($stateId): void
     {
-        $this->nrcTownshipsEn = app(PeRegistrationService::class)->getNrcTownship($stateId);
+        $this->nrcTownshipsEn = app(PeService::class)->getNrcTownship($stateId);
         $this->nrc_township_en = null;
     }
 
     public function updatedNrcStateMm($stateId): void
     {
-        $this->nrcTownshipsMm = app(PeRegistrationService::class)->getNrcTownship($stateId);
+        $this->nrcTownshipsMm = app(PeService::class)->getNrcTownship($stateId);
         $this->nrc_township_mm = null;
     }
 }
