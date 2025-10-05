@@ -56,5 +56,8 @@ class PERegistrationForm extends Model implements HasMedia
     //     $this->addMediaCollection('professional_experience_pdf')->singleFile()->useDisk(config('filesystems.default'));
     // }
 
-    public function getFullUrlProfessionalExperiencePdf() {}
+    public function PeAcademicQualifications()
+    {
+        return $this->hasOne(PEAcademicQualifications::class, 'pe_form_id', 'id');
+    }
 }

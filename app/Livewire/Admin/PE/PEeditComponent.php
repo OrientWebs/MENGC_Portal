@@ -31,11 +31,10 @@ class PEeditComponent extends PERegistrationBaseComponent
             $profile_photo                  = $peData->registrationForm->getMedia('profile_photo')->first();
             $this->profile_photo_url        =  $profile_photo?->getUrl();
             $this->existing_profile_photo   =  $profile_photo?->id; // media id or path
-            $this->professional_experience_pdf   =  $peData->getFirstMediaUrl('professional_experience_pdf'); // media id or path
-            $this->discipline_involvement_pdf   =  $peData->getFirstMediaUrl('discipline_involvement_pdf'); // media id or path
-            $this->significant_engineering_work_pdf   =  $peData->getFirstMediaUrl('significant_engineering_work_pdf'); // media id or path
-            $this->verification_engineers_pdf   =  $peData->getFirstMediaUrl('verification_engineers_pdf'); // media id or path
-
+            $this->professional_experience_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('professional_experience_pdf'); // media id or path
+            $this->discipline_involvement_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('discipline_involvement_pdf'); // media id or path
+            $this->significant_engineering_work_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('significant_engineering_work_pdf'); // media id or path
+            $this->verification_engineers_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('verification_engineers_pdf'); // media id or path
             $this->title                    = $peData->registrationForm->title;
             $this->father_name_en           = $peData->registrationForm->father_name_en;
             $this->father_name_mm           = $peData->registrationForm->father_name_mm;
