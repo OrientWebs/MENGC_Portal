@@ -431,6 +431,293 @@
                 <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
             </div>
 
+            {{-- ACADEMIC QUALIFICATIONS --}}
+            <div class="py-3">
+                <div>
+                    <h1 class="font-bold dark:text-white">3.ACADEMIC QUALIFICATIONS</h1>
+                </div>
+
+                {{-- First Avademic --}}
+                <div class="flex flex-wrap -mx-2">
+
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_university_id" label="First Degree/University" />
+                        <x-select.search :data="$universities" wire:model.live="first_university_id" :error="$errors->has('first_university_id')"
+                            placeholder="Choose a UNIVERSITIES" />
+                        @error('first_university_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- First Graduation --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_graduation_year" label="Year of Graduation" />
+                        <x-input.primary-input id="first_graduation_year" type="month"
+                            wire:model="first_graduation_year" error="{{ $errors->has('first_graduation_year') }}"
+                            max="{{ date('Y-m') }}" />
+
+                        @error('first_graduation_year')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- First Graduation --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_eng_disc_id" label="Discipline of Engineering" />
+                        <x-select.search :data="$engineeringDisciplines" wire:model.live="first_eng_disc_id" :error="$errors->has('first_eng_disc_id')"
+                            placeholder="Choose Discipline" />
+
+                        @error('first_eng_disc_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Academic Qualification --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Academic Qualification" />
+                        <x-select.search :data="$AcademicQualifications" wire:model.live="first_acad_qual_id" :error="$errors->has('first_acad_qual_id')"
+                            placeholder="Choose Academic" />
+
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- University Attachment --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="First Degree/ University Attachment" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Academic Qualifications --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Academic Qualifications Attachments" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700">
+
+                {{-- Post Academic --}}
+                <div class="flex flex-wrap -mx-2">
+                    {{-- Post Degree/University --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="post_university_id" label="Post Degree/University" />
+                        <x-select.search :data="$universities" wire:model.live="post_university_id" :error="$errors->has('post_university_id')"
+                            placeholder="Choose a UNIVERSITIES" />
+                        @error('post_university_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Post Graduation --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="post_graduation_year" label="Year of Graduation" />
+                        <x-input.primary-input id="post_graduation_year" type="month"
+                            wire:model="post_graduation_year" error="{{ $errors->has('post_graduation_year') }}"
+                            max="{{ date('Y-m') }}" />
+
+                        @error('post_graduation_year')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Post Discipline of Engineering --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="post_eng_disc_id" label="Discipline of Engineering" />
+                        <x-select.search :data="$engineeringDisciplines" wire:model.live="post_eng_disc_id" :error="$errors->has('post_eng_disc_id')"
+                            placeholder="Choose Discipline" />
+
+                        @error('post_eng_disc_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Post Academic Qualification --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="post_acad_qual_id" label="Academic Qualification" />
+                        <x-select.search :data="$AcademicQualifications" wire:model.live="post_acad_qual_id" :error="$errors->has('post_acad_qual_id')"
+                            placeholder="Choose Academic" />
+
+                        @error('post_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- University Attachment --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="First Degree/ University Attachment" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Academic Qualifications --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Academic Qualifications Attachments" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+                {{-- Other Academic --}}
+                <div class="flex flex-wrap -mx-2">
+                    {{-- Other Qualification --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="other_qualification" label="Other Qualification" />
+                        <x-input.primary-input id="other_qualification" type="text"
+                            wire:model="other_qualification" error="{{ $errors->has('other_qualification') }}" />
+                        @error('other_qualification')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Others Qualification Attachment --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Others Qualification Attachment" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Other Discipline of Engineering --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="other_eng_disc_id" label="Others Discipline of Engineering" />
+                        <x-select.search :data="$engineeringDisciplines" wire:model.live="other_eng_disc_id" :error="$errors->has('other_eng_disc_id')"
+                            placeholder="Choose Discipline" />
+
+                        @error('other_eng_disc_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Other Graduation Year --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="other_graduation_year" label="Year of Graduation" />
+                        <x-input.primary-input id="other_graduation_year" type="month"
+                            wire:model="other_graduation_year" error="{{ $errors->has('other_graduation_year') }}"
+                            max="{{ date('Y-m') }}" />
+
+                        @error('other_graduation_year')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Other Document 1 --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="other_document_name_1" label="Other Documents" />
+                        <x-input.primary-input id="other_document_name_1" type="text"
+                            wire:model="other_document_name_1"
+                            error="{{ $errors->has('other_document_name_1') }}" />
+                        @error('other_document_name_1')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Others Qualification Attachment --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Other Document 2 --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="other_document_name_2" label="Other Documents" />
+                        <x-input.primary-input id="other_document_name_2" type="text"
+                            wire:model="other_document_name_2"
+                            error="{{ $errors->has('other_document_name_2') }}" />
+                        @error('other_document_name_2')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Others Qualification Attachment --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Other Document 3 --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="other_document_name_3" label="Other Documents" />
+                        <x-input.primary-input id="other_document_name_3" type="text"
+                            wire:model="other_document_name_3"
+                            error="{{ $errors->has('other_document_name_3') }}" />
+                        @error('other_document_name_3')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Others Qualification Attachment --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Other Document 4 --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="other_document_name_4" label="Other Documents" />
+                        <x-input.primary-input id="other_document_name_4" type="text"
+                            wire:model="other_document_name_4"
+                            error="{{ $errors->has('other_document_name_4') }}" />
+                        @error('other_document_name_4')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    {{-- Others Qualification Attachment --}}
+                    <div class="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4">
+                        <x-input.label for="first_acad_qual_id" label="Others Document Attachment" />
+                        <x-input.primary-input id="significant_engineering_work_pdf" type="file"
+                            wire:model="significant_engineering_work_pdf" inputType="en" class="additional-classes"
+                            error="{{ $errors->has('significant_engineering_work_pdf') }}" />
+                        @error('first_acad_qual_id')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                </div>
+
+                <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700">
+
+            </div>
+
+
             {{-- DISCIPLINES FOR REGISTRATION --}}
             <div class="py-3">
                 <div>

@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\PE;
 use Livewire\Component;
 use App\Http\Requests\Pe\StorePeRegistrationFormRequest;
 use App\Http\Requests\Pe\UpdatePeRegistrationFormRequest;
+use App\Http\Requests\Pe\UpdatePeAcademicQualificationsRequest;
 use App\Http\Requests\Registration\StoreBaseRegistrationFormRequest;
 use App\Http\Requests\Registration\UpdateBaseRegistrationFormRequest;
 
@@ -31,10 +32,10 @@ class PEeditComponent extends PERegistrationBaseComponent
             $profile_photo                  = $peData->registrationForm->getMedia('profile_photo')->first();
             $this->profile_photo_url        =  $profile_photo?->getUrl();
             $this->existing_profile_photo   =  $profile_photo?->id; // media id or path
-            $this->professional_experience_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('professional_experience_pdf'); // media id or path
-            $this->discipline_involvement_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('discipline_involvement_pdf'); // media id or path
-            $this->significant_engineering_work_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('significant_engineering_work_pdf'); // media id or path
-            $this->verification_engineers_pdf   =  $peData->PeAcademicQualifications->getFirstMediaUrl('verification_engineers_pdf'); // media id or path
+            $this->professional_experience_pdf   =  $peData->getFirstMediaUrl('professional_experience_pdf'); // media id or path
+            $this->discipline_involvement_pdf   =  $peData->getFirstMediaUrl('discipline_involvement_pdf'); // media id or path
+            $this->significant_engineering_work_pdf   =  $peData->getFirstMediaUrl('significant_engineering_work_pdf'); // media id or path
+            $this->verification_engineers_pdf   =  $peData->getFirstMediaUrl('verification_engineers_pdf'); // media id or path
             $this->title                    = $peData->registrationForm->title;
             $this->father_name_en           = $peData->registrationForm->father_name_en;
             $this->father_name_mm           = $peData->registrationForm->father_name_mm;
@@ -102,6 +103,26 @@ class PEeditComponent extends PERegistrationBaseComponent
                     $this->nrcTownshipsMm = $this->PEservice->getNrcTownship($this->nrc_state_mm);
                 }
             }
+
+            if ($peData->PeAcademicQualifications()) {
+                $this->first_university_id       = $peData->PeAcademicQualifications->first_university_id;
+                $this->pe_academic_qualifications_id       = $peData->PeAcademicQualifications->id;
+                $this->first_graduation_year     = $peData->PeAcademicQualifications->first_graduation_year;
+                $this->first_eng_disc_id         = $peData->PeAcademicQualifications->first_eng_disc_id;
+                $this->first_acad_qual_id        = $peData->PeAcademicQualifications->first_acad_qual_id;
+                $this->post_university_id        = $peData->PeAcademicQualifications->post_university_id ? $peData->PeAcademicQualifications->post_university_id : null;
+                $this->post_university_id        = $peData->PeAcademicQualifications->post_university_id;
+                $this->post_graduation_year      = $peData->PeAcademicQualifications->post_graduation_year;
+                $this->post_eng_disc_id          = $peData->PeAcademicQualifications->post_eng_disc_id;
+                $this->post_acad_qual_id         = $peData->PeAcademicQualifications->post_acad_qual_id;
+                $this->other_eng_disc_id        = $peData->PeAcademicQualifications->other_eng_disc_id;
+                $this->other_graduation_year     = $peData->PeAcademicQualifications->other_graduation_year;
+                $this->other_document_name_1     = $peData->PeAcademicQualifications->other_document_name_1;
+                $this->other_document_name_2     = $peData->PeAcademicQualifications->other_document_name_2;
+                $this->other_document_name_3     = $peData->PeAcademicQualifications->other_document_name_3;
+                $this->other_document_name_4     = $peData->PeAcademicQualifications->other_document_name_4;
+                $this->other_qualification       = $peData->PeAcademicQualifications->other_qualification;
+            }
         }
     }
     public function update()
@@ -109,10 +130,13 @@ class PEeditComponent extends PERegistrationBaseComponent
 
         $baseValidated  = UpdateBaseRegistrationFormRequest::validate($this);
         $peValidated    = UpdatePeRegistrationFormRequest::validate($this);
+        $peAcademicValidated = UpdatePeAcademicQualificationsRequest::validate($this);
+        // dd($baseValidated, $peValidated, $peAcademicValidated);
         $this->PEservice->update(
             $this->pe_registration_id,
             $baseValidated,
             $peValidated,
+            $peAcademicValidated,
             $this->nrc_card_front,
             $this->nrc_card_back,
             $this->profile_photo

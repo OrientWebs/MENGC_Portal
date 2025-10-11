@@ -26,7 +26,11 @@ class PeService
     }
     public function findPeRegistrationForm($id)
     {
-        return $this->PeRepository->peRegistrationForm()->with('registrationForm')->find($id);
+        return $this->PeRepository->peRegistrationForm()->with('registrationForm', 'PeAcademicQualifications')->find($id);
+    }
+    public function findPeAcademicQualifications($id)
+    {
+        return $this->PeRepository->PEAcademicQualifications()->find($id);
     }
     public function getNrcTownship($stateId)
     {
@@ -85,7 +89,7 @@ class PeService
                 $peAcademicQualifications += [
                     'pe_form_id' => $pe_form_id
                 ];
-                $PeRegistrationForm = $this->PeRepository->PEAcademicQualifications()->create($peAcademicQualifications);
+                $peAcademicQualifications = $this->PeRepository->PEAcademicQualifications()->create($peAcademicQualifications);
             }
             if ($baseData['nrc_card_front']) {
                 $registrationForm->addMedia($baseData['nrc_card_front']->getRealPath())->usingFileName($baseData['nrc_card_front']->getClientOriginalName())->toMediaCollection('nrc_photo_front');
@@ -119,10 +123,14 @@ class PeService
         }
     }
 
-    public function update($id, $baseData, $peData, $frontFile = null, $backFile = null, $profilePhoto = null)
+    public function update($id, $baseData, $peData, $peAcademicValidated = null, $frontFile = null, $backFile = null, $profilePhoto = null)
     {
+
         $peRegistrationData = $this->findPeRegistrationForm($id);
         $registrationForm   = $this->findRegistrationForm($peRegistrationData->registration_id);
+        if ($peAcademicValidated) {
+            $peAcademic = $this->findPeAcademicQualifications($peAcademicValidated['pe_academic_qualifications_id']);
+        }
 
         if ($baseData['nationality_type'] === 'NRC') {
             $baseData += [
@@ -134,6 +142,7 @@ class PeService
         try {
             $registrationForm->update($baseData);
             $peRegistrationData->update($peData);
+            $peAcademic->update($peAcademicValidated);
 
             if ($frontFile) {
                 $registrationForm->clearMediaCollection('nrc_photo_front');
