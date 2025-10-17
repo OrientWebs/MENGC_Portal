@@ -41,6 +41,15 @@
                             </td>
                             <td class="px-6 py-4 relative">
                                 <x-select.action-dropdown>
+                                    @can('PEregistration-show')
+                                        <li class="hover:bg-gray-100 dark:hover:bg-gray-600">
+                                            <a href="" wire:navigate class="flex items-center gap-2 px-4 py-2">
+                                                <i class="fa-solid fa-circle-info"></i>Detail
+
+                                            </a>
+                                        </li>
+                                    @endcan
+
                                     @can('PEregistration-edit')
                                         <li class="hover:bg-gray-100 dark:hover:bg-gray-600">
                                             <a href="{{ route('admin.pe-form-edit', ['id' => $record->id]) }}" wire:navigate
